@@ -16,16 +16,12 @@ class App extends React.Component {
   }
 
   getReviews() {
-    fetch()
+    fetch('/reviews/99')
       .then(data => {
         return data.text();
+      }).then((data) => {
+        console.log(data);
       })
-      .then(feed => {
-        let parsedFeed = JSON.parse(feed);
-        this.setState({
-          blogs: parsedFeed
-        });
-      });
   }
 
   render() {
