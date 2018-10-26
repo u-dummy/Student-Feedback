@@ -12,7 +12,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.updateFeed();
+    this.getReviews();
   }
 
   getReviews() {
