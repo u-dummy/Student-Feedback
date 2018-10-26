@@ -8,7 +8,7 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "react": "webpack -d --watch",
-    "seed": "node database/seeding/seed.js"
+    "seed": "node database/seed.js"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
