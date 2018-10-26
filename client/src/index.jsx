@@ -17,10 +17,10 @@ class App extends React.Component {
 
   getReviews() {
     fetch('/reviews/99')
-      .then(data => {
+      .then((data) => {
         return data.text();
       }).then((data) => {
-        console.log(data);
+        console.log('should get data: ', data);
       })
   }
 

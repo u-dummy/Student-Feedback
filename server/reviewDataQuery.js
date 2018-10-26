@@ -4,23 +4,49 @@ const db = require('../database/sequelizeSetup.js');
 const reviewsQuery = (courseId, res) => {
   db.Reviews.findAll({ where: { courseId }, include: [db.Users] })
     .then((data) => {
-      const reviewDataWithUserObj = data.map(row => (row.dataValues));
-      const reviewData = reviewDataWithUserObj.map(row => ({
-        reviewId: row.reviewId,
-        courseId: row.courseId,
-        rating: row.rating,
-        review: row.review,
-        date: row.date,
-        upvotes: row.upvotes,
-        downvotes: row.downvotes,
-        reported: row.reported,
-        users: row.user.dataValues,
-        createdAt: row.createdAt,
-        updatedAt: row.updatedAt,
-      }));
+      const reviewDataWithNestedUserObj = data.map(row => (row.dataValues));
+      const reviewData = reviewDataWithNestedUserObj.map((row) => {
+        row.user = row.user.dataValues;
+        return row;
+      });
+      return reviewData;
     })
-    .then((data) => {
-      res.json(data);
+    .then((reviewData) => {
+      const sumRating = reviewData.reduce((sum, review) => (sum + review.rating), 0);
+      const avgRating = (sumRating / reviewData.length).toFixed(2);
+      const summaryStats = reviewData.reduce((obj, review) => {
+        const { rating } = review;
+        obj[rating] === undefined ? obj[rating] = 1 : obj[rating] += 1;
+        return obj;
+      }, { avg: avgRating });
+
+      // Review must have a +/- over 60 to be considered a featured reviews. If course has
+      // no reviews that high then it doesn't have a featured review
+      const findFeaturedReview = (reviewData) => {
+        let featuredReview = reviewData.reduce((featured, review) => {
+          const featuredPowerRanking = featured.upvotes - featured.downvotes;
+          const currentReviewPowerRanking = review.upvotes - review.downvotes;
+          if (currentReviewPowerRanking > featuredPowerRanking) {
+            featured = review;
+          }
+          return featured;
+        }, { upvotes: 60, downvotes: 0});
+        
+        if (featuredReview.userId === undefined) {
+          featuredReview = null;
+        }
+        return featuredReview;
+      };
+      const featuredReview = findFeaturedReview(reviewData);
+
+      const removeFeaturedReview = (featuredReview1, reviewData1) => {
+        const reviews = reviewData1.filter(review => (review.userId !== featuredReview1.userId));
+        return reviews;
+      };
+
+      const reviews = removeFeaturedReview(featuredReview, reviewData);
+      const reviewDataObj = { summaryStats, featuredReview, reviews };
+      res.send(reviewDataObj);
     });
 };
 
