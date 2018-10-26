@@ -41,4 +41,7 @@ const Reviews = sequelize.define('reviews', {
   reported: Sequelize.INTEGER,
 });
 
+db.Users.hasMany(db.Reviews, {foreignKey: 'userId'});
+db.Reviews.belongsTo(db.Users, {foreignKey: 'userId'});
+
 module.exports = { Users, Courses, Reviews };
