@@ -16,11 +16,11 @@ class App extends React.Component {
   }
 
   getReviews() {
-    fetch('/reviews/99')
+    fetch('/reviews/2')
       .then((data) => {
         return data.text();
       }).then((data) => {
-        console.log('should get data: ', data);
+        console.log(data);
       })
   }
 
