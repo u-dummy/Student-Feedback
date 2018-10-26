@@ -1,5 +1,15 @@
 const db = require('../database/sequelizeSetup.js');
 
+const flattenReviewData = (data) => {
+  const reviewDataWithNestedUserObj = data.map(row => (row.dataValues));
+  const reviewData = reviewDataWithNestedUserObj.map((row) => {
+    row.user = row.user.dataValues;
+    return row;
+  });
+
+  return reviewData;
+};
+
 const calcCourseStats = (reviewData) => {
   const sumRating = reviewData.reduce((sum, review) => (sum + review.rating), 0);
   const avgRating = (sumRating / reviewData.length).toFixed(2);
@@ -12,7 +22,7 @@ const calcCourseStats = (reviewData) => {
   return summaryStats;
 };
 
-// Review must have a +/- over 60 to be considered a featured reviews. If course has
+// Review must have a +/- over 60 to be considered a featured review. If course has
 // no reviews that high then it doesn't have a featured review
 const findFeaturedReview = (reviewData) => {
   let featuredReview = reviewData.reduce((featured, review) => {
@@ -35,19 +45,11 @@ const removeFeaturedReviewFromList = (featuredReview, reviewData) => (
 const getReviewData = (courseId, res) => {
   db.Reviews.findAll({ where: { courseId }, include: [db.Users] })
     .then((data) => {
-      const reviewDataWithNestedUserObj = data.map(row => (row.dataValues));
-      const reviewData = reviewDataWithNestedUserObj.map((row) => {
-        row.user = row.user.dataValues;
-        return row;
-      });
-      return reviewData;
-    })
-    .then((reviewData) => {
+      const reviewData = flattenReviewData(data);
       const courseStats = calcCourseStats(reviewData);
       const featuredReview = findFeaturedReview(reviewData);
       const reviews = removeFeaturedReviewFromList(featuredReview, reviewData);
-      const reviewDataObj = { courseStats, featuredReview, reviews };
-      res.send(reviewDataObj);
+      res.send({ courseStats, featuredReview, reviews });
     });
 };
 
