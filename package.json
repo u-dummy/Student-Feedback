@@ -7,13 +7,17 @@
   },
   "scripts": {
     "start": "nodemon server/index.js",
-    "react": "webpack -d --watch"
+    "react": "webpack -d --watch",
+    "seed": "node database/seed.js"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "moment": "^2.19.2",
     "mysql": "^2.14.1",
+    "mysql2": "^1.6.1",
+    "sequelize": "^4.41.0",
+    "faker": "^4.1.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   },
