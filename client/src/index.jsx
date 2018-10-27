@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Review from './components/Review.jsx';
+import FeaturedReview from './components/FeaturedReview.jsx';
 import ReviewList from './components/ReviewList.jsx';
 import CourseSummary from './components/CourseSummary.jsx';
 class App extends React.Component {
@@ -30,7 +30,7 @@ class App extends React.Component {
       return (
         <div>
           <h2>Featured review</h2>
-          <Review featuredReview={ this.state.featuredReview } />
+          <FeaturedReview featuredReview={ this.state.featuredReview } />
           <h2>Student feedback</h2>
           <CourseSummary stats={ this.state.courseStats }/>
           <h2>Reviews</h2>
@@ -46,4 +46,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App courseId={1}/>, document.getElementById('reviewModule'));
+ReactDOM.render(<App courseId={Math.floor(Math.random()*100)}/>, document.getElementById('reviewModule'));

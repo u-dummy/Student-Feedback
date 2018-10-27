@@ -9,10 +9,9 @@ class ReviewList extends React.Component {
 
   render() {
     const reviews = this.props.reviews.map((review) => {
-      console.log(review);
       return (
         <div>
-          <Review style='border:1px solid black' featuredReview={ review } />
+          <Review reviewData={ review } />
         </div>
       )
     });
