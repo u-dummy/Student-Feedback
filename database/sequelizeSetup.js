@@ -34,7 +34,7 @@ const Reviews = sequelize.define('reviews', {
   userId: Sequelize.INTEGER,
   courseId: Sequelize.INTEGER,
   rating: Sequelize.INTEGER,
-  review: Sequelize.STRING,
+  review: Sequelize.STRING(600),
   date: Sequelize.DATE,
   upvotes: Sequelize.INTEGER,
   downvotes: Sequelize.INTEGER,
@@ -46,4 +46,4 @@ Reviews.belongsTo(Users, { foreignKey: 'userId' });
 Courses.hasMany(Reviews, { foreignKey: 'courseId' });
 Reviews.belongsTo(Courses, { foreignKey: 'courseId' });
 
-module.exports = { Users, Courses, Reviews };
+module.exports = { Users, Courses, Reviews, sequelize };
