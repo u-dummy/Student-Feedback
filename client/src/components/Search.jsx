@@ -12,6 +12,7 @@ class Search extends Component {
 
  handleInputChange() {
    this.setState({ query: this.search.current.value });
+   this.props.filterReviews(this.search.current.value);
  }
 
  render() {
