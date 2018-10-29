@@ -13,17 +13,27 @@ class App extends React.Component {
       courseStats: {},
       featuredReview: {},
       reviews: [],
+      filteredReviews: [],
     };
+    this.filterBasedOnSearch = this.filterBasedOnSearch.bind(this);
   }
 
   componentDidMount() {
     this.getReviews(this.state.currentCourse);
   }
 
+  filterBasedOnSearch(query) {
+    const filteredReviews = this.state.reviews.filter(review => (review.review.toUpperCase().includes(query.toUpperCase())));
+    this.setState({ filteredReviews });
+  }
+
   getReviews(courseId) {
     fetch(`${courseId}/reviews`)
       .then(rawData => (rawData.text()))
-      .then((data) => { this.setState(JSON.parse(data)) });
+      .then((data) => {
+        this.setState(JSON.parse(data));
+        this.setState({ filteredReviews: this.state.reviews});
+      });
   }
 
   render() {
@@ -34,9 +44,9 @@ class App extends React.Component {
           <FeaturedReview featuredReview={ this.state.featuredReview } />
           <h2>Student feedback</h2>
           <CourseSummary stats={ this.state.courseStats }/>
-          <Search />
+          <Search filterReviews={ this.filterBasedOnSearch } />
           <h2>Reviews</h2>
-          <ReviewList reviews={ this.state.reviews }/>
+          <ReviewList reviews={ this.state.filteredReviews }/>
         </div>
       );
     }
