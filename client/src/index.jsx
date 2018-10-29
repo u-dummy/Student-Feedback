@@ -22,7 +22,7 @@ class App extends React.Component {
   getReviews(courseId) {
     fetch(`${courseId}/reviews`)
       .then(rawData => (rawData.text()))
-      .then((data) => { this.setState(JSON.parse(data)) })
+      .then((data) => { this.setState(JSON.parse(data)) });
   }
 
   render() {
@@ -40,7 +40,7 @@ class App extends React.Component {
     }
     return (
       <div>
-        <img src='https://giphy.com/stickers/spins-uploading-spinning-wheel-of-death-3o7TKtnuHOHHUjR38Y'></img>
+        <img src='https://media.giphy.com/media/3o7TKtnuHOHHUjR38Y/giphy.gif'></img>
       </div>
     );
   }
