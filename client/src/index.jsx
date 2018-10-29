@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import FeaturedReview from './components/FeaturedReview.jsx';
 import ReviewList from './components/ReviewList.jsx';
 import CourseSummary from './components/CourseSummary.jsx';
+import Search from './components/Search.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -33,6 +34,7 @@ class App extends React.Component {
           <FeaturedReview featuredReview={ this.state.featuredReview } />
           <h2>Student feedback</h2>
           <CourseSummary stats={ this.state.courseStats }/>
+          <Search />
           <h2>Reviews</h2>
           <ReviewList reviews={ this.state.reviews }/>
         </div>
