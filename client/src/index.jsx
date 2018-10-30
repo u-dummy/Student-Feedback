@@ -16,9 +16,10 @@ class App extends React.Component {
       reviews: [],
       reviewsFilteredBySearch: [],
       reviewsFilteredByRating: [],
+      currentlyFilteredByRating: null,
     };
     this.filterAndBoldBasedOnSearch = this.filterAndBoldBasedOnSearch.bind(this);
-    this.filterBasedOnRating = this.filterBasedOnRating.bind(this);
+    this.filterOnRatingClick = this.filterOnRatingClick.bind(this);
   }
 
   componentDidMount() {
@@ -50,9 +51,19 @@ class App extends React.Component {
     this.setState({ reviewsFilteredBySearch: filteredAndBoldReviews });
   }
 
-  filterBasedOnRating(rating) {
-    const filteredReviews = this.state.reviews.filter(review => (review.rating === rating));
-    this.setState({ reviewsFilteredByRating: filteredReviews });
+  filterOnRatingClick(rating) {
+    if (rating === this.state.currentlyFilteredByRating) {
+      this.setState({
+        reviewsFilteredByRating: this.state.reviews,
+        currentlyFilteredByRating: null,
+      });
+    } else {
+      const filteredReviews = this.state.reviews.filter(review => (review.rating === rating));
+      this.setState({
+        reviewsFilteredByRating: filteredReviews,
+        currentlyFilteredByRating: rating,
+      });
+    }
   }
 
   filteredBySearchAndRating() {
@@ -61,6 +72,7 @@ class App extends React.Component {
       this.state.reviewsFilteredByRating.forEach((ratingReview) => {
         if (searchReview.user.userId === ratingReview.user.userId) {
           filteredReviews.push(searchReview);
+          return;
         }
       });
     });
@@ -86,7 +98,7 @@ class App extends React.Component {
           <h2>Featured review</h2>
           <FeaturedReview featuredReview={ this.state.featuredReview } />
           <h2>Student feedback</h2>
-          <CourseSummary stats={ this.state.courseStats } ratingFilter={ this.filterBasedOnRating }/>
+          <CourseSummary stats={ this.state.courseStats } ratingFilter={ this.filterOnRatingClick }/>
           <Search searchFilter={ this.filterAndBoldBasedOnSearch } />
           <h2>Reviews</h2>
           <ReviewList reviews={ this.filteredBySearchAndRating() }/>
