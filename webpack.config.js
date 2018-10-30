@@ -12,19 +12,32 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {},
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
+      },
+      {
         test: /\.jsx?/,
         include: SRC_DIR,
         loader: 'babel-loader',
         query: {
           presets: ['react', 'es2015'],
         },
-      },
-      {
-        test: /\.(png|jpg|gif)$/,
-        use: [
-          { loader: 'file-loader' },
-          { loader: 'url-loader' },
-        ],
       },
     ],
   },

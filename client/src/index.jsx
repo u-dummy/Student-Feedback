@@ -5,7 +5,7 @@ import FeaturedReview from './components/FeaturedReview.jsx';
 import ReviewList from './components/ReviewList.jsx';
 import CourseSummary from './components/CourseSummary.jsx';
 import Search from './components/Search.jsx';
-import loadingSpinner from '../../public/icons/search.png';
+import loadingSpinner from './icons/spinner.gif';
 
 class App extends React.Component {
   constructor(props) {
