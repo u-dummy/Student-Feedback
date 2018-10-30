@@ -14,7 +14,8 @@ class App extends React.Component {
       courseStats: {},
       featuredReview: {},
       reviews: [],
-      visibleReviews: [],
+      reviewsFilteredBySearch: [],
+      reviewsFilteredByRating: [],
     };
     this.filterAndBoldBasedOnSearch = this.filterAndBoldBasedOnSearch.bind(this);
     this.filterBasedOnRating = this.filterBasedOnRating.bind(this);
@@ -25,10 +26,10 @@ class App extends React.Component {
   }
 
   filterAndBoldBasedOnSearch(query) {
-    const visibleReviews = this.state.reviews.filter(review =>
+    const filteredReviews = this.state.reviews.filter(review =>
       (review.review.toUpperCase().includes(query.toUpperCase())));
 
-    const filteredAndBoldReviews = visibleReviews.map((review) => {
+    const filteredAndBoldReviews = filteredReviews.map((review) => {
       const queryStartingIndex = review.review.toUpperCase().indexOf(query.toUpperCase());
       const queryEndingIndex = queryStartingIndex + query.length;
       const boldedReview = {
@@ -46,12 +47,24 @@ class App extends React.Component {
       };
     });
 
-    this.setState({ visibleReviews: filteredAndBoldReviews });
+    this.setState({ reviewsFilteredBySearch: filteredAndBoldReviews });
   }
 
   filterBasedOnRating(rating) {
-    const visibleReviews = this.state.reviews.filter(review => (review.rating === rating));
-    this.setState({ visibleReviews });
+    const filteredReviews = this.state.reviews.filter(review => (review.rating === rating));
+    this.setState({ reviewsFilteredByRating: filteredReviews });
+  }
+
+  filteredBySearchAndRating() {
+    const filteredReviews = [];
+    this.state.reviewsFilteredBySearch.forEach((searchReview) => {
+      this.state.reviewsFilteredByRating.forEach((ratingReview) => {
+        if (searchReview.user.userId === ratingReview.user.userId) {
+          filteredReviews.push(searchReview);
+        }
+      });
+    });
+    return filteredReviews;
   }
 
   getReviews(courseId) {
@@ -59,7 +72,10 @@ class App extends React.Component {
       .then(rawData => (rawData.text()))
       .then((data) => {
         this.setState(JSON.parse(data));
-        this.setState({ visibleReviews: this.state.reviews });
+        this.setState({
+          reviewsFilteredBySearch: this.state.reviews,
+          reviewsFilteredByRating: this.state.reviews,
+        });
       });
   }
 
@@ -73,7 +89,7 @@ class App extends React.Component {
           <CourseSummary stats={ this.state.courseStats } ratingFilter={ this.filterBasedOnRating }/>
           <Search searchFilter={ this.filterAndBoldBasedOnSearch } />
           <h2>Reviews</h2>
-          <ReviewList reviews={ this.state.visibleReviews }/>
+          <ReviewList reviews={ this.filteredBySearchAndRating() }/>
         </div>
       );
     }
