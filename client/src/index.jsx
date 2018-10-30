@@ -5,6 +5,7 @@ import FeaturedReview from './components/FeaturedReview.jsx';
 import ReviewList from './components/ReviewList.jsx';
 import CourseSummary from './components/CourseSummary.jsx';
 import Search from './components/Search.jsx';
+import loadingSpinner from '../../public/icons/search.png';
 
 class App extends React.Component {
   constructor(props) {
@@ -73,7 +74,7 @@ class App extends React.Component {
     }
     return (
       <div>
-        <img src='https://media.giphy.com/media/3o7TKtnuHOHHUjR38Y/giphy.gif'></img>
+        <img src={loadingSpinner}></img>
       </div>
     );
   }
