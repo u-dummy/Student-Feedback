@@ -14,7 +14,7 @@ class App extends React.Component {
       courseStats: {},
       featuredReview: {},
       reviews: [],
-      filteredReviews: [],
+      visibleReviews: [],
     };
     this.filterAndBoldBasedOnSearch = this.filterAndBoldBasedOnSearch.bind(this);
   }
@@ -24,10 +24,10 @@ class App extends React.Component {
   }
 
   filterAndBoldBasedOnSearch(query) {
-    const filteredReviews = this.state.reviews.filter(review =>
+    const visibleReviews = this.state.reviews.filter(review =>
       (review.review.toUpperCase().includes(query.toUpperCase())));
 
-    const filteredAndBoldReviews = filteredReviews.map((review) => {
+    const filteredAndBoldReviews = visibleReviews.map((review) => {
       const queryStartingIndex = review.review.toUpperCase().indexOf(query.toUpperCase());
       const queryEndingIndex = queryStartingIndex + query.length;
       const boldedReview = {
@@ -45,7 +45,7 @@ class App extends React.Component {
       };
     });
 
-    this.setState({ filteredReviews: filteredAndBoldReviews });
+    this.setState({ visibleReviews: filteredAndBoldReviews });
   }
 
   getReviews(courseId) {
@@ -53,7 +53,7 @@ class App extends React.Component {
       .then(rawData => (rawData.text()))
       .then((data) => {
         this.setState(JSON.parse(data));
-        this.setState({ filteredReviews: this.state.reviews });
+        this.setState({ visibleReviews: this.state.reviews });
       });
   }
 
@@ -67,7 +67,7 @@ class App extends React.Component {
           <CourseSummary stats={ this.state.courseStats }/>
           <Search filterReviews={ this.filterAndBoldBasedOnSearch } />
           <h2>Reviews</h2>
-          <ReviewList reviews={ this.state.filteredReviews }/>
+          <ReviewList reviews={ this.state.visibleReviews }/>
         </div>
       );
     }
