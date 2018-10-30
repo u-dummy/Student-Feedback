@@ -3,25 +3,24 @@ import React, { Component } from 'react';
 class Search extends Component {
   constructor(props) {
     super(props);
-    this.state = { query: '' };
-    this.search = React.createRef();
-    this.handleInputChange = this.handleInputChange.bind(this);
+    this.query = React.createRef();
+    this.handleInputSubmit = this.handleInputSubmit.bind(this);
   }
 
-  handleInputChange() {
-    this.setState({ query: this.search.current.value });
-    this.props.filterReviews(this.search.current.value);
+  handleInputSubmit(event) {
+    event.preventDefault();
+    this.props.filterReviews(this.query.current.value);
   }
 
   render() {
     return (
-      <div>
+      <form onSubmit={this.handleInputSubmit}>
         <input
           placeholder='Search reviews'
-          ref={this.search}
+          ref={this.query}
         />
-        <button onClick={this.handleInputChange}>Submit</button>
-      </div>
+        <button type='submit'>Submit</button>
+      </form>
     );
   }
 }
