@@ -1,5 +1,7 @@
-const Bar = props => (
-  <span style={{ width: `${props.percent}%` }}> </span>
+import React from 'react';
+
+const BarGuage = props => (
+  <div style={{ width: `${props.percent}%`, border: '1px solid black' }}></div>
 );
 
-export default Bar;
+export default BarGuage;
