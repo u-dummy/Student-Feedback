@@ -9,16 +9,13 @@ class Search extends Component {
 
   handleInputSubmit(event) {
     event.preventDefault();
-    this.props.filterReviews(this.query.current.value);
+    this.props.searchFilter(this.query.current.value);
   }
 
   render() {
     return (
       <form onSubmit={this.handleInputSubmit}>
-        <input
-          placeholder='Search reviews'
-          ref={this.query}
-        />
+        <input placeholder='Search reviews' ref={this.query}/>
         <button type='submit'>Submit</button>
       </form>
     );

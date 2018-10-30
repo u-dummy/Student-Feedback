@@ -17,6 +17,7 @@ class App extends React.Component {
       visibleReviews: [],
     };
     this.filterAndBoldBasedOnSearch = this.filterAndBoldBasedOnSearch.bind(this);
+    this.filterBasedOnRating = this.filterBasedOnRating.bind(this);
   }
 
   componentDidMount() {
@@ -48,6 +49,11 @@ class App extends React.Component {
     this.setState({ visibleReviews: filteredAndBoldReviews });
   }
 
+  filterBasedOnRating(rating) {
+    const visibleReviews = this.state.reviews.filter(review => (review.rating === rating));
+    this.setState({ visibleReviews });
+  }
+
   getReviews(courseId) {
     fetch(`${courseId}/reviews`)
       .then(rawData => (rawData.text()))
@@ -64,8 +70,8 @@ class App extends React.Component {
           <h2>Featured review</h2>
           <FeaturedReview featuredReview={ this.state.featuredReview } />
           <h2>Student feedback</h2>
-          <CourseSummary stats={ this.state.courseStats }/>
-          <Search filterReviews={ this.filterAndBoldBasedOnSearch } />
+          <CourseSummary stats={ this.state.courseStats } ratingFilter={ this.filterBasedOnRating }/>
+          <Search searchFilter={ this.filterAndBoldBasedOnSearch } />
           <h2>Reviews</h2>
           <ReviewList reviews={ this.state.visibleReviews }/>
         </div>
