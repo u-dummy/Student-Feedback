@@ -1,6 +1,6 @@
 import React from 'react';
 
-import BarGuage from './BarGuage.jsx';
+import SummaryRow from './SummaryRow.jsx';
 
 class CourseSummary extends React.Component {
   constructor(props) {
@@ -11,46 +11,11 @@ class CourseSummary extends React.Component {
     return (
       <div>
         <div>Average: {this.props.stats.avg}</div>
-        <div>
-          <div style={{ border: '1px solid black' }}>
-            <BarGuage percent={ this.props.stats[5] * 100 }/>
-          </div>
-          <div>
-            { this.props.stats[5] * 100 }
-          </div>
-        </div>
-        <div>
-          <div style={{ border: '1px solid black' }}>
-            <BarGuage percent={ this.props.stats[4] * 100 }/>
-          </div>
-          <div>
-            { this.props.stats[4] * 100 }
-          </div>
-        </div>
-        <div>
-          <div style={{ border: '1px solid black' }}>
-            <BarGuage percent={ this.props.stats[3] * 100 }/>
-          </div>
-          <div>
-            { this.props.stats[3] * 100 }
-          </div>
-        </div>
-        <div>
-          <div style={{ border: '1px solid black' }}>
-            <BarGuage percent={ this.props.stats[2] * 100 }/>
-          </div>
-          <div>
-            { this.props.stats[2] * 100 }
-          </div>
-        </div>
-        <div>
-          <div style={{ border: '1px solid black' }}>
-            <BarGuage percent={ this.props.stats[1] * 100 }/>
-          </div>
-          <div>
-            { this.props.stats[1] * 100 }
-          </div>
-        </div>
+        <SummaryRow percent={ this.props.stats[5] }/>
+        <SummaryRow percent={ this.props.stats[4] }/>
+        <SummaryRow percent={ this.props.stats[3] }/>
+        <SummaryRow percent={ this.props.stats[2] }/>
+        <SummaryRow percent={ this.props.stats[1] }/>
       </div>
     );
   }
