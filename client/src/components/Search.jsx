@@ -19,9 +19,8 @@ class Search extends Component {
         <input
           placeholder='Search reviews'
           ref={this.search}
-          onChange={this.handleInputChange}
         />
-        <p>{this.state.query}</p>
+        <button onClick={this.handleInputChange}>Submit</button>
       </div>
     );
   }
