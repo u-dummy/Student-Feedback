@@ -16,23 +16,23 @@ class App extends React.Component {
       reviews: [],
       filteredReviews: [],
     };
-    this.filterAndAddDelimitersBasedOnSearch = this.filterAndAddDelimitersBasedOnSearch.bind(this);
+    this.filterAndBoldBasedOnSearch = this.filterAndBoldBasedOnSearch.bind(this);
   }
 
   componentDidMount() {
     this.getReviews(this.state.currentCourse);
   }
 
-  filterAndAddDelimitersBasedOnSearch(query) {
+  filterAndBoldBasedOnSearch(query) {
     const filteredReviews = this.state.reviews.filter(review =>
       (review.review.toUpperCase().includes(query.toUpperCase())));
 
-    const filteredAndDelimitedReviews = filteredReviews.map((review) => {
+    const filteredAndBoldReviews = filteredReviews.map((review) => {
       const queryStartingIndex = review.review.toUpperCase().indexOf(query.toUpperCase());
       const queryEndingIndex = queryStartingIndex + query.length;
-      const splitReviewObj = {
+      const boldedReview = {
         preQuery: review.review.slice(0, queryStartingIndex),
-        query,
+        query: <b>{review.review.slice(queryStartingIndex, queryEndingIndex)}</b>,
         postQuery: review.review.slice(queryEndingIndex),
       };
       return {
@@ -41,10 +41,11 @@ class App extends React.Component {
         date: review.date,
         upvotes: review.upvotes,
         downvotes: review.downvotes,
-        review: splitReviewObj,
+        boldedReview,
       };
     });
-    this.setState({ filteredReviews: filteredAndDelimitedReviews });
+
+    this.setState({ filteredReviews: filteredAndBoldReviews });
   }
 
   getReviews(courseId) {
@@ -64,7 +65,7 @@ class App extends React.Component {
           <FeaturedReview featuredReview={ this.state.featuredReview } />
           <h2>Student feedback</h2>
           <CourseSummary stats={ this.state.courseStats }/>
-          <Search filterReviews={ this.filterAndAddDelimitersBasedOnSearch } />
+          <Search filterReviews={ this.filterAndBoldBasedOnSearch } />
           <h2>Reviews</h2>
           <ReviewList reviews={ this.state.filteredReviews }/>
         </div>
