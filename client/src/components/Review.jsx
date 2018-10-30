@@ -1,10 +1,6 @@
 import React from 'react';
 
 class Review extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   renderReviewText() {
     if (this.props.reviewData.boldedReview) {
       return (
