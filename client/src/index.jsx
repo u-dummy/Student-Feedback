@@ -5,7 +5,6 @@ import FeaturedReview from './components/FeaturedReview.jsx';
 import ReviewList from './components/ReviewList.jsx';
 import CourseSummary from './components/CourseSummary.jsx';
 import Search from './components/Search.jsx';
-import loadingSpinner from './icons/spinner.gif';
 
 class App extends React.Component {
   constructor(props) {
@@ -74,7 +73,7 @@ class App extends React.Component {
     }
     return (
       <div>
-        <img src={loadingSpinner}></img>
+        <img src='https://thumbs.gfycat.com/FaithfulDeafeningBullmastiff-small.gif'></img>
       </div>
     );
   }

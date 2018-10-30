@@ -12,10 +12,11 @@ const flattenReviewData = (data) => {
 
 const calcCourseStats = (reviewData) => {
   const sumRating = reviewData.reduce((sum, review) => (sum + review.rating), 0);
-  const avgRating = (sumRating / reviewData.length).toFixed(2);
+  const totalRatings = reviewData.length;
+  const avgRating = (sumRating / totalRatings).toFixed(2);
   const summaryStats = reviewData.reduce((obj, review) => {
     const { rating } = review;
-    obj[rating] === undefined ? obj[rating] = 1 : obj[rating] += 1;
+    obj[rating] === undefined ? obj[rating] = (1 / totalRatings) : obj[rating] += (1 / totalRatings);
     return obj;
   }, { avg: avgRating });
 
