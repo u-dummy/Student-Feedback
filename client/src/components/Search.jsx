@@ -15,8 +15,14 @@ class Search extends Component {
   render() {
     return (
       <form className='reviewSearchBar' onSubmit={this.handleInputSubmit}>
-        <input className='reviewSearchInput' placeholder='Search reviews' ref={this.query}/>
-        <button type='submit'>Submit</button>
+        <div className='reviewSearchInputWrapper'>
+          <span>
+            <input type='text' className='reviewSearchInput' placeholder='Search reviews' ref={this.query}/>
+          </span>
+          <span>
+            <button type='submit'>Submit</button>          
+          </span>
+        </div>
       </form>
     );
   }
