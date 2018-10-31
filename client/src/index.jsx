@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import FeaturedReview from './components/FeaturedReview.jsx';
 import ReviewList from './components/ReviewList.jsx';
 import CourseSummary from './components/CourseSummary.jsx';
-import Search from './components/Search.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -103,13 +102,11 @@ class App extends React.Component {
     if (this.state.reviews.length > 0) {
       return (
         <div>
-          <h2>Featured review</h2>
-          <FeaturedReview featuredReview={ this.state.featuredReview } />
-          <h2>Student feedback</h2>
-          <CourseSummary stats={ this.state.courseStats } ratingFilter={ this.filterOnRatingClick }/>
-          <Search searchFilter={ this.filterAndBoldBasedOnSearch } />
-          <h2>Reviews</h2>
-          <ReviewList filteredReviews={ this.reviewsFilteredBySearchAndRating() } numOfReviewsToShow={ this.state.numOfReviewsToShow } addTen={ this.addTenReviews }/>
+            <FeaturedReview featuredReview={ this.state.featuredReview } />
+            <CourseSummary stats={ this.state.courseStats } ratingFilter={ this.filterOnRatingClick }/>
+            <ReviewList searchFilter={ this.filterAndBoldBasedOnSearch }
+            filteredReviews={ this.reviewsFilteredBySearchAndRating() } 
+            numOfReviewsToShow={ this.state.numOfReviewsToShow } addTen={ this.addTenReviews }/>
         </div>
       );
     }
