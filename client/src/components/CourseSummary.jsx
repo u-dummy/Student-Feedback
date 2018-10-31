@@ -5,18 +5,22 @@ import SummaryRow from './SummaryRow.jsx';
 class CourseSummary extends React.Component {
   render() {
     return (
-      <div>
-        <div>Average: {this.props.stats.avg}</div>
-        <SummaryRow percent={ this.props.stats[5] }
-        ratingFilter={() => (this.props.ratingFilter(5))}/>
-        <SummaryRow percent={ this.props.stats[4] }
-        ratingFilter={() => (this.props.ratingFilter(4))}/>
-        <SummaryRow percent={ this.props.stats[3] }
-        ratingFilter={() => (this.props.ratingFilter(3))}/>
-        <SummaryRow percent={ this.props.stats[2] }
-        ratingFilter={() => (this.props.ratingFilter(2))}/>
-        <SummaryRow percent={ this.props.stats[1] }
-        ratingFilter={() => (this.props.ratingFilter(1))}/>
+      <div className='studentFeedbackContainer'>
+        <div className='studentFeedbackAverageContainer'>
+          <div className='studentFeedbackAverage'>{Number(this.props.stats.avg).toFixed(1)}</div>
+        </div>
+        <div className='studentFeedbackBarGraph'>
+          <SummaryRow percent={ this.props.stats[5] }
+          ratingFilter={() => (this.props.ratingFilter(5))}/>
+          <SummaryRow percent={ this.props.stats[4] }
+          ratingFilter={() => (this.props.ratingFilter(4))}/>
+          <SummaryRow percent={ this.props.stats[3] }
+          ratingFilter={() => (this.props.ratingFilter(3))}/>
+          <SummaryRow percent={ this.props.stats[2] }
+          ratingFilter={() => (this.props.ratingFilter(2))}/>
+          <SummaryRow percent={ this.props.stats[1] }
+          ratingFilter={() => (this.props.ratingFilter(1))}/>
+        </div>
       </div>
     );
   }

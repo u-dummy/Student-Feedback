@@ -30,10 +30,48 @@
   display: inline-block;
 }
 
-.featuredReviewUsername{
+.featuredReviewUsername {
   font-weight: 700;
   padding-right: 10px;
 }
 
-.featuredReviewCounts {
+
+.studentFeedbackContainer {
+  margin-bottom: 35px;
+  display: flex;
+}
+
+.studentFeedbackBarGraph {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.studentFeedbackGraphRow {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.studentFeedbackGraphOuterBar {
+  height: 20px;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.studentFeedbackGraphInnerBar {
+  background: #a1a7b3;
+  height: 100%;
+}
+
+.studentFeedbackAverageContainer {
+  margin-right: 30px;
+}
+
+.studentFeedbackAverage {
+  font-size: 72px;
+  font-weight: 500;
 }
