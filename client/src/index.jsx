@@ -29,6 +29,22 @@ class App extends React.Component {
     this.getReviews(this.state.currentCourse);
   }
 
+  getReviews(courseId) {
+    fetch(`${courseId}/reviews`)
+      .then(rawData => (rawData.text()))
+      .then((data) => {
+        this.setState(JSON.parse(data));
+        this.setState({
+          reviewsFilteredBySearch: this.state.reviews,
+          reviewsFilteredByRating: this.state.reviews,
+        });
+      });
+  }
+
+  addTenReviews() {
+    this.setState({ numOfReviewsToShow: this.state.numOfReviewsToShow + 10 });
+  }
+
   filterAndBoldBasedOnSearch(query) {
     const filteredReviews = this.state.reviews.filter(review => (review.review.toUpperCase().includes(query.toUpperCase())));
 
@@ -81,22 +97,6 @@ class App extends React.Component {
     });
 
     return reviewsFilteredBySearchAndRating;
-  }
-
-  getReviews(courseId) {
-    fetch(`${courseId}/reviews`)
-      .then(rawData => (rawData.text()))
-      .then((data) => {
-        this.setState(JSON.parse(data));
-        this.setState({
-          reviewsFilteredBySearch: this.state.reviews,
-          reviewsFilteredByRating: this.state.reviews,
-        });
-      });
-  }
-
-  addTenReviews() {
-    this.setState({ numOfReviewsToShow: this.state.numOfReviewsToShow + 10 });
   }
 
   render() {
