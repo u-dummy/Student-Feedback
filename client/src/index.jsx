@@ -16,10 +16,14 @@ class App extends React.Component {
       reviews: [],
       reviewsFilteredBySearch: [],
       reviewsFilteredByRating: [],
-      currentlyFilteredByRating: null,
+      reviewsFilteredBySearchAndRating: [],
+      currentFilterRating: null,
+      numOfVisibleReviews: 10,
     };
+
     this.filterAndBoldBasedOnSearch = this.filterAndBoldBasedOnSearch.bind(this);
     this.filterOnRatingClick = this.filterOnRatingClick.bind(this);
+    this.addTenReviews = this.addTenReviews.bind(this);
   }
 
   componentDidMount() {
@@ -52,31 +56,31 @@ class App extends React.Component {
   }
 
   filterOnRatingClick(rating) {
-    if (rating === this.state.currentlyFilteredByRating) {
+    if (rating === this.state.currentFilterRating) {
       this.setState({
         reviewsFilteredByRating: this.state.reviews,
-        currentlyFilteredByRating: null,
+        currentFilterRating: null,
       });
     } else {
       const filteredReviews = this.state.reviews.filter(review => (review.rating === rating));
       this.setState({
         reviewsFilteredByRating: filteredReviews,
-        currentlyFilteredByRating: rating,
+        currentFilterRating: rating,
       });
     }
   }
 
-  filteredBySearchAndRating() {
-    const filteredReviews = [];
+  showVisibleReviews() {
+    const reviewsFilteredBySearchAndRating = [];
     this.state.reviewsFilteredBySearch.forEach((searchReview) => {
       this.state.reviewsFilteredByRating.forEach((ratingReview) => {
-        if (searchReview.user.userId === ratingReview.user.userId) {
-          filteredReviews.push(searchReview);
+        if (reviewsFilteredBySearchAndRating.length < this.state.numOfVisibleReviews && searchReview.user.userId === ratingReview.user.userId) {
+          reviewsFilteredBySearchAndRating.push(searchReview);
           return;
         }
       });
     });
-    return filteredReviews;
+    return reviewsFilteredBySearchAndRating;
   }
 
   getReviews(courseId) {
@@ -87,8 +91,13 @@ class App extends React.Component {
         this.setState({
           reviewsFilteredBySearch: this.state.reviews,
           reviewsFilteredByRating: this.state.reviews,
+          reviewsFilteredBySearchAndRating: this.state.reviews,
         });
       });
+  }
+
+  addTenReviews() {
+    this.setState({ numOfVisibleReviews: this.state.numOfVisibleReviews + 10 });
   }
 
   render() {
@@ -101,7 +110,7 @@ class App extends React.Component {
           <CourseSummary stats={ this.state.courseStats } ratingFilter={ this.filterOnRatingClick }/>
           <Search searchFilter={ this.filterAndBoldBasedOnSearch } />
           <h2>Reviews</h2>
-          <ReviewList reviews={ this.filteredBySearchAndRating() }/>
+          <ReviewList visibleReviews={ this.showVisibleReviews() } countOfReviews={ this.state.reviews.length } addTen={ this.addTenReviews }/>
         </div>
       );
     }
