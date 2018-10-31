@@ -13,7 +13,6 @@ app.use(express.static(path.join(__dirname, '/../public')));
 
 
 app.get('/:courseId/reviews', (req, res) => {
-  console.log(req.params);
   const { courseId } = req.params;
   getReviewData(courseId, res);
 });
