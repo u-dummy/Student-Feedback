@@ -12,17 +12,20 @@ class FeaturedReview extends React.Component {
       }
 
       return (
-        <div className='featuredReviewContainer'>
-          <div className='featuredReviewTopRow'>
-            <div className='featureReviewUserPic'>{userPic}</div>
-            <div className='featuredReviewInfo'>
-              <span className='featuredReviewUsername'>{this.props.featuredReview.user.username}</span>
-              <span className='featuredReviewCounts'>( {this.props.featuredReview.user.courseCount} courses, {this.props.featuredReview.user.reviewCount} reviews )</span>
-              <div>Rating: {this.props.featuredReview.rating}</div>
-              <div>{moment(this.props.featuredReview.date).fromNow()}</div>
+        <div>
+          <h2>Featured review</h2>
+          <div className='featuredReviewContainer'>
+            <div className='featuredReviewTopRow'>
+              <div className='featureReviewUserPic'>{userPic}</div>
+              <div className='featuredReviewInfo'>
+                <span className='featuredReviewUsername'>{this.props.featuredReview.user.username}</span>
+                <span className='featuredReviewCounts'>( {this.props.featuredReview.user.courseCount} courses, {this.props.featuredReview.user.reviewCount} reviews )</span>
+                <div>Rating: {this.props.featuredReview.rating}</div>
+                <div>{moment(this.props.featuredReview.date).fromNow()}</div>
+              </div>
             </div>
+            <div className='reviewText'>{this.props.featuredReview.review}</div>
           </div>
-          <div className='reviewText'>{this.props.featuredReview.review}</div>
         </div>
       );
     }

@@ -6,7 +6,7 @@ const SummaryRow = props => (
   <div className='studentFeedbackGraphRow' onClick={props.ratingFilter}>
     <BarGuage percent={ props.percent * 100 }/>
     <span>*****</span>
-    <button>{ Math.round(props.percent * 100) }</button>
+    <button className='starButton'>{Math.round(props.percent * 100)}%</button>
   </div>
 );
 

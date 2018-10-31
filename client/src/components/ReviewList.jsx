@@ -1,5 +1,6 @@
 import React from 'react';
 import Review from './Review.jsx';
+import Search from './Search.jsx';
 
 class ReviewList extends React.Component {
   render() {
@@ -17,9 +18,15 @@ class ReviewList extends React.Component {
     };
 
     return (
-      <div>
-        {reviews}
-        {seeMoreButton()}
+      <div className='reviewsContainer'>
+        <div className='reviewContainerHeaderAndSearch'>
+          <span className='reviewsHeader'>Reviews</span>
+          <Search searchFilter={this.props.searchFilter}/>
+        </div>
+        <div>
+          {reviews}
+          {seeMoreButton()}
+        </div>
       </div>
     );
   }

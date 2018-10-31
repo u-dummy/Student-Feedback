@@ -1,7 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
-
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+}
 #reviewModule {
-  width: 66.7%;
+  width: 56%;
   position: absolute;
   left: 5.3%;
   color: #29303b;
@@ -59,19 +62,52 @@
 .studentFeedbackGraphOuterBar {
   height: 20px;
   width: 100%;
-  border: 1px solid black;
+  background: #f2f3f5;
+  border-radius: 3px;
+  cursor: pointer;
+  padding-right: 10px;
 }
 
 .studentFeedbackGraphInnerBar {
   background: #a1a7b3;
   height: 100%;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
 .studentFeedbackAverageContainer {
-  margin-right: 30px;
+  padding-right: 30px;
 }
 
 .studentFeedbackAverage {
   font-size: 72px;
   font-weight: 500;
+}
+
+.starButton {
+  color: #007791;
+  font-size: 15px;
+  font-weight: 400;
+  border-style: none;
+  cursor: pointer;
+}
+
+.reviewContainerHeaderAndSearch {
+}
+
+.reviewSearchBar {
+ float: right;
+ font-size: 18px;
+ font-weight: 600;
+}
+
+.reviewsHeader {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.reviewSearchInput {
+  height: 34px;
+  font-size: 13px;
+  border-radius: 2px;
 }
