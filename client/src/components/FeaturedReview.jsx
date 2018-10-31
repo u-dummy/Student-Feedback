@@ -1,10 +1,6 @@
 import React from 'react';
 
 class FeaturedReview extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     if (this.props.featuredReview) {
       return (

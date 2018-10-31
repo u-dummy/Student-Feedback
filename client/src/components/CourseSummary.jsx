@@ -3,10 +3,6 @@ import React from 'react';
 import SummaryRow from './SummaryRow.jsx';
 
 class CourseSummary extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div>
