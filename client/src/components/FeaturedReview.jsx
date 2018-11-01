@@ -1,36 +1,36 @@
 import React from 'react';
 import moment from 'moment';
+import set from '../helperFunctions.jsx';
 
-class FeaturedReview extends React.Component {
-  render() {
-    let userPic;
-    if (this.props.featuredReview) {
-      if (this.props.featuredReview.user.userPic.length > 2) {
-        userPic = <img className='reviewUserPic'src={this.props.featuredReview.user.userPic}></img>;
-      } else {
-        userPic = <div className='reviewUserInitials'>{this.props.featuredReview.user.userPic}</div>;
-      }
-
-      return (
-        <div>
-          <h2>Featured review</h2>
-          <div className='featuredReviewContainer'>
-            <div className='featuredReviewTopRow'>
-              <div className='featureReviewUserPic'>{userPic}</div>
-              <div className='featuredReviewInfo'>
-                <span className='featuredReviewUsername'>{this.props.featuredReview.user.username}</span>
-                <span className='featuredReviewCounts'>( {this.props.featuredReview.user.courseCount} courses, {this.props.featuredReview.user.reviewCount} reviews )</span>
-                <div><img className='reviewStars' src={`https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/${this.props.featuredReview.rating}+stars+white.png`}></img></div>
-                <div>{moment(this.props.featuredReview.date).fromNow()}</div>
+const FeaturedReview = (props) => {
+  if (props.featuredReview) {
+    return (
+      <div>
+        <h2>Featured review</h2>
+        <div className='featuredReviewContainer'>
+          <div className='featuredReviewTopRow'>
+            <div className='featureReviewUserPic'>{set.userPic(props.featuredReview.user.userPic)}</div>
+            <div className='featuredReviewInfo'>
+              <span className='featuredReviewUsername'>{props.featuredReview.user.username}</span>
+              <span className='featuredReviewCounts'>( {props.featuredReview.user.courseCount} courses, {props.featuredReview.user.reviewCount} reviews )</span>
+              <div>
+                <img className='reviewStars' src={`https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/${props.featuredReview.rating}+stars+white.png`}></img>
               </div>
+              <div>{moment(props.featuredReview.date).fromNow()}</div>
             </div>
-            <div className='reviewText'>{this.props.featuredReview.review}</div>
           </div>
+          <div className='reviewText'>{props.featuredReview.review}</div>
         </div>
-      );
-    }
-    return null;
+      </div>
+    );
   }
-}
+
+  return (
+    <div>
+      <h2>Featured review</h2>
+      <p><i>There are no featured reviews for this course yet...</i></p>
+    </div>
+  );
+};
 
 export default FeaturedReview;

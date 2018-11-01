@@ -9,7 +9,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentCourse: props.courseId,
       courseStats: {},
       featuredReview: {},
       reviews: [],
@@ -25,7 +24,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getReviews(this.state.currentCourse);
+    this.getReviews(this.props.courseId);
   }
 
   getReviews(courseId) {
@@ -37,6 +36,9 @@ class App extends React.Component {
           reviewsFilteredBySearch: this.state.reviews,
           reviewsFilteredByRating: this.state.reviews,
         });
+      })
+      .catch((err) => {
+        throw Error(err);
       });
   }
 
@@ -45,24 +47,24 @@ class App extends React.Component {
   }
 
   filterAndBoldBasedOnSearch(query) {
-    const filteredReviews = this.state.reviews.filter(review => (review.review.toUpperCase().includes(query.toUpperCase())));
+    const filteredReviews = this.state.reviews.filter(reviewObj => (reviewObj.review.toUpperCase().includes(query.toUpperCase())));
 
-    const filteredAndBoldedReviews = filteredReviews.map((review) => {
-      const queryStartingIndex = review.review.toUpperCase().indexOf(query.toUpperCase());
+    const filteredAndBoldedReviews = filteredReviews.map((reviewObj) => {
+      const queryStartingIndex = reviewObj.review.toUpperCase().indexOf(query.toUpperCase());
       const queryEndingIndex = queryStartingIndex + query.length;
       const boldedReview = {
-        preQuery: review.review.slice(0, queryStartingIndex),
-        query: <b>{review.review.slice(queryStartingIndex, queryEndingIndex)}</b>,
-        postQuery: review.review.slice(queryEndingIndex),
+        preQuery: reviewObj.review.slice(0, queryStartingIndex),
+        query: <b>{reviewObj.review.slice(queryStartingIndex, queryEndingIndex)}</b>,
+        postQuery: reviewObj.review.slice(queryEndingIndex),
       };
 
       return {
-        user: review.user,
-        rating: review.rating,
-        date: review.date,
-        upvotes: review.upvotes,
-        downvotes: review.downvotes,
-        boldedReview,
+        user: reviewObj.user,
+        rating: reviewObj.rating,
+        date: reviewObj.date,
+        upvotes: reviewObj.upvotes,
+        downvotes: reviewObj.downvotes,
+        review: boldedReview,
       };
     });
 
