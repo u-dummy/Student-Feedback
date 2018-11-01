@@ -20,7 +20,7 @@ class FeaturedReview extends React.Component {
               <div className='featuredReviewInfo'>
                 <span className='featuredReviewUsername'>{this.props.featuredReview.user.username}</span>
                 <span className='featuredReviewCounts'>( {this.props.featuredReview.user.courseCount} courses, {this.props.featuredReview.user.reviewCount} reviews )</span>
-                <div>Rating: {this.props.featuredReview.rating}</div>
+                <div><img className='reviewStars' src={`https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/${this.props.featuredReview.rating}+stars+white.png`}></img></div>
                 <div>{moment(this.props.featuredReview.date).fromNow()}</div>
               </div>
             </div>

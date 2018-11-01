@@ -45,6 +45,7 @@ button {
 
 /* ------------------------------- */
 .studentFeedbackContainer {
+  margin-top: 35px;
   margin-bottom: 35px;
   display: flex;
 }
@@ -60,7 +61,7 @@ button {
   align-items: center;
   flex-direction: row;
   flex-wrap: nowrap;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   width: 100%;
 }
 
@@ -70,7 +71,6 @@ button {
   background: #f2f3f5;
   border-radius: 3px;
   cursor: pointer;
-  padding-right: 10px;
 }
 
 .studentFeedbackGraphInnerBar {
@@ -96,8 +96,21 @@ button {
   border-style: none;
 }
 
+.starButton:hover {
+  color: #003d4b;
+}
+
+.summaryStars{
+  width: 95px;
+  height: 16px;
+  padding-left: 10px;
+  padding-top: 2px;
+}
+
+
 /* ------------------------------- */
 .reviewsContainerHeaderAndSearch {
+  padding-top: 20px;
   padding-bottom: 20px;
 }
 
@@ -127,9 +140,9 @@ button {
 }
    
 .reviewSearchInput:focus {
-  box-shadow: 1px solid #0d8eac;
-  outline: 1px auto #1baaca;
-  border: 1px solid #1baaca;
+  box-shadow: 1px solid #1799b6;
+  outline: 1px auto #1799b6;
+  border: 1px solid #1799b6;
 }
 
 .reviewsContainer {
@@ -140,12 +153,24 @@ button {
 .individualReviewContainer {
   border-bottom: 1px solid #cdd2dd;
   padding: 30px 0px 30px 10px;
+  min-height: 120px;
 }
 
 .reviewUserInfo {
   width: 35%;
   height: 100%;
   display: inline-block;
+  vertical-align: top;
+}
+
+.reviewInfo {
+  display: inline-block;
+  padding-left: 15px;
+  vertical-align: top;
+}
+
+.reviewDate {
+  color: #686f7a;
 }
 
 .reviewRatingAndText {
@@ -155,11 +180,18 @@ button {
   vertical-align: top;
 }
 
+.reviewStars{
+  width: 95px;
+  height: 17px;
+  padding-bottom: 10px;
+}
+
 .reviewUserPic {
   display: inline-block;
   width: 46px;
   height: 46px;
   border-radius: 50%;
+  vertical-align: top;
 }
 
 .reviewUserInitials {
@@ -171,10 +203,7 @@ button {
   text-align: center;
   color:#686f7a;
   line-height: 46px;
-}
-
-.reviewUserInfo {
-  display: inline-block;
+  vertical-align: top;
 }
 
 .seeMoreButton {
