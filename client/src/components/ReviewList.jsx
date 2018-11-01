@@ -1,22 +1,28 @@
 import React from 'react';
+
 import Review from './Review.jsx';
 import Search from './Search.jsx';
 
 class ReviewList extends React.Component {
-  render() {
-    const reviews = this.props.filteredReviews.slice(0, this.props.numOfReviewsToShow).map(review => (
+  showVisibleReviews() {
+    const visibleReviews = this.props.filteredReviews.slice(0, this.props.numOfReviewsToShow);
+    const visibleReviewsDivs = visibleReviews.map(review => (
       <div>
         <Review reviewData={ review } />
       </div>
     ));
 
-    const seeMoreButton = () => {
-      if (this.props.filteredReviews.length <= this.props.numOfReviewsToShow) {
-        return null;
-      }
-      return <button className='seeMoreButton' onClick={() => (this.props.addTen())}>See more reviews</button>;
-    };
+    return visibleReviewsDivs;
+  }
 
+  showSeeMoreButton() {
+    if (this.props.filteredReviews.length <= this.props.numOfReviewsToShow) {
+      return null;
+    }
+    return <button className='seeMoreButton' onClick={() => (this.props.addTen())}>See more reviews</button>;
+  }
+
+  render() {
     return (
       <div>
         <div className='reviewsContainerHeaderAndSearch'>
@@ -24,10 +30,10 @@ class ReviewList extends React.Component {
           <Search searchFilter={this.props.searchFilter}/>
         </div>
         <div className='reviewsContainer'>
-          {reviews}
+          {this.showVisibleReviews()}
         </div>
         <div className='seeMoreButtonHolder'>
-          {seeMoreButton()}
+          {this.showSeeMoreButton()}
         </div>
       </div>
     );

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import FeaturedReview from './components/FeaturedReview.jsx';
 import ReviewList from './components/ReviewList.jsx';
-import CourseSummary from './components/CourseSummary.jsx';
+import CourseSummary from './components/StudentFeedback.jsx';
 
 class App extends React.Component {
   constructor(props) {

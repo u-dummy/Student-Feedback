@@ -1,5 +1,7 @@
 import React from 'react';
 
+import symbols from '../symbols.jsx';
+
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +19,7 @@ class Search extends React.Component {
       <form className='reviewSearchBar' onSubmit={this.handleInputSubmit}>
         <div className='reviewSearchInputWrapper'>
             <input type='text' className='reviewSearchInput' placeholder='Search reviews' ref={this.query}/>
-            <button className='reviewSearchButton' type='submit'><i className='fas fa-search'></i></button>          
+            <button className='reviewSearchButton' type='submit'>{symbols.magGlass}</button>
         </div>
       </form>
     );
