@@ -33,14 +33,14 @@ class Review extends React.Component {
     return (
       <div className='individualReviewContainer'>
         <div className='reviewUserInfo'>
-            <div>{userPic}</div>
-          <div className='reviewInfo'>
-            <div>{moment(this.props.reviewData.date).fromNow()}</div>
+          <span>{userPic}</span>
+          <span className='reviewInfo'>
+            <div className='reviewDate'>{moment(this.props.reviewData.date).fromNow()}</div>
             <div>{this.props.reviewData.user.username}</div>
-          </div>
+          </span>
         </div>
         <div className='reviewRatingAndText'>
-          <div>Rating: {this.props.reviewData.rating}</div>
+          <div><img className='reviewStars' src={`https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/${this.props.reviewData.rating}+stars+white.png`}></img></div>
           <div>{this.renderReviewText()}</div>
         </div>
       </div>

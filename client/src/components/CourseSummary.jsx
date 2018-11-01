@@ -12,15 +12,15 @@ class CourseSummary extends React.Component {
             <div className='studentFeedbackAverage'>{Number(this.props.stats.avg).toFixed(1)}</div>
           </div>
           <div className='studentFeedbackBarGraph'>
-            <SummaryRow percent={ this.props.stats[5] }
+            <SummaryRow percent={ this.props.stats[5] } star={5}
             ratingFilter={() => (this.props.ratingFilter(5))}/>
-            <SummaryRow percent={ this.props.stats[4] }
+            <SummaryRow percent={ this.props.stats[4] } star={4}
             ratingFilter={() => (this.props.ratingFilter(4))}/>
-            <SummaryRow percent={ this.props.stats[3] }
+            <SummaryRow percent={ this.props.stats[3] } star={3}
             ratingFilter={() => (this.props.ratingFilter(3))}/>
-            <SummaryRow percent={ this.props.stats[2] }
+            <SummaryRow percent={ this.props.stats[2] } star={2}
             ratingFilter={() => (this.props.ratingFilter(2))}/>
-            <SummaryRow percent={ this.props.stats[1] }
+            <SummaryRow percent={ this.props.stats[1] } star={1}
             ratingFilter={() => (this.props.ratingFilter(1))}/>
           </div>
         </div>
