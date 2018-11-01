@@ -16,12 +16,8 @@ class Search extends Component {
     return (
       <form className='reviewSearchBar' onSubmit={this.handleInputSubmit}>
         <div className='reviewSearchInputWrapper'>
-          <span>
             <input type='text' className='reviewSearchInput' placeholder='Search reviews' ref={this.query}/>
-          </span>
-          <span>
-            <button type='submit'>Submit</button>          
-          </span>
+            <button className='reviewSearchButton' type='submit'><i className='fas fa-search'></i></button>          
         </div>
       </form>
     );
