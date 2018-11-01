@@ -104,6 +104,7 @@ button {
   font-weight: 400;
   border-style: none;
   vertical-align: top;
+  outline: none;
 }
 
 .starButtonHolder {
