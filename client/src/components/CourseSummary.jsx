@@ -4,7 +4,7 @@ import SummaryRow from './SummaryRow.jsx';
 
 class CourseSummary extends React.Component {
   render() {
-    const starSymbol = <i class="fas fa-star"></i>;
+    const starSymbol = <i className="fas fa-star"></i>;
 
     return (
       <div>
@@ -33,5 +33,3 @@ class CourseSummary extends React.Component {
 }
 
 export default CourseSummary;
-
-// num is null or your star# then do nothing, else set opacity to 25%
