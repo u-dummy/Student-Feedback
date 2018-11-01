@@ -18,7 +18,7 @@ class App extends React.Component {
       numOfReviewsToShow: 10,
     };
 
-    this.filterAndBoldBasedOnSearch = this.filterAndBoldBasedOnSearch.bind(this);
+    this.filterAndBoldOnSearch = this.filterAndBoldOnSearch.bind(this);
     this.filterOnRatingClick = this.filterOnRatingClick.bind(this);
     this.addTenReviews = this.addTenReviews.bind(this);
   }
@@ -46,7 +46,7 @@ class App extends React.Component {
     this.setState({ numOfReviewsToShow: this.state.numOfReviewsToShow + 10 });
   }
 
-  filterAndBoldBasedOnSearch(query) {
+  filterAndBoldOnSearch(query) {
     const filteredReviews = this.state.reviews.filter(reviewObj => (reviewObj.review.toUpperCase().includes(query.toUpperCase())));
 
     const filteredAndBoldedReviews = filteredReviews.map((reviewObj) => {
@@ -107,8 +107,8 @@ class App extends React.Component {
             <FeaturedReview featuredReview={ this.state.featuredReview } />
             <CourseSummary stats={ this.state.courseStats } ratingFilter={ this.filterOnRatingClick }
               selectedStar={ this.state.currentFilterRating } />
-            <ReviewList searchFilter={ this.filterAndBoldBasedOnSearch }
-            filteredReviews={ this.reviewsFilteredBySearchAndRating() } 
+            <ReviewList searchFilter={ this.filterAndBoldOnSearch }
+            filteredReviews={ this.reviewsFilteredBySearchAndRating() }
             numOfReviewsToShow={ this.state.numOfReviewsToShow } addTen={ this.addTenReviews }/>
         </div>
       );
