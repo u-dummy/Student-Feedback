@@ -1,30 +1,31 @@
 import React from 'react';
 
-import SummaryRow from './SummaryRow.jsx';
+import GraphRow from './GraphRow.jsx';
+import symbols from '../symbols.jsx';
 
 class CourseSummary extends React.Component {
-  render() {
-    const starSymbol = <i className="fas fa-star"></i>;
+  createFiveGraphRows() {
+    const graphRows = [];
+    for (let i = 5; i > 0; i -= 1) {
+      graphRows.push(
+      <GraphRow percent={ this.props.stats[i] } selectedStar={ this.props.selectedStar }
+      currentStar={i} ratingFilter={() => (this.props.ratingFilter(i))}/>,
+      );
+    }
+    return graphRows;
+  }
 
+  render() {
     return (
       <div>
         <h2>Student feedback</h2>
         <div className='studentFeedbackContainer'>
           <div className='studentFeedbackAverageContainer'>
             <div className='studentFeedbackAverage'>{Number(this.props.stats.avg).toFixed(1)}</div>
-            <div className='studentFeedbackAverageStars'>{starSymbol}{starSymbol}{starSymbol}{starSymbol}{starSymbol}</div>
+            <div className='studentFeedbackAverageStars'>{symbols.star}{symbols.star}{symbols.star}{symbols.star}{symbols.star}</div>
           </div>
           <div className='studentFeedbackBarGraph' >
-            <SummaryRow percent={ this.props.stats[5] } selectedStar={ this.props.selectedStar }
-            star={5} ratingFilter={() => (this.props.ratingFilter(5))}/>
-            <SummaryRow percent={ this.props.stats[4] } selectedStar={ this.props.selectedStar }
-            star={4} ratingFilter={() => (this.props.ratingFilter(4))}/>
-            <SummaryRow percent={ this.props.stats[3] } selectedStar={ this.props.selectedStar }
-            star={3} ratingFilter={() => (this.props.ratingFilter(3))}/>
-            <SummaryRow percent={ this.props.stats[2] } selectedStar={ this.props.selectedStar }
-            star={2} ratingFilter={() => (this.props.ratingFilter(2))}/>
-            <SummaryRow percent={ this.props.stats[1] } selectedStar={ this.props.selectedStar }
-            star={1} ratingFilter={() => (this.props.ratingFilter(1))}/>
+            {this.createFiveGraphRows()}
           </div>
         </div>
       </div>
