@@ -6,7 +6,8 @@ const reviewDataGenerator = require('./reviewDataGenerator.js');
 const numOfUsers = 500;
 const userData = userDataGenerator(numOfUsers);
 
-db.Courses.bulkCreate(courseData)
+db.sequelize.sync()
+  .then(() => (db.Courses.bulkCreate(courseData)))
   .then(() => { console.log('----- Seeded Courses table!------'); })
   .catch((err) => { console.log('----- Error seeding Courses table: ', err, '-----'); })
 
@@ -26,4 +27,5 @@ db.Courses.bulkCreate(courseData)
   })
   .then(reviewData => (db.Reviews.bulkCreate(reviewData)))
   .then(() => { console.log('----- Seeded Reviews table!------'); })
+  .then(() => { process.exit(); })
   .catch((err) => { console.log('----- Error seeding Reviews table: ', err, '-----'); });

@@ -11,23 +11,32 @@
     "seed": "node database/seed.js"
   },
   "dependencies": {
+    "acorn": "^6.0.2",
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
-    "moment": "^2.19.2",
+    "faker": "^4.1.0",
+    "moment": "^2.22.2",
     "mysql": "^2.14.1",
     "mysql2": "^1.6.1",
-    "sequelize": "^4.41.0",
-    "faker": "^4.1.0",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "sequelize": "^4.41.0"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
+    "babel-eslint": "^10.0.1",
     "babel-loader": "^6.3.2",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.23.0",
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "eslint": "^5.8.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "file-loader": "^2.0.0",
     "nodemon": "^1.18.4",
+    "url-loader": "^1.1.2",
     "webpack": "^2.2.1"
   },
   "repository": {
