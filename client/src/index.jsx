@@ -103,7 +103,8 @@ class App extends React.Component {
       return (
         <div>
             <FeaturedReview featuredReview={ this.state.featuredReview } />
-            <CourseSummary stats={ this.state.courseStats } ratingFilter={ this.filterOnRatingClick }/>
+            <CourseSummary stats={ this.state.courseStats } ratingFilter={ this.filterOnRatingClick }
+              selectedStar={ this.state.currentFilterRating } />
             <ReviewList searchFilter={ this.filterAndBoldBasedOnSearch }
             filteredReviews={ this.reviewsFilteredBySearchAndRating() } 
             numOfReviewsToShow={ this.state.numOfReviewsToShow } addTen={ this.addTenReviews }/>
