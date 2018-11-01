@@ -14,17 +14,19 @@ class ReviewList extends React.Component {
       if (this.props.filteredReviews.length <= this.props.numOfReviewsToShow) {
         return null;
       }
-      return <button onClick={() => (this.props.addTen())}>See more</button>;
+      return <button className='seeMoreButton' onClick={() => (this.props.addTen())}>See more reviews</button>;
     };
 
     return (
-      <div className='reviewsContainer'>
-        <div className='reviewContainerHeaderAndSearch'>
+      <div>
+        <div className='reviewsContainerHeaderAndSearch'>
           <span className='reviewsHeader'>Reviews</span>
           <Search searchFilter={this.props.searchFilter}/>
         </div>
-        <div>
+        <div className='reviewsContainer'>
           {reviews}
+        </div>
+        <div className='seeMoreButtonHolder'>
           {seeMoreButton()}
         </div>
       </div>
