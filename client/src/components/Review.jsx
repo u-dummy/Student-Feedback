@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 class Review extends React.Component {
   renderReviewText() {
@@ -19,18 +20,50 @@ class Review extends React.Component {
   }
 
   render() {
+
+    let userPic;
+    if (this.props.reviewData) {
+      if (this.props.reviewData.user.userPic.length > 2) {
+        userPic = <img className='reviewUserPic' src={this.props.reviewData.user.userPic}></img>;
+      } else {
+        userPic = <div className='reviewUserInitials' >{this.props.reviewData.user.userPic}</div>;
+      }
+    }
+
     return (
-      <div>
-        <div>Username: {this.props.reviewData.user.username}</div>
-        <div>Picture: {this.props.reviewData.user.userPic}</div>
-        <div>Rating: {this.props.reviewData.rating}</div>
-        <div>Review: {this.renderReviewText()}</div>
-        <div>Date: {this.props.reviewData.date}</div>
-        <div>Upvotes: {this.props.reviewData.upvotes}</div>
-        <div>Downvotes: {this.props.reviewData.downvotes}</div>
+      <div className='individualReviewContainer'>
+        <div className='reviewUserInfo'>
+            <div>{userPic}</div>
+          <div className='reviewInfo'>
+            <div>{moment(this.props.reviewData.date).fromNow()}</div>
+            <div>{this.props.reviewData.user.username}</div>
+          </div>
+        </div>
+        <div className='reviewRatingAndText'>
+          <div>Rating: {this.props.reviewData.rating}</div>
+          <div>{this.renderReviewText()}</div>
+        </div>
       </div>
     );
   }
 }
 
 export default Review;
+
+// return (
+//   <div>
+//     <h2>Featured review</h2>
+//     <div className='featuredReviewContainer'>
+//       <div className='featuredReviewTopRow'>
+//         <div className='featureReviewUserPic'>{userPic}</div>
+//         <div className='featuredReviewInfo'>
+//           <span className='featuredReviewUsername'>{this.props.featuredReview.user.username}</span>
+//           <span className='featuredReviewCounts'>( {this.props.featuredReview.user.courseCount} courses, {this.props.featuredReview.user.reviewCount} reviews )</span>
+//           <div>Rating: {this.props.featuredReview.rating}</div>
+//           <div>{moment(this.props.featuredReview.date).fromNow()}</div>
+//         </div>
+//       </div>
+//       <div className='reviewText'>{this.props.featuredReview.review}</div>
+//     </div>
+//   </div>
+// );

@@ -6,9 +6,9 @@ class FeaturedReview extends React.Component {
     let userPic;
     if (this.props.featuredReview) {
       if (this.props.featuredReview.user.userPic.length > 2) {
-        userPic = <img src={this.props.featuredReview.user.userPic}></img>;
+        userPic = <img className='reviewUserPic'src={this.props.featuredReview.user.userPic}></img>;
       } else {
-        userPic = this.props.featuredReview.user.userPic;
+        userPic = <div className='reviewUserInitials'>{this.props.featuredReview.user.userPic}</div>;
       }
 
       return (
