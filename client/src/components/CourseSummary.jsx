@@ -4,11 +4,7 @@ import SummaryRow from './SummaryRow.jsx';
 
 class CourseSummary extends React.Component {
   render() {
-    let fade = 1;
-
-    if (this.props.selectedStar !== null) {
-      fade = 0.25;
-    }
+    const starSymbol = <i class="fas fa-star"></i>;
 
     return (
       <div>
@@ -16,6 +12,7 @@ class CourseSummary extends React.Component {
         <div className='studentFeedbackContainer'>
           <div className='studentFeedbackAverageContainer'>
             <div className='studentFeedbackAverage'>{Number(this.props.stats.avg).toFixed(1)}</div>
+            <div className='studentFeedbackAverageStars'>{starSymbol}{starSymbol}{starSymbol}{starSymbol}{starSymbol}</div>
           </div>
           <div className='studentFeedbackBarGraph' >
             <SummaryRow percent={ this.props.stats[5] } selectedStar={ this.props.selectedStar }

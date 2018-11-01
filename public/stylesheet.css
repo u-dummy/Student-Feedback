@@ -81,12 +81,21 @@ button {
 }
 
 .studentFeedbackAverageContainer {
-  padding-right: 30px;
+  padding-right: 10px;
+  width: 30%;
 }
 
 .studentFeedbackAverage {
   font-size: 72px;
   font-weight: 500;
+  padding: 0px 10px 0px 10px;
+  text-align: center;
+}
+
+.studentFeedbackAverageStars {
+  color: #f4c150;
+  font-size: 19px;
+  letter-spacing: 5px;
 }
 
 .starButton {
