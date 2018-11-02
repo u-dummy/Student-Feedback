@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Review from './Review.jsx';
-import Search from './Search.jsx';
 
 class ReviewList extends React.Component {
   showVisibleReviews() {
@@ -23,22 +22,19 @@ class ReviewList extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <div className='reviewsContainerHeaderAndSearch'>
-          <span className='reviewsHeader'>Reviews</span>
-          <Search searchFilter={this.props.searchFilter}
-            currentlyFiltered={this.props.currentlyFiltered}
-          />
-        </div>
+    let reviews = this.showVisibleReviews();
+    if (reviews.length) {
+      return (
         <div className='reviewsContainer'>
-          {this.showVisibleReviews()}
+            {reviews}
+          <div className='seeMoreButtonHolder'>
+            {this.showSeeMoreButton()}
+          </div>
         </div>
-        <div className='seeMoreButtonHolder'>
-          {this.showSeeMoreButton()}
-        </div>
-      </div>
-    );
+      );
+    }
+
+    return <p>No reviews matched your search. Try searching with another term.</p>;
   }
 }
 
