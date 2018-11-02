@@ -81,21 +81,56 @@ button {
 }
 
 .studentFeedbackAverageContainer {
-  padding-right: 10px;
   width: 30%;
+  text-align: center;
+  padding-right: 15px;
+  position: relative;
 }
 
 .studentFeedbackAverage {
   font-size: 72px;
   font-weight: 500;
-  padding: 0px 10px 0px 10px;
   text-align: center;
+  height: 58%;
 }
 
 .studentFeedbackAverageStars {
-  color: #f4c150;
-  font-size: 19px;
-  letter-spacing: 5px;
+  height: 15%;
+  position: relative;
+  vertical-align: top;
+}
+
+.starsContainer {
+  width: 79%;
+  display: inline-block;
+  height: 70%;
+  text-align: center;
+  position: relative;
+}
+
+.filledStars {
+  width: 128px;
+  height: 20px;
+}
+
+.emptyStars {
+  width: 128px;
+  height: 20px;
+}
+
+.emptyStarsWrapper {
+  position: absolute;
+  width: 100%;
+}
+
+.filledStarsWrapper {
+  position: absolute;
+  overflow: hidden;
+  width: 80%;
+}
+
+.studentFeedbackText {
+  font-size: 15px;
 }
 
 .starButton {

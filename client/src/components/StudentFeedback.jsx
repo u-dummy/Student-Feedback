@@ -1,6 +1,7 @@
 import React from 'react';
 
 import GraphBarAndStars from './GraphBarAndStars.jsx';
+import Stars from './Stars.jsx';
 import symbols from '../symbols.jsx';
 
 class StudentFeedback extends React.Component {
@@ -22,7 +23,10 @@ class StudentFeedback extends React.Component {
         <div className='studentFeedbackContainer'>
           <div className='studentFeedbackAverageContainer'>
             <div className='studentFeedbackAverage'>{Number(this.props.stats.avg).toFixed(1)}</div>
-            <div className='studentFeedbackAverageStars'>{symbols.star}{symbols.star}{symbols.star}{symbols.star}{symbols.star}</div>
+            <div className='studentFeedbackAverageStars'>
+              <Stars />
+            </div>
+            <div className='studentFeedbackText'>Course Rating</div>
           </div>
           <div className='studentFeedbackBarGraph'>
             {this.createFiveGraphRows()}
