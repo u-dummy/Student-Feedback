@@ -24,7 +24,7 @@ class StudentFeedback extends React.Component {
           <div className='studentFeedbackAverageContainer'>
             <div className='studentFeedbackAverage'>{Number(this.props.stats.avg).toFixed(1)}</div>
             <div className='studentFeedbackAverageStars'>
-              <Stars />
+              <Stars average={Number(this.props.stats.avg)}/>
             </div>
             <div className='studentFeedbackText'>Course Rating</div>
           </div>
