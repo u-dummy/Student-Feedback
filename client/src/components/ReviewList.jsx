@@ -22,13 +22,15 @@ class ReviewList extends React.Component {
   }
 
   render() {
-    let reviews = this.showVisibleReviews();
+    const reviews = this.showVisibleReviews();
     if (reviews.length) {
       return (
-        <div className='reviewsContainer'>
-            {reviews}
+        <div>
+          <div className='reviewsContainer'>
+              {reviews}
+          </div>
           <div className='seeMoreButtonHolder'>
-            {this.showSeeMoreButton()}
+              {this.showSeeMoreButton()}
           </div>
         </div>
       );
