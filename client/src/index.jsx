@@ -50,6 +50,7 @@ class App extends React.Component {
   }
 
   filterAndBoldOnSearch(query) {
+    this.setState({ queryTerm: query });
     const filteredReviews = this.state.reviews.filter(reviewObj => (reviewObj.review.toUpperCase().includes(query.toUpperCase())));
 
     const filteredAndBoldedReviews = filteredReviews.map((reviewObj) => {
@@ -71,7 +72,6 @@ class App extends React.Component {
       };
     });
     // put this somewhere else
-    this.setState({ queryTerm: query });
     this.setState({ reviewsFilteredBySearch: filteredAndBoldedReviews });
   }
 
