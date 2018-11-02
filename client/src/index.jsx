@@ -110,7 +110,10 @@ class App extends React.Component {
               selectedStar={ this.state.currentFilterRating } />
             <ReviewList searchFilter={ this.filterAndBoldOnSearch }
             filteredReviews={ this.reviewsFilteredBySearchAndRating() }
-            numOfReviewsToShow={ this.state.numOfReviewsToShow } addTen={ this.addTenReviews }/>
+            numOfReviewsToShow={ this.state.numOfReviewsToShow } addTen={ this.addTenReviews }
+            // boolean to decide whether the clear search button should render
+            currentlyFiltered={ this.state.reviewsFilteredBySearch.length !== this.state.reviews.length}
+            />
         </div>
       );
     }

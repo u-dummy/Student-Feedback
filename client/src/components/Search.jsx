@@ -17,6 +17,18 @@ class Search extends React.Component {
 
   clearSearch() {
     this.props.searchFilter('');
+    this.query.current.value = '';
+  }
+
+  showClearSearchButton() {
+    if (this.props.currentlyFiltered) {
+      return (
+        <button className='clearSearchButton' type='button' onClick={ this.clearSearch }>
+          <span className='clearSearchSymbol'>{symbols.clear}</span>
+        </button>
+      );
+    }
+    return null;
   }
 
   render() {
@@ -24,9 +36,7 @@ class Search extends React.Component {
       <form className='reviewSearchBar' onSubmit={this.handleInputSubmit}>
         <div className='reviewSearchInputWrapper'>
             <input type='text' className='reviewSearchInput' placeholder='Search reviews' ref={this.query}/>
-            <button className='clearSearchButton' type='button' type='reset' onClick={ this.clearSearch }>
-              <span className='clearSearchSymbol'>{symbols.clear}</span>
-            </button>
+            {this.showClearSearchButton()}
             <button className='reviewSearchButton' type='submit'>{symbols.magGlass}</button>
         </div>
       </form>

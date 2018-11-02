@@ -27,7 +27,9 @@ class ReviewList extends React.Component {
       <div>
         <div className='reviewsContainerHeaderAndSearch'>
           <span className='reviewsHeader'>Reviews</span>
-          <Search searchFilter={this.props.searchFilter}/>
+          <Search searchFilter={this.props.searchFilter}
+            currentlyFiltered={this.props.currentlyFiltered}
+          />
         </div>
         <div className='reviewsContainer'>
           {this.showVisibleReviews()}
