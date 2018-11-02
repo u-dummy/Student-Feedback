@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly text component 1`] = `
+<form
+  className="reviewSearchBar"
+  onSubmit={[Function]}
+>
+  <div
+    className="reviewSearchInputWrapper"
+  >
+    <input
+      className="reviewSearchInput"
+      placeholder="Search reviews"
+      type="text"
+    />
+    <button
+      className="reviewSearchButton"
+      type="submit"
+    >
+      <i
+        className="fas fa-search"
+      />
+    </button>
+  </div>
+</form>
+`;
+
+exports[`search component renders 1`] = `
+<form
+  className="reviewSearchBar"
+  onSubmit={[Function]}
+>
+  <div
+    className="reviewSearchInputWrapper"
+  >
+    <input
+      className="reviewSearchInput"
+      placeholder="Search reviews"
+      type="text"
+    />
+    <button
+      className="reviewSearchButton"
+      type="submit"
+    >
+      <i
+        className="fas fa-search"
+      />
+    </button>
+  </div>
+</form>
+`;
