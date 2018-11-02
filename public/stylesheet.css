@@ -108,6 +108,10 @@ button {
   position: relative;
 }
 
+/* .star * svg {
+  fill: url(#starllFill)
+} */
+
 .filledStars {
   width: 128px;
   height: 20px;
@@ -138,6 +142,7 @@ button {
   font-weight: 400;
   border-style: none;
   vertical-align: top;
+  outline: none;
 }
 
 .starButtonHolder {
@@ -171,10 +176,27 @@ button {
  height: 33px;
 }
 
+.clearSearchButton {
+  position: absolute;
+  z-index: 1;
+  right: 33px;
+  height: 32px;
+  background-color: transparent;
+  border-style: none;
+  outline: none;
+}
+
+.clearSearchSymbol {
+  color: #8c8f92c9;
+  z-index: 2;
+  opacity: 1;
+}
+
 .reviewSearchButton {
   font-size: 12px;
   color: white;
   border-style: none;
+  outline: none;
   background-color: #007791;
   text-align: center;
   height: 32px;
