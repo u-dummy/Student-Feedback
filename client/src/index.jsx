@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import FeaturedReview from './components/FeaturedReview.jsx';
 import ReviewList from './components/ReviewList.jsx';
 import CourseSummary from './components/StudentFeedback.jsx';
+import Search from './components/Search.jsx';
 import symbols from './symbols.jsx';
 
 class App extends React.Component {
@@ -13,6 +14,7 @@ class App extends React.Component {
       courseStats: {},
       featuredReview: {},
       reviews: [],
+      queryTerm: '',
       reviewsFilteredBySearch: [],
       reviewsFilteredByRating: [],
       currentFilterRating: null,
@@ -20,6 +22,7 @@ class App extends React.Component {
     };
 
     this.filterAndBoldOnSearch = this.filterAndBoldOnSearch.bind(this);
+    this.renderSearchTerm = this.renderSearchTerm.bind(this);
     this.filterOnRatingClick = this.filterOnRatingClick.bind(this);
     this.addTenReviews = this.addTenReviews.bind(this);
   }
@@ -68,7 +71,8 @@ class App extends React.Component {
         review: boldedReview,
       };
     });
-
+    // put this somewhere else
+    this.setState({ queryTerm: query });
     this.setState({ reviewsFilteredBySearch: filteredAndBoldedReviews });
   }
 
@@ -101,19 +105,29 @@ class App extends React.Component {
     return reviewsFilteredBySearchAndRating;
   }
 
+  renderSearchTerm() {
+    if (this.state.queryTerm !== '') {
+      return <span className='reviewsHeader'>Reviews mentioning <i>"{this.state.queryTerm}"</i></span>;
+    }
+    return <span className='reviewsHeader'>Reviews</span>;
+  }
+
   render() {
     if (this.state.reviews.length > 0) {
       return (
         <div>
-            <FeaturedReview featuredReview={ this.state.featuredReview } />
-            <CourseSummary stats={ this.state.courseStats } ratingFilter={ this.filterOnRatingClick }
-              selectedStar={ this.state.currentFilterRating } />
-            <ReviewList searchFilter={ this.filterAndBoldOnSearch }
-            filteredReviews={ this.reviewsFilteredBySearchAndRating() }
-            numOfReviewsToShow={ this.state.numOfReviewsToShow } addTen={ this.addTenReviews }
-            // boolean to decide whether the clear search button should render
-            currentlyFiltered={ this.state.reviewsFilteredBySearch.length !== this.state.reviews.length}
-            />
+          <FeaturedReview featuredReview={ this.state.featuredReview } />
+          <CourseSummary stats={ this.state.courseStats } ratingFilter={ this.filterOnRatingClick }
+            selectedStar={ this.state.currentFilterRating } />
+          <div className='reviewsContainerHeaderAndSearch'>
+              {this.renderSearchTerm()}
+              <Search searchFilter={this.filterAndBoldOnSearch}
+                currentlyFiltered={this.state.reviewsFilteredBySearch.length !== this.state.reviews.length}
+              />
+          </div>
+          <ReviewList filteredReviews={ this.reviewsFilteredBySearchAndRating() }
+          numOfReviewsToShow={ this.state.numOfReviewsToShow } addTen={ this.addTenReviews }
+          />
         </div>
       );
     }
