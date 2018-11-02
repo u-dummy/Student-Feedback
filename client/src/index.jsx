@@ -5,7 +5,7 @@ import FeaturedReview from './components/FeaturedReview.jsx';
 import ReviewList from './components/ReviewList.jsx';
 import CourseSummary from './components/StudentFeedback.jsx';
 import Search from './components/Search.jsx';
-import symbols from './symbols.jsx';
+import set from './helperFunctions.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -22,7 +22,6 @@ class App extends React.Component {
     };
 
     this.filterAndBoldOnSearch = this.filterAndBoldOnSearch.bind(this);
-    this.renderSearchTerm = this.renderSearchTerm.bind(this);
     this.filterOnRatingClick = this.filterOnRatingClick.bind(this);
     this.addTenReviews = this.addTenReviews.bind(this);
   }
@@ -105,13 +104,6 @@ class App extends React.Component {
     return reviewsFilteredBySearchAndRating;
   }
 
-  renderSearchTerm() {
-    if (this.state.queryTerm !== '') {
-      return <span className='reviewsHeader'>Reviews mentioning <i>"{this.state.queryTerm}"</i></span>;
-    }
-    return <span className='reviewsHeader'>Reviews</span>;
-  }
-
   render() {
     if (this.state.reviews.length > 0) {
       return (
@@ -120,7 +112,7 @@ class App extends React.Component {
           <CourseSummary stats={ this.state.courseStats } ratingFilter={ this.filterOnRatingClick }
             selectedStar={ this.state.currentFilterRating } />
           <div className='reviewsContainerHeaderAndSearch'>
-              {this.renderSearchTerm()}
+              {set.reviewHeader(this.state.queryTerm)}
               <Search searchFilter={this.filterAndBoldOnSearch}
                 currentlyFiltered={this.state.reviewsFilteredBySearch.length !== this.state.reviews.length}
               />

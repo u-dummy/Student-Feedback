@@ -31,4 +31,11 @@ const reviewText = (review) => {
   );
 };
 
-export default { opacity, userPic, reviewText };
+const reviewHeader = (query) => {
+  if (query !== '') {
+    return <span className='reviewsHeader'>Reviews mentioning <i>"{query}"</i></span>;
+  }
+  return <span className='reviewsHeader'>Reviews</span>;
+}
+
+export default { opacity, userPic, reviewText, reviewHeader };
