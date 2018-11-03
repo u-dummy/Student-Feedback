@@ -9,7 +9,7 @@ const opacity = (selectedStar, currentStar) => {
 
 const userPic = (userProp) => {
   if (userProp.includes('https')) {
-    return <img className='reviewUserPic'src={userProp}></img>;
+    return <img className='reviewUserPic' src={userProp}></img>;
   }
   return <div className='reviewUserInitials'>{userProp}</div>;
 };
@@ -17,7 +17,7 @@ const userPic = (userProp) => {
 const reviewText = (review) => {
   if (typeof review === 'object') {
     return (
-      <div>
+      <div className='reviewText'>
         {review.preQuery}
         {review.query}
         {review.postQuery}
@@ -25,7 +25,7 @@ const reviewText = (review) => {
     );
   }
   return (
-    <div>
+    <div className='reviewText'>
       {review}
     </div>
   );

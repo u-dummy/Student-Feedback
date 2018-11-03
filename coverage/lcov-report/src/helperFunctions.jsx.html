@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25% </span>
+        <span class="strong">56.25% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>4/16</span>
+        <span class='fraction'>9/16</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">30% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/10</span>
+        <span class='fraction'>3/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/4</span>
+        <span class='fraction'>2/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25% </span>
+        <span class="strong">56.25% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>4/16</span>
+        <span class='fraction'>9/16</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -86,30 +86,22 @@
 41
 42</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -117,7 +109,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -134,25 +134,25 @@ const opacity = <span class="fstat-no" title="function not covered" >(s</span>el
 <span class="cstat-no" title="statement not covered" >  return 0.25;</span>
 };
 &nbsp;
-const userPic = <span class="fstat-no" title="function not covered" >(u</span>serProp) =&gt; {
-<span class="cstat-no" title="statement not covered" >  if (userProp.includes('https')) {</span>
-<span class="cstat-no" title="statement not covered" >    return &lt;img className='reviewUserPic'src={userProp}&gt;&lt;/img&gt;;</span>
+const userPic = (userProp) =&gt; {
+  if (userProp.includes('https')) {
+    return &lt;img className='reviewUserPic' src={userProp}&gt;&lt;/img&gt;;
   }
-<span class="cstat-no" title="statement not covered" >  return &lt;div className='reviewUserInitials'&gt;{userProp}&lt;/div&gt;;</span>
+  return &lt;div className='reviewUserInitials'&gt;{userProp}&lt;/div&gt;;
 };
 &nbsp;
-const reviewText = <span class="fstat-no" title="function not covered" >(r</span>eview) =&gt; {
-<span class="cstat-no" title="statement not covered" >  if (typeof review === 'object') {</span>
+const reviewText = (review) =&gt; {
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof review === 'object') {
 <span class="cstat-no" title="statement not covered" >    return (</span>
-      &lt;div&gt;
+      &lt;div className='reviewText'&gt;
         {review.preQuery}
         {review.query}
         {review.postQuery}
       &lt;/div&gt;
     );
   }
-<span class="cstat-no" title="statement not covered" >  return (</span>
-    &lt;div&gt;
+  return (
+    &lt;div className='reviewText'&gt;
       {review}
     &lt;/div&gt;
   );
@@ -172,7 +172,7 @@ export default { opacity, userPic, reviewText, reviewHeader };
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Nov 02 2018 15:20:55 GMT-0700 (PDT)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Nov 02 2018 19:06:03 GMT-0700 (PDT)
 </div>
 </div>
 <script src="../prettify.js"></script>
