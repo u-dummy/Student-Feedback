@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/components/Search.jsx</title>
+    <title>Code coverage report for src/components/Stars.jsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,28 +16,28 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">All files</a> / <a href="index.html">src/components</a> Search.jsx
+      <a href="../../index.html">All files</a> / <a href="index.html">src/components</a> Stars.jsx
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">58.33% </span>
-        <span class="quiet">Statements</span>
-        <span class='fraction'>7/12</span>
-      </div>
-      <div class='fl pad1y space-right2'>
         <span class="strong">50% </span>
-        <span class="quiet">Branches</span>
+        <span class="quiet">Statements</span>
         <span class='fraction'>1/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">60% </span>
-        <span class="quiet">Functions</span>
-        <span class='fraction'>3/5</span>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">58.33% </span>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/1</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">50% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>7/12</span>
+        <span class='fraction'>1/2</span>
       </div>
     </div>
   </div>
@@ -80,51 +80,31 @@
 35
 36
 37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+38</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -141,56 +121,46 @@
 &nbsp;
 import symbols from '../symbols.jsx';
 &nbsp;
-class Search extends React.Component {
-  constructor(props) {
-    super(props);
-    this.query = React.createRef();
-    this.handleInputSubmit = this.handleInputSubmit.bind(this);
-    this.clearSearch = this.clearSearch.bind(this);
-  }
+const Stars = <span class="fstat-no" title="function not covered" >pr</span>ops =&gt; (
+<span class="cstat-no" title="statement not covered" >  &lt;div className='starsContainer'&gt;</span>
+    &lt;div className='emptyStarsWrapper'&gt;
+      &lt;img className='emptyStars' src={'https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/emptyStars.png'}&gt;&lt;/img&gt;
+    &lt;/div&gt;
+    &lt;div className='filledStarsWrapper' style={{ width: `${Math.ceil((props.average / 5) * 10) * 10}%` }}&gt;
+      &lt;img className='filledStars' src={'https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/filledStars.png'}&gt;&lt;/img&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+);
+// class Stars extends React.Component {
+//   createFiveGraphRows() {
 &nbsp;
-<span class="fstat-no" title="function not covered" >  ha</span>ndleInputSubmit(event) {
-<span class="cstat-no" title="statement not covered" >    event.preventDefault();</span>
-<span class="cstat-no" title="statement not covered" >    this.props.searchFilter(this.query.current.value);</span>
-  }
+//   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  cl</span>earSearch() {
-<span class="cstat-no" title="statement not covered" >    this.props.searchFilter('');</span>
-<span class="cstat-no" title="statement not covered" >    this.query.current.value = '';</span>
-  }
+//   render() {
+//     return (
+//       &lt;div className='starsContainer'&gt;
+//         &lt;span className='star'&gt;{symbols.star}&lt;/span&gt;
+//         &lt;svg&gt;
+//           &lt;linearGradient id="starFill"&gt;
+//             &lt;stop offset="0%" stop-color="royalblue"/&gt;
+//             &lt;stop offset="40%" stop-color="royalblue"/&gt;
+//             &lt;stop offset="40%" stop-color="royalblue"/&gt;
+//             &lt;stop offset="100%" stop-color="royalblue"/&gt;
+//           &lt;/linearGradient&gt;
+//         &lt;/svg&gt;
+//       &lt;/div&gt;
+//     );
+//   }
+// }
 &nbsp;
-  showClearSearchButton() {
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (this.props.currentlyFiltered) {
-<span class="cstat-no" title="statement not covered" >      return (</span>
-        &lt;button className='clearSearchButton' type='button' onClick={ this.clearSearch }&gt;
-          &lt;span className='clearSearchSymbol'&gt;{symbols.clear}&lt;/span&gt;
-        &lt;/button&gt;
-      );
-    }
-    return null;
-  }
-&nbsp;
-  render() {
-    return (
-      &lt;form className='reviewSearchBar' onSubmit={this.handleInputSubmit}&gt;
-        &lt;div className='reviewSearchInputWrapper'&gt;
-            &lt;input type='text' className='reviewSearchInput' placeholder='Search reviews' ref={this.query}/&gt;
-            {this.showClearSearchButton()}
-            &lt;button className='reviewSearchButton' type='submit'&gt;{symbols.magGlass}&lt;/button&gt;
-        &lt;/div&gt;
-      &lt;/form&gt;
-    );
-  }
-}
-&nbsp;
-export default Search;
+export default Stars;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Nov 02 2018 22:04:32 GMT-0700 (PDT)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Nov 02 2018 21:57:45 GMT-0700 (PDT)
 </div>
 </div>
 <script src="../../prettify.js"></script>
