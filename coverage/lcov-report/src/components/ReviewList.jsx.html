@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">91.67% </span>
+        <span class="strong">92.31% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>11/12</span>
+        <span class='fraction'>12/13</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>4/5</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">92.31% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>11/11</span>
+        <span class='fraction'>12/13</span>
       </div>
     </div>
   </div>
@@ -86,7 +86,26 @@
 41
 42
 43
-44</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -107,6 +126,7 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -128,16 +148,33 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-&nbsp;
+import PropTypes from 'prop-types';
 import Review from './Review.jsx';
+import styles from '../styles/ReviewList.css';
 &nbsp;
 class ReviewList extends React.Component {
   showVisibleReviews() {
     const visibleReviews = this.props.filteredReviews.slice(0, this.props.numOfReviewsToShow);
     const visibleReviewsDivs = visibleReviews.map(review =&gt; (
-      &lt;div&gt;
+      &lt;div key={review.user.userId}&gt;
         &lt;Review reviewData={ review } /&gt;
       &lt;/div&gt;
     ));
@@ -149,7 +186,8 @@ class ReviewList extends React.Component {
     if (this.props.filteredReviews.length &lt;= this.props.numOfReviewsToShow) {
       return null;
     }
-    return &lt;button className='seeMoreButton' onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; (<span class="cstat-no" title="statement not covered" >this.props.addTen())</span>}&gt;See more reviews&lt;/button&gt;;
+    return &lt;button className={styles.seeMoreButton}
+      onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; (<span class="cstat-no" title="statement not covered" >this.props.addTen())</span>}&gt;See more reviews&lt;/button&gt;;
   }
 &nbsp;
   render() {
@@ -157,10 +195,10 @@ class ReviewList extends React.Component {
     if (reviews.length) {
       return (
         &lt;div&gt;
-          &lt;div className='reviewsContainer'&gt;
+          &lt;div className={styles.reviewsContainer}&gt;
               {reviews}
           &lt;/div&gt;
-          &lt;div className='seeMoreButtonHolder'&gt;
+          &lt;div className={styles.seeMoreButtonHolder}&gt;
               {this.showSeeMoreButton()}
           &lt;/div&gt;
         &lt;/div&gt;
@@ -171,6 +209,22 @@ class ReviewList extends React.Component {
   }
 }
 &nbsp;
+ReviewList.propTypes = {
+  filteredReviews: PropTypes.arrayOf(PropTypes.shape({
+    user: PropTypes.shape({
+      userPic: PropTypes.string.isRequired,
+      username: PropTypes.string.isRequired,
+      courseCount: PropTypes.number.isRequired,
+      reviewCount: PropTypes.number.isRequired,
+    }),
+    date: PropTypes.string.isRequired,
+    review: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
+    rating: PropTypes.number.isRequired,
+  })),
+  numOfReviewsToShow: PropTypes.number.isRequired,
+  addTen: PropTypes.func.isRequired,
+};
+&nbsp;
 export default ReviewList;
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -178,7 +232,7 @@ export default ReviewList;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Nov 02 2018 22:04:32 GMT-0700 (PDT)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Nov 03 2018 16:11:42 GMT-0700 (PDT)
 </div>
 </div>
 <script src="../../prettify.js"></script>

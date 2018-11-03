@@ -1,5 +1,6 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
+import styles from '../styles/Search.css';
 import symbols from '../symbols.jsx';
 
 class Search extends React.Component {
@@ -23,8 +24,8 @@ class Search extends React.Component {
   showClearSearchButton() {
     if (this.props.currentlyFiltered) {
       return (
-        <button className='clearSearchButton' type='button' onClick={ this.clearSearch }>
-          <span className='clearSearchSymbol'>{symbols.clear}</span>
+        <button className={styles.clearSearchButton} type='button' onClick={ this.clearSearch }>
+          <span className={styles.clearSearchSymbol}>{symbols.clear}</span>
         </button>
       );
     }
@@ -33,15 +34,20 @@ class Search extends React.Component {
 
   render() {
     return (
-      <form className='reviewSearchBar' onSubmit={this.handleInputSubmit}>
-        <div className='reviewSearchInputWrapper'>
-            <input type='text' className='reviewSearchInput' placeholder='Search reviews' ref={this.query}/>
+      <form className={styles.reviewSearchBar} onSubmit={this.handleInputSubmit}>
+        <div className={styles.reviewSearchInputWrapper}>
+            <input type='text' className={styles.reviewSearchInput} placeholder='Search reviews' ref={this.query}/>
             {this.showClearSearchButton()}
-            <button className='reviewSearchButton' type='submit'>{symbols.magGlass}</button>
+            <button className={styles.reviewSearchButton} type='submit'>{symbols.magGlass}</button>
         </div>
       </form>
     );
   }
 }
+
+Search.propTypes = {
+  currentlyFiltered: PropTypes.bool,
+  searchFilter: PropTypes.func.isRequired,
+};
 
 export default Search;

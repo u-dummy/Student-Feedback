@@ -1,14 +1,15 @@
 import React from 'react';
-
-import symbols from '../symbols.jsx';
+import PropTypes from 'prop-types';
+import styles from '../styles/Stars.css';
+// import symbols from '../symbols.jsx';
 
 const Stars = props => (
-  <div className='starsContainer'>
-    <div className='emptyStarsWrapper'>
-      <img className='emptyStars' src={'https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/emptyStars.png'}></img>
+  <div className={styles.starsContainer}>
+    <div className={styles.emptyStarsWrapper}>
+      <img className={styles.emptyStars} src={'https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/emptyStars.png'}></img>
     </div>
-    <div className='filledStarsWrapper' style={{ width: `${Math.ceil((props.average / 5) * 10) * 10}%` }}>
-      <img className='filledStars' src={'https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/filledStars.png'}></img>
+    <div className={styles.filledStarsWrapper} style={{ width: `${Math.ceil((props.average / 5) * 10) * 10}%` }}>
+      <img className={styles.filledStars} src={'https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/filledStars.png'}></img>
       </div>
   </div>
 );
@@ -33,5 +34,9 @@ const Stars = props => (
 //     );
 //   }
 // }
+
+Stars.propTypes = {
+  average: PropTypes.number.isRequired,
+};
 
 export default Stars;

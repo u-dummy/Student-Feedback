@@ -5,7 +5,6 @@ import renderer from 'react-test-renderer';
 
 import Review from '../src/components/Review.jsx';
 import ReviewList from '../src/components/ReviewList.jsx';
-import set from '../src/helperFunctions.jsx';
 
 Enzyme.configure({ adapter: new Adapter() });
 

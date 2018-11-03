@@ -56,16 +56,9 @@ Review.propTypes = {
       username: PropTypes.string.isRequired,
     }),
     date: PropTypes.string.isRequired,
-    review: PropTypes.string.isRequired,
+    review: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
     rating: PropTypes.number.isRequired,
   }),
 };
-
-// ReactComponent.propTypes = {
-//    arrayWithShape: PropTypes.arrayOf(PropTypes.shape({
-//      color: PropTypes.string.isRequired,
-//      fontSize: PropTypes.number.isRequired,
-//    })).isRequired,
-// }
 
 export default Review;

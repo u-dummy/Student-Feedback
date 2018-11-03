@@ -1,0 +1,21 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.reviewModule {
+  width: 56%;
+  position: absolute;
+  left: 5.3%;
+  color: #29303b;
+  font-size: 15px;
+  font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+  line-height: 1.43;
+}
+
+.reviewsContainerHeaderAndSearch {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.reviewsHeader {
+  font-size: 18px;
+  font-weight: 600;
+}

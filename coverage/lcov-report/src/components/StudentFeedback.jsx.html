@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">14.29% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>1/7</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>0/3</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">14.29% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>1/7</span>
       </div>
     </div>
   </div>
@@ -83,7 +83,22 @@
 38
 39
 40
-41</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -94,10 +109,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -106,10 +117,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -124,18 +154,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-&nbsp;
+import PropTypes from 'prop-types';
 import GraphBarAndStars from './GraphBarAndStars.jsx';
 import Stars from './Stars.jsx';
-import symbols from '../symbols.jsx';
+import styles from '../styles/StudentFeedback.css';
 &nbsp;
 class StudentFeedback extends React.Component {
 <span class="fstat-no" title="function not covered" >  cr</span>eateFiveGraphRows() {
     const graphRows = <span class="cstat-no" title="statement not covered" >[];</span>
 <span class="cstat-no" title="statement not covered" >    for (let i = 5; i &gt; 0; i -= 1) {</span>
 <span class="cstat-no" title="statement not covered" >      graphRows.push(</span>
-      &lt;GraphBarAndStars percent={ this.props.stats[i] } selectedStar={ this.props.selectedStar }
-      currentStar={i} ratingFilter={<span class="fstat-no" title="function not covered" >()</span> =&gt; (<span class="cstat-no" title="statement not covered" >this.props.ratingFilter(i))</span>}/&gt;,
+      &lt;GraphBarAndStars key={i} ratingFilter={<span class="fstat-no" title="function not covered" >()</span> =&gt; (<span class="cstat-no" title="statement not covered" >this.props.ratingFilter(i))</span>}
+        percent={ this.props.stats[i] } selectedStar={ this.props.selectedStar } currentStar={i} /&gt;,
       );
     }
 <span class="cstat-no" title="statement not covered" >    return graphRows;</span>
@@ -145,15 +175,17 @@ class StudentFeedback extends React.Component {
 <span class="cstat-no" title="statement not covered" >    return (</span>
       &lt;div&gt;
         &lt;h2&gt;Student feedback&lt;/h2&gt;
-        &lt;div className='studentFeedbackContainer'&gt;
-          &lt;div className='studentFeedbackAverageContainer'&gt;
-            &lt;div className='studentFeedbackAverage'&gt;{Number(this.props.stats.avg).toFixed(1)}&lt;/div&gt;
-            &lt;div className='studentFeedbackAverageStars'&gt;
+        &lt;div className={styles.studentFeedbackContainer}&gt;
+          &lt;div className={styles.studentFeedbackAverageContainer}&gt;
+            &lt;div className={styles.studentFeedbackAverage}&gt;
+              {Number(this.props.stats.avg).toFixed(1)}
+            &lt;/div&gt;
+            &lt;div className={styles.studentFeedbackAverageStars}&gt;
               &lt;Stars average={Number(this.props.stats.avg)}/&gt;
             &lt;/div&gt;
-            &lt;div className='studentFeedbackText'&gt;Course Rating&lt;/div&gt;
+            &lt;div&gt;Course Rating&lt;/div&gt;
           &lt;/div&gt;
-          &lt;div className='studentFeedbackBarGraph'&gt;
+          &lt;div className={styles.studentFeedbackBarGraph}&gt;
             {this.createFiveGraphRows()}
           &lt;/div&gt;
         &lt;/div&gt;
@@ -162,6 +194,19 @@ class StudentFeedback extends React.Component {
   }
 }
 &nbsp;
+StudentFeedback.propTypes = {
+  stats: PropTypes.shape({
+    avg: PropTypes.string.isRequired,
+    1: PropTypes.number.isRequired,
+    2: PropTypes.number.isRequired,
+    3: PropTypes.number.isRequired,
+    4: PropTypes.number.isRequired,
+    5: PropTypes.number.isRequired,
+  }),
+  selectedStar: PropTypes.number,
+  ratingFilter: PropTypes.func.isRequired,
+};
+&nbsp;
 export default StudentFeedback;
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -169,7 +214,7 @@ export default StudentFeedback;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Nov 02 2018 21:57:45 GMT-0700 (PDT)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Nov 03 2018 16:11:42 GMT-0700 (PDT)
 </div>
 </div>
 <script src="../../prettify.js"></script>

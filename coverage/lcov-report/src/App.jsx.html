@@ -22,22 +22,22 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">25% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>9/36</span>
+        <span class='fraction'>10/40</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">16.67% </span>
+        <span class="strong">12.5% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>1/6</span>
+        <span class='fraction'>1/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25% </span>
+        <span class="strong">23.53% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>4/16</span>
+        <span class='fraction'>4/17</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">26.47% </span>
+        <span class="strong">26.32% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>9/34</span>
+        <span class='fraction'>10/38</span>
       </div>
     </div>
   </div>
@@ -177,8 +177,20 @@
 132
 133
 134
-135</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -284,6 +296,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -306,19 +327,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import ReactDOM from 'react-dom';
-&nbsp;
+import PropTypes from 'prop-types';
 import FeaturedReview from './components/FeaturedReview.jsx';
 import ReviewList from './components/ReviewList.jsx';
 import CourseSummary from './components/StudentFeedback.jsx';
 import Search from './components/Search.jsx';
-import set from './helperFunctions.jsx';
+import styles from './styles/App.css';
 &nbsp;
 class App extends React.Component {
   constructor(props) {
@@ -417,15 +442,24 @@ class App extends React.Component {
 <span class="cstat-no" title="statement not covered" >    return reviewsFilteredBySearchAndRating;</span>
   }
 &nbsp;
+<span class="fstat-no" title="function not covered" >  se</span>tReviewHeader() {
+<span class="cstat-no" title="statement not covered" >    if (this.state.queryTerm !== '') {</span>
+<span class="cstat-no" title="statement not covered" >      return (</span>
+        &lt;span className={styles.reviewsHeader}&gt;Reviews mentioning &lt;i&gt;"{this.state.queryTerm}"&lt;/i&gt;&lt;/span&gt;
+      );
+    }
+<span class="cstat-no" title="statement not covered" >    return &lt;span className={styles.reviewsHeader}&gt;Reviews&lt;/span&gt;;</span>
+  }
+&nbsp;
   render() {
     <span class="missing-if-branch" title="if path not taken" >I</span>if (this.state.reviews.length &gt; 0) {
 <span class="cstat-no" title="statement not covered" >      return (</span>
-        &lt;div&gt;
+        &lt;div className={styles.reviewModule}&gt;
           &lt;FeaturedReview featuredReview={ this.state.featuredReview } /&gt;
           &lt;CourseSummary stats={ this.state.courseStats } ratingFilter={ this.filterOnRatingClick }
             selectedStar={ this.state.currentFilterRating } /&gt;
-          &lt;div className='reviewsContainerHeaderAndSearch'&gt;
-              {set.reviewHeader(this.state.queryTerm)}
+          &lt;div className={styles.reviewsContainerHeaderAndSearch}&gt;
+              {this.setReviewHeader()}
               &lt;Search searchFilter={this.filterAndBoldOnSearch}
                 currentlyFiltered={this.state.reviewsFilteredBySearch.length !== this.state.reviews.length}
               /&gt;
@@ -444,6 +478,11 @@ class App extends React.Component {
   }
 }
 &nbsp;
+App.propTypes = {
+  courseId: PropTypes.number,
+  courseName: PropTypes.string,
+};
+&nbsp;
 export default App;
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -451,7 +490,7 @@ export default App;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Nov 02 2018 21:57:45 GMT-0700 (PDT)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Nov 03 2018 16:11:42 GMT-0700 (PDT)
 </div>
 </div>
 <script src="../prettify.js"></script>

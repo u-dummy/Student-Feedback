@@ -7,12 +7,10 @@ exports[`Review component tests renders the component 1`] = `
   <div
     className="reviewUserInfo"
   >
-    <span>
-      <img
-        className="reviewUserPic"
-        src="https://picsum.photos/200/300/?random"
-      />
-    </span>
+    <img
+      className="reviewUserPic"
+      src="https://picsum.photos/200/300/?random"
+    />
     <span
       className="reviewInfo"
     >
@@ -34,11 +32,7 @@ exports[`Review component tests renders the component 1`] = `
       />
     </div>
     <div>
-      <div
-        className="reviewText"
-      >
-        something
-      </div>
+      something
     </div>
   </div>
 </div>

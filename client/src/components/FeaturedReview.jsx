@@ -3,8 +3,6 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import styles from '../styles/FeaturedReview.css';
 
-import set from '../helperFunctions.jsx';
-
 class FeaturedReview extends React.Component {
   setUserPic() {
     const { userPic } = this.props.featuredReview.user;
@@ -23,8 +21,11 @@ class FeaturedReview extends React.Component {
             <div className={styles.featuredReviewTopRow}>
               <div className={styles.featureReviewUserPic}>{this.setUserPic()}</div>
               <div className={styles.featuredReviewInfo}>
-                <span className={styles.featuredReviewUsername}>{this.props.featuredReview.user.username}</span>
-                <span>( {this.props.featuredReview.user.courseCount} courses, {this.props.featuredReview.user.reviewCount} reviews )</span>
+                <span className={styles.featuredReviewUsername}>
+                  {this.props.featuredReview.user.username}
+                </span>
+                <span>( {this.props.featuredReview.user.courseCount} courses,</span>
+                <span> {this.props.featuredReview.user.reviewCount} reviews )</span>
                 <div>
                   <img className={styles.featuredReviewStars} src={`https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/${this.props.featuredReview.rating}+stars+white.png`}></img>
                 </div>
@@ -44,7 +45,7 @@ class FeaturedReview extends React.Component {
       </div>
     );
   }
-};
+}
 
 FeaturedReview.propTypes = {
   featuredReview: PropTypes.shape({
