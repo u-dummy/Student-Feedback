@@ -13,7 +13,7 @@
 
 .reviewInfo {
   display: inline-block;
-  padding-left: 15px;
+  padding: 3px 0 0 15px;
   vertical-align: top;
 }
 

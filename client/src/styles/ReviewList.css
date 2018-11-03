@@ -1,0 +1,28 @@
+.reviewsContainer {
+  border-top: 1px solid #cdd2dd;
+  margin-bottom: 20px;
+}
+
+.seeMoreButton {
+  color: #007791;
+  background-color: #fff;
+  border: 1px solid #007791;
+  font-size: 15px;
+  padding: 11px 12px;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+.seeMoreButton:hover {
+  color: #002831;
+  border: 1px solid #002831;
+}
+
+.seeMoreButton:focus {
+  outline: none;
+}
+
+.seeMoreButtonHolder{
+  text-align: center;
+  margin-bottom: 50px;
+}
