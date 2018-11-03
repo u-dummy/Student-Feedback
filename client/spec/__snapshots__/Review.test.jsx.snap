@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Review component tests renders the component 1`] = `
+<div
+  className="individualReviewContainer"
+>
+  <div
+    className="reviewUserInfo"
+  >
+    <img
+      className="reviewUserPic"
+      src="https://picsum.photos/200/300/?random"
+    />
+    <span
+      className="reviewInfo"
+    >
+      <div
+        className="reviewDate"
+      >
+        a few seconds ago
+      </div>
+      <div />
+    </span>
+  </div>
+  <div
+    className="reviewRatingAndText"
+  >
+    <div>
+      <img
+        className="reviewStars"
+        src="https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/5+stars+white.png"
+      />
+    </div>
+    <div>
+      something
+    </div>
+  </div>
+</div>
+`;
