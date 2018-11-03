@@ -1,0 +1,27 @@
+.starsContainer {
+  width: 79%;
+  display: inline-block;
+  height: 70%;
+  text-align: center;
+  position: relative;
+}
+
+.emptyStarsWrapper {
+  position: absolute;
+  width: 100%;
+}
+
+.filledStarsWrapper {
+  position: absolute;
+  overflow: hidden;
+}
+
+.filledStars {
+  width: 128px;
+  height: 20px;
+}
+
+.emptyStars {
+  width: 128px;
+  height: 20px;
+}
