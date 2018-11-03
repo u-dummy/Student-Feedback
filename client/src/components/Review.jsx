@@ -1,21 +1,52 @@
 import React from 'react';
 import moment from 'moment';
-import set from '../helperFunctions.jsx';
+import styles from '../styles/Review.css';
 
-const Review = props => (
-  <div className='individualReviewContainer'>
-    <div className='reviewUserInfo'>
-      <span>{set.userPic(props.reviewData.user.userPic)}</span>
-      <span className='reviewInfo'>
-        <div className='reviewDate'>{moment(props.reviewData.date).fromNow()}</div>
-        <div>{props.reviewData.user.username}</div>
-      </span>
-    </div>
-    <div className='reviewRatingAndText'>
-      <div><img className='reviewStars' src={`https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/${props.reviewData.rating}+stars+white.png`}></img></div>
-      <div>{set.reviewText(props.reviewData.review)}</div>
-    </div>
-  </div>
-);
+class Review extends React.Component {
+  setReviewText() {
+    const { review } = this.props.reviewData;
+    if (typeof review === 'object') {
+      return (
+        <div>
+          {review.preQuery}
+          {review.query}
+          {review.postQuery}
+        </div>
+      );
+    }
+    return (
+      <div>
+        {review}
+      </div>
+    );
+  }
+
+  setUserPic() {
+    const { userPic } = this.props.reviewData.user;
+    if (userPic.includes('https')) {
+      return <img className={styles.reviewUserPic} src={userPic}></img>;
+    }
+    return <div className={styles.reviewUserInitials}>{userPic}</div>;
+  }
+
+
+  render() {
+    return (
+      <div className={styles.individualReviewContainer}>
+        <div className={styles.reviewUserInfo}>
+          <span>{this.setUserPic()}</span>
+          <span className={styles.reviewInfo}>
+            <div className={styles.reviewDate}>{moment(this.props.reviewData.date).fromNow()}</div>
+            <div>{this.props.reviewData.user.username}</div>
+          </span>
+        </div>
+        <div className={styles.reviewRatingAndText}>
+          <div><img className={styles.reviewStars} src={`https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/${this.props.reviewData.rating}+stars+white.png`}></img></div>
+          <div>{this.setReviewText()}</div>
+        </div>
+      </div>
+    );
+  }
+}
 
 export default Review;

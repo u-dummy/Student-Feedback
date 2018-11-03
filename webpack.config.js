@@ -12,32 +12,27 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {},
-          },
-        ],
-      },
-      {
-        test: /\.(png|jpg|gif)$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 8192,
-            },
-          },
-        ],
-      },
-      {
         test: /\.jsx?/,
         include: SRC_DIR,
         loader: 'babel-loader',
         query: {
           presets: ['@babel/preset-react', '@babel/preset-env'],
         },
+      },
+      {
+        test: /\.css$/,
+        use: [
+          { loader: 'style-loader' },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: true,
+              camelCase: true,
+              localIdentName: '[name]__[local]__[hash:base64:5]',
+            },
+          },
+        ],
       },
     ],
   },
