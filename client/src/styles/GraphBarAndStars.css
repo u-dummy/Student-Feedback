@@ -1,0 +1,35 @@
+.studentFeedbackGraphRow {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.rowStars {
+  width: 93px;
+  height: 16px;
+  padding-left: 10px;
+  padding-top: 2px;
+  cursor: pointer;
+}
+
+.starButton {
+  color: #007791;
+  font-size: 15px;
+  font-weight: 400;
+  border-style: none;
+  vertical-align: top;
+  outline: none;
+  cursor: pointer;
+}
+
+.starButtonHolder {
+  width: 60px;
+  text-align: center;
+}
+
+.starButton:hover {
+  color: #003d4b;
+}

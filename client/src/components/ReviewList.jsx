@@ -51,7 +51,7 @@ ReviewList.propTypes = {
       reviewCount: PropTypes.number.isRequired,
     }),
     date: PropTypes.string.isRequired,
-    review: PropTypes.string.isRequired,
+    review: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
     rating: PropTypes.number.isRequired,
   })),
   numOfReviewsToShow: PropTypes.number.isRequired,

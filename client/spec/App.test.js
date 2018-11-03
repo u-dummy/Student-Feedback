@@ -4,7 +4,6 @@ import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
 
 import App from '../src/App.jsx';
-import set from '../src/helperFunctions.jsx';
 import sampleData from './sampleData.jsx';
 
 Enzyme.configure({ adapter: new Adapter() });

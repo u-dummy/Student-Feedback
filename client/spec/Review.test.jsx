@@ -4,7 +4,6 @@ import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
 
 import Review from '../src/components/Review.jsx';
-import set from '../src/helperFunctions.jsx';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -33,7 +32,7 @@ describe('Review component tests', () => {
   });
 
   it('displays review text', () => {
-    expect(wrapper.find('.reviewText').text()).toBe('something');
+    expect(wrapper.find('.reviewRatingAndText').text()).toBe('something');
   });
 
   it('renders a user avatar if an image is provided', () => {

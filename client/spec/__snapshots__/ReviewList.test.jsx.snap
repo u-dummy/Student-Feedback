@@ -12,13 +12,11 @@ exports[`Review component tests renders the component 1`] = `
         <div
           className="reviewUserInfo"
         >
-          <span>
-            <div
-              className="reviewUserInitials"
-            >
-              TB
-            </div>
-          </span>
+          <div
+            className="reviewUserInitials"
+          >
+            TB
+          </div>
           <span
             className="reviewInfo"
           >
@@ -40,11 +38,7 @@ exports[`Review component tests renders the component 1`] = `
             />
           </div>
           <div>
-            <div
-              className="reviewText"
-            >
-              something
-            </div>
+            something
           </div>
         </div>
       </div>
@@ -56,13 +50,11 @@ exports[`Review component tests renders the component 1`] = `
         <div
           className="reviewUserInfo"
         >
-          <span>
-            <div
-              className="reviewUserInitials"
-            >
-              TB
-            </div>
-          </span>
+          <div
+            className="reviewUserInitials"
+          >
+            TB
+          </div>
           <span
             className="reviewInfo"
           >
@@ -84,11 +76,7 @@ exports[`Review component tests renders the component 1`] = `
             />
           </div>
           <div>
-            <div
-              className="reviewText"
-            >
-              something
-            </div>
+            something
           </div>
         </div>
       </div>
@@ -100,13 +88,11 @@ exports[`Review component tests renders the component 1`] = `
         <div
           className="reviewUserInfo"
         >
-          <span>
-            <div
-              className="reviewUserInitials"
-            >
-              TB
-            </div>
-          </span>
+          <div
+            className="reviewUserInitials"
+          >
+            TB
+          </div>
           <span
             className="reviewInfo"
           >
@@ -128,11 +114,7 @@ exports[`Review component tests renders the component 1`] = `
             />
           </div>
           <div>
-            <div
-              className="reviewText"
-            >
-              something
-            </div>
+            something
           </div>
         </div>
       </div>
@@ -144,13 +126,11 @@ exports[`Review component tests renders the component 1`] = `
         <div
           className="reviewUserInfo"
         >
-          <span>
-            <div
-              className="reviewUserInitials"
-            >
-              TB
-            </div>
-          </span>
+          <div
+            className="reviewUserInitials"
+          >
+            TB
+          </div>
           <span
             className="reviewInfo"
           >
@@ -172,11 +152,7 @@ exports[`Review component tests renders the component 1`] = `
             />
           </div>
           <div>
-            <div
-              className="reviewText"
-            >
-              something
-            </div>
+            something
           </div>
         </div>
       </div>
@@ -188,13 +164,11 @@ exports[`Review component tests renders the component 1`] = `
         <div
           className="reviewUserInfo"
         >
-          <span>
-            <div
-              className="reviewUserInitials"
-            >
-              TB
-            </div>
-          </span>
+          <div
+            className="reviewUserInitials"
+          >
+            TB
+          </div>
           <span
             className="reviewInfo"
           >
@@ -216,11 +190,7 @@ exports[`Review component tests renders the component 1`] = `
             />
           </div>
           <div>
-            <div
-              className="reviewText"
-            >
-              something
-            </div>
+            something
           </div>
         </div>
       </div>
@@ -232,13 +202,11 @@ exports[`Review component tests renders the component 1`] = `
         <div
           className="reviewUserInfo"
         >
-          <span>
-            <div
-              className="reviewUserInitials"
-            >
-              TB
-            </div>
-          </span>
+          <div
+            className="reviewUserInitials"
+          >
+            TB
+          </div>
           <span
             className="reviewInfo"
           >
@@ -260,11 +228,7 @@ exports[`Review component tests renders the component 1`] = `
             />
           </div>
           <div>
-            <div
-              className="reviewText"
-            >
-              something
-            </div>
+            something
           </div>
         </div>
       </div>
@@ -276,13 +240,11 @@ exports[`Review component tests renders the component 1`] = `
         <div
           className="reviewUserInfo"
         >
-          <span>
-            <div
-              className="reviewUserInitials"
-            >
-              TB
-            </div>
-          </span>
+          <div
+            className="reviewUserInitials"
+          >
+            TB
+          </div>
           <span
             className="reviewInfo"
           >
@@ -304,11 +266,7 @@ exports[`Review component tests renders the component 1`] = `
             />
           </div>
           <div>
-            <div
-              className="reviewText"
-            >
-              something
-            </div>
+            something
           </div>
         </div>
       </div>
@@ -320,13 +278,11 @@ exports[`Review component tests renders the component 1`] = `
         <div
           className="reviewUserInfo"
         >
-          <span>
-            <div
-              className="reviewUserInitials"
-            >
-              TB
-            </div>
-          </span>
+          <div
+            className="reviewUserInitials"
+          >
+            TB
+          </div>
           <span
             className="reviewInfo"
           >
@@ -348,11 +304,7 @@ exports[`Review component tests renders the component 1`] = `
             />
           </div>
           <div>
-            <div
-              className="reviewText"
-            >
-              something
-            </div>
+            something
           </div>
         </div>
       </div>
@@ -364,13 +316,11 @@ exports[`Review component tests renders the component 1`] = `
         <div
           className="reviewUserInfo"
         >
-          <span>
-            <div
-              className="reviewUserInitials"
-            >
-              TB
-            </div>
-          </span>
+          <div
+            className="reviewUserInitials"
+          >
+            TB
+          </div>
           <span
             className="reviewInfo"
           >
@@ -392,11 +342,7 @@ exports[`Review component tests renders the component 1`] = `
             />
           </div>
           <div>
-            <div
-              className="reviewText"
-            >
-              something
-            </div>
+            something
           </div>
         </div>
       </div>
@@ -408,13 +354,11 @@ exports[`Review component tests renders the component 1`] = `
         <div
           className="reviewUserInfo"
         >
-          <span>
-            <div
-              className="reviewUserInitials"
-            >
-              TB
-            </div>
-          </span>
+          <div
+            className="reviewUserInitials"
+          >
+            TB
+          </div>
           <span
             className="reviewInfo"
           >
@@ -436,11 +380,7 @@ exports[`Review component tests renders the component 1`] = `
             />
           </div>
           <div>
-            <div
-              className="reviewText"
-            >
-              something
-            </div>
+            something
           </div>
         </div>
       </div>

@@ -1,11 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-
-import FeaturedReview from './components/FeaturedReview.jsx';
-import ReviewList from './components/ReviewList.jsx';
-import CourseSummary from './components/StudentFeedback.jsx';
-import Search from './components/Search.jsx';
-import set from './helperFunctions.jsx';
+import PropTypes from 'prop-types';
+import FeaturedReview from './FeaturedReview.jsx';
+import ReviewList from './ReviewList.jsx';
+import CourseSummary from './StudentFeedback.jsx';
+import Search from './Search.jsx';
+import styles from '../styles/App.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -51,7 +50,9 @@ class App extends React.Component {
 
   filterAndBoldOnSearch(query) {
     this.setState({ queryTerm: query });
-    const filteredReviews = this.state.reviews.filter(reviewObj => (reviewObj.review.toUpperCase().includes(query.toUpperCase())));
+    const filteredReviews = this.state.reviews.filter(reviewObj => (
+      reviewObj.review.toUpperCase().includes(query.toUpperCase())
+    ));
 
     const filteredAndBoldedReviews = filteredReviews.map((reviewObj) => {
       const queryStartingIndex = reviewObj.review.toUpperCase().indexOf(query.toUpperCase());
@@ -104,15 +105,26 @@ class App extends React.Component {
     return reviewsFilteredBySearchAndRating;
   }
 
+  setReviewHeader() {
+    if (this.state.queryTerm !== '') {
+      return (
+        <span className={styles.reviewsHeader}>
+          Reviews mentioning <i>"{this.state.queryTerm}"</i>
+        </span>
+      );
+    }
+    return <span className={styles.reviewsHeader}>Reviews</span>;
+  }
+
   render() {
     if (this.state.reviews.length > 0) {
       return (
-        <div>
+        <div className={styles.reviewModule}>
           <FeaturedReview featuredReview={ this.state.featuredReview } />
           <CourseSummary stats={ this.state.courseStats } ratingFilter={ this.filterOnRatingClick }
             selectedStar={ this.state.currentFilterRating } />
-          <div className='reviewsContainerHeaderAndSearch'>
-              {set.reviewHeader(this.state.queryTerm)}
+          <div className={styles.reviewsContainerHeaderAndSearch}>
+              {this.setReviewHeader()}
               <Search searchFilter={this.filterAndBoldOnSearch}
                 currentlyFiltered={this.state.reviewsFilteredBySearch.length !== this.state.reviews.length}
               />
@@ -130,5 +142,10 @@ class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  courseId: PropTypes.number,
+  courseName: PropTypes.string,
+};
 
 export default App;
