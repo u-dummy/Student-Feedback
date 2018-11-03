@@ -26,3 +26,29 @@
   text-align: center;
   margin-bottom: 50px;
 }
+
+.reviewStars{
+  width: 95px;
+  height: 17px;
+  padding-bottom: 10px;
+}
+
+.reviewUserPic {
+  display: inline-block;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  vertical-align: top;
+}
+
+.reviewUserInitials {
+  display: inline-block;
+  width: 46px;
+  height: 46px;
+  border: 1px solid #686f7a;
+  border-radius: 50%;
+  text-align: center;
+  color:#686f7a;
+  line-height: 46px;
+  vertical-align: top;
+}

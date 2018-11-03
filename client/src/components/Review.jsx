@@ -30,7 +30,6 @@ class Review extends React.Component {
     return <div className={styles.reviewUserInitials}>{userPic}</div>;
   }
 
-
   render() {
     return (
       <div className={styles.individualReviewContainer}>
