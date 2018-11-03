@@ -3,9 +3,9 @@ import Enzyme, {shallow, render, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
 
-import Review from './src/components/Review.jsx';
-import ReviewList from './src/components/ReviewList.jsx';
-import set from './src/helperFunctions.jsx';
+import Review from '../src/components/Review.jsx';
+import ReviewList from '../src/components/ReviewList.jsx';
+import set from '../src/helperFunctions.jsx';
 
 Enzyme.configure({ adapter: new Adapter() });
 
