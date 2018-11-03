@@ -4,6 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
 
 import Review from './src/components/Review.jsx';
+import ReviewList from './src/components/ReviewList.jsx';
 import set from './src/helperFunctions.jsx';
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -13,52 +14,282 @@ describe('Review component tests', () => {
   let props;
 
   beforeEach(() => {
-    props = {
-      user: {
-        userPic: 'https://picsum.photos/200/300/?random',
-        userName: 'Tarik',
+    const props1 = 10;
+    const props2 = () => (props1 + 10);
+    const props3 = [
+      {
+        user: {
+          userPic: 'TB',
+          userName: 'Tarik',
+        },
+        date: new Date(),
+        review: 'something',
+        rating: '5',
       },
-      date: new Date(),
-      review: 'something',
-      rating: '5',
-    };
+      {
+        user: {
+          userPic: 'TB',
+          userName: 'Tarik',
+        },
+        date: new Date(),
+        review: 'something',
+        rating: '5',
+      },
+      {
+        user: {
+          userPic: 'TB',
+          userName: 'Tarik',
+        },
+        date: new Date(),
+        review: 'something',
+        rating: '5',
+      },
+      {
+        user: {
+          userPic: 'TB',
+          userName: 'Tarik',
+        },
+        date: new Date(),
+        review: 'something',
+        rating: '5',
+      },
+      {
+        user: {
+          userPic: 'TB',
+          userName: 'Tarik',
+        },
+        date: new Date(),
+        review: 'something',
+        rating: '5',
+      },
+      {
+        user: {
+          userPic: 'TB',
+          userName: 'Tarik',
+        },
+        date: new Date(),
+        review: 'something',
+        rating: '5',
+      },
+      {
+        user: {
+          userPic: 'TB',
+          userName: 'Tarik',
+        },
+        date: new Date(),
+        review: 'something',
+        rating: '5',
+      },
+      {
+        user: {
+          userPic: 'TB',
+          userName: 'Tarik',
+        },
+        date: new Date(),
+        review: 'something',
+        rating: '5',
+      },
+      {
+        user: {
+          userPic: 'TB',
+          userName: 'Tarik',
+        },
+        date: new Date(),
+        review: 'something',
+        rating: '5',
+      },
+      {
+        user: {
+          userPic: 'TB',
+          userName: 'Tarik',
+        },
+        date: new Date(),
+        review: 'something',
+        rating: '5',
+      },
+      {
+        user: {
+          userPic: 'TB',
+          userName: 'Tarik',
+        },
+        date: new Date(),
+        review: 'something',
+        rating: '5',
+      },
+      {
+        user: {
+          userPic: 'TB',
+          userName: 'Tarik',
+        },
+        date: new Date(),
+        review: 'something',
+        rating: '5',
+      },
+    ];
 
-    wrapper = shallow(<Review reviewData={props} />);
+    wrapper = mount(<ReviewList numOfReviewsToShow={props1} addTen={props2} filteredReviews={props3}/>);
   });
 
   it('renders the component', () => {
-    const ReviewTest = renderer.create(<Review reviewData={props}/>);
-    const tree = ReviewTest.toJSON();
-    expect(tree).toMatchSnapshot();
+    const ReviewListTest = renderer.create(wrapper).toJSON();
+    expect(ReviewListTest).toMatchSnapshot();
   });
 
-  it('displays review text', () => {
-    expect(wrapper.find('.reviewText').text()).toBe('something');
+  it('displays seeMoreButton when there is more than 10 reviews', () => {
+    expect(wrapper.find('.seeMoreButton')).toBeDefined();
   });
 
-  it('renders a user avatar if an image is provided', () => {
-    expect(wrapper.find('img')).toBeDefined();
-  });
-
-  it('renders a user initials if an image is not provided', () => {
-    props = {
-      user: {
-        userPic: 'TB',
-        userName: 'Tarik',
-      },
-      date: new Date(),
-      review: 'something',
-      rating: '5',
+  it('does not display seeMoreButton when there is less than 10 reviews', () => {
+    let props1 = 10;
+    const props2 = () => {
+      props1 += 10;
     };
+    const props3 = [
+      {
+        user: {
+          userPic: 'TB',
+          userName: 'Tarik',
+        },
+        date: new Date(),
+        review: 'something',
+        rating: '5',
+      },
+    ];
 
-    wrapper = shallow(<Review reviewData={props} />);
-    expect(wrapper.find('.reviewUserInitials')).toBeDefined();
+    wrapper = mount(<ReviewList numOfReviewsToShow={props1} addTen={props2} filteredReviews={props3}/>);
+    expect(wrapper.exists('.seeMoreButton')).toEqual(false);
   });
 
-  it('renders the timestamp in relative time', () => {
-    // console.log(wrapper.find('.reviewDate').text().debug());
-    expect(wrapper.find('.reviewDate').text()).toContain('ago');
+  it('only renders up to the numbers of reviews that is passed in as a limit', () => {
+    expect(wrapper.find('.reviewsContainer').children().length).toBe(10);
+
+    let props1 = 20;
+    const props2 = () => {
+      props1 += 10;
+    };
+    const props3 = [
+      {
+        user: {
+          userPic: 'TB',
+          userName: 'Tarik',
+        },
+        date: new Date(),
+        review: 'something',
+        rating: '5',
+      },
+      {
+        user: {
+          userPic: 'TB',
+          userName: 'Tarik',
+        },
+        date: new Date(),
+        review: 'something',
+        rating: '5',
+      },
+      {
+        user: {
+          userPic: 'TB',
+          userName: 'Tarik',
+        },
+        date: new Date(),
+        review: 'something',
+        rating: '5',
+      },
+      {
+        user: {
+          userPic: 'TB',
+          userName: 'Tarik',
+        },
+        date: new Date(),
+        review: 'something',
+        rating: '5',
+      },
+      {
+        user: {
+          userPic: 'TB',
+          userName: 'Tarik',
+        },
+        date: new Date(),
+        review: 'something',
+        rating: '5',
+      },
+      {
+        user: {
+          userPic: 'TB',
+          userName: 'Tarik',
+        },
+        date: new Date(),
+        review: 'something',
+        rating: '5',
+      },
+      {
+        user: {
+          userPic: 'TB',
+          userName: 'Tarik',
+        },
+        date: new Date(),
+        review: 'something',
+        rating: '5',
+      },
+      {
+        user: {
+          userPic: 'TB',
+          userName: 'Tarik',
+        },
+        date: new Date(),
+        review: 'something',
+        rating: '5',
+      },
+      {
+        user: {
+          userPic: 'TB',
+          userName: 'Tarik',
+        },
+        date: new Date(),
+        review: 'something',
+        rating: '5',
+      },
+      {
+        user: {
+          userPic: 'TB',
+          userName: 'Tarik',
+        },
+        date: new Date(),
+        review: 'something',
+        rating: '5',
+      },
+      {
+        user: {
+          userPic: 'TB',
+          userName: 'Tarik',
+        },
+        date: new Date(),
+        review: 'something',
+        rating: '5',
+      },
+      {
+        user: {
+          userPic: 'TB',
+          userName: 'Tarik',
+        },
+        date: new Date(),
+        review: 'something',
+        rating: '5',
+      },
+    ];
+
+    wrapper = mount(<ReviewList numOfReviewsToShow={props1} addTen={props2} filteredReviews={props3}/>);
+    expect(wrapper.find('.reviewsContainer').children().length).toBe(12);
+  });
+
+
+  it('displays a message if no reviews were found', () => {
+    let props1 = 20;
+    const props2 = () => {
+      props1 += 10;
+    };
+    const props3 = [];
+    wrapper = mount(<ReviewList numOfReviewsToShow={props1} addTen={props2} filteredReviews={props3}/>);
+    expect(wrapper.find('p')).toBeDefined();
   });
 });
-
-// console.log(wrapper.find('.reviewText').debug());
