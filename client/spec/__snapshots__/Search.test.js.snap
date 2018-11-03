@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`search component renders 1`] = `
+exports[`Review component tests search component renders 1`] = `
 <form
   className="reviewSearchBar"
   onSubmit={[Function]}
