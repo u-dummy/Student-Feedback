@@ -1,5 +1,7 @@
 import React from 'react';
 import moment from 'moment';
+import PropTypes from 'prop-types';
+
 import set from '../helperFunctions.jsx';
 
 const FeaturedReview = (props) => {
@@ -31,6 +33,20 @@ const FeaturedReview = (props) => {
       <p><i>There are no featured reviews for this course yet...</i></p>
     </div>
   );
+};
+
+FeaturedReview.propTypes = {
+  featuredReview: PropTypes.shape({
+    user: PropTypes.shape({
+      userPic: PropTypes.string.isRequired,
+      username: PropTypes.string.isRequired,
+      courseCount: PropTypes.number.isRequired,
+      reviewCount: PropTypes.number.isRequired,
+    }),
+    date: PropTypes.string.isRequired,
+    review: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+  }),
 };
 
 export default FeaturedReview;

@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 import styles from '../styles/Review.css';
 
 class Review extends React.Component {
@@ -34,7 +35,7 @@ class Review extends React.Component {
     return (
       <div className={styles.individualReviewContainer}>
         <div className={styles.reviewUserInfo}>
-          <span>{this.setUserPic()}</span>
+          {this.setUserPic()}
           <span className={styles.reviewInfo}>
             <div className={styles.reviewDate}>{moment(this.props.reviewData.date).fromNow()}</div>
             <div>{this.props.reviewData.user.username}</div>
@@ -42,11 +43,30 @@ class Review extends React.Component {
         </div>
         <div className={styles.reviewRatingAndText}>
           <div><img className={styles.reviewStars} src={`https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/${this.props.reviewData.rating}+stars+white.png`}></img></div>
-          <div>{this.setReviewText()}</div>
+          {this.setReviewText()}
         </div>
       </div>
     );
   }
 }
+
+Review.propTypes = {
+  reviewData: PropTypes.shape({
+    user: PropTypes.shape({
+      userPic: PropTypes.string.isRequired,
+      username: PropTypes.string.isRequired,
+    }),
+    date: PropTypes.string.isRequired,
+    review: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+  }),
+};
+
+// ReactComponent.propTypes = {
+//    arrayWithShape: PropTypes.arrayOf(PropTypes.shape({
+//      color: PropTypes.string.isRequired,
+//      fontSize: PropTypes.number.isRequired,
+//    })).isRequired,
+// }
 
 export default Review;
