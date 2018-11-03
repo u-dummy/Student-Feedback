@@ -1,0 +1,33 @@
+.studentFeedbackContainer {
+  margin-top: 30px;
+  margin-bottom: 35px;
+  display: flex;
+  font-size: 15px;
+}
+
+.studentFeedbackAverageContainer {
+  width: 30%;
+  text-align: center;
+  padding-right: 15px;
+  position: relative;
+}
+
+.studentFeedbackAverage {
+  font-size: 72px;
+  font-weight: 500;
+  text-align: center;
+  height: 58%;
+}
+
+.studentFeedbackAverageStars {
+  height: 15%;
+  position: relative;
+  vertical-align: top;
+  padding-bottom: 5px;
+}
+
+.studentFeedbackBarGraph {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}

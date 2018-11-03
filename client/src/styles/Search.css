@@ -1,0 +1,61 @@
+
+.reviewSearchBar {
+  float: right;
+  font-size: 18px;
+  font-weight: 600;
+  height: 33px;
+ }
+ 
+ .clearSearchButton {
+   position: absolute;
+   z-index: 1;
+   right: 33px;
+   height: 32px;
+   background-color: transparent;
+   border-style: none;
+   outline: none;
+   cursor: pointer;
+ }
+ 
+ .clearSearchSymbol {
+   color: #8c8f92c9;
+   z-index: 2;
+   opacity: 1;
+ }
+ 
+ .reviewSearchButton {
+   font-size: 12px;
+   color: white;
+   border-style: none;
+   outline: none;
+   background-color: #007791;
+   text-align: center;
+   height: 32px;
+   width: 32px;
+   border-radius: 2px;
+   position: relative;
+   left: -2px;
+   cursor: pointer;
+ }
+ 
+ .reviewSearchButton:hover {
+   background-color: #014f61;
+ }
+
+ .reviewSearchInput {
+  height: 28px;
+  box-shadow: none;
+  font-size: 12px;
+  font-weight: 600;
+  text-indent: 8px;
+  border-radius: 2px;
+  border: 1px solid #b3b9c5;
+  vertical-align: top;
+  width: 200px;
+}
+   
+.reviewSearchInput:focus {
+  box-shadow: 1px solid #1799b6;
+  outline: 1px auto #1799b6;
+  border: 1px solid #1799b6;
+}
