@@ -91,6 +91,7 @@ class App extends React.Component {
     }
   }
 
+  // this was the most naive way...definitely can optimize
   reviewsFilteredBySearchAndRating() {
     const reviewsFilteredBySearchAndRating = [];
     this.state.reviewsFilteredBySearch.forEach((searchReview) => {

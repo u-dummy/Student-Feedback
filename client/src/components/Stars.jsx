@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 import styles from '../styles/Stars.css';
-// import symbols from '../symbols.jsx';
+import symbols from '../symbols.jsx';
 
 const Stars = props => (
   <div className={styles.starsContainer}>
@@ -14,23 +16,27 @@ const Stars = props => (
   </div>
 );
 // class Stars extends React.Component {
-//   createFiveGraphRows() {
-
-//   }
-
 //   render() {
+//     <span className={ styles.stars }>
+//     {
+//       getStars()
+//     }
+//     </span>
 //     return (
-//       <div className='starsContainer'>
-//         <span className='star'>{symbols.star}</span>
-//         <svg>
-//           <linearGradient id="starFill">
-//             <stop offset="0%" stop-color="royalblue"/>
-//             <stop offset="40%" stop-color="royalblue"/>
-//             <stop offset="40%" stop-color="royalblue"/>
-//             <stop offset="100%" stop-color="royalblue"/>
-//           </linearGradient>
-//         </svg>
-//       </div>
+//       <svg width='0' height='0'>
+//         <linearGradient class={styles.starPartialFill}>
+//           <stop stopColor='#f4c150' offset='0%' />
+//           <stop stopColor='#f4c150' offset={ partialFill() } />
+//           <stop stopColor='#dedfe0' offset={ partialFill() } />
+//           <stop stopColor='#dedfe0' offset='100%' />
+//         </linearGradient>
+//         <linearGradient class={styles.starPartialFill}>
+//           <stop stopColor='#dedfe0' offset='100%' />
+//         </linearGradient>
+//         <linearGradient class={styles.starFilled}>
+//           <stop stopColor='#f4c150' offset='100%' />
+//         </linearGradient>
+//       </svg>
 //     );
 //   }
 // }
