@@ -9,10 +9,15 @@ const PORT = 3001;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, '/../public')));
+
+app.use('/courses', express.static(path.join(__dirname, '/../public')));
+
+app.get('/courses/:courseId', (req, res) => {
+  res.sendFile(path.join(__dirname, '/../public/index.html'));
+});
 
 
-app.get('/courses/:courseId/reviews', (req, res) => {
+app.get('/:courseId/reviews', (req, res) => {
   const { courseId } = req.params;
   getReviewData(courseId, res);
 });

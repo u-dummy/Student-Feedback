@@ -31,7 +31,7 @@ const findFeaturedReview = (reviewData) => {
     const currentReviewPowerRanking = review.upvotes - review.downvotes;
     if (currentReviewPowerRanking > featuredPowerRanking) { featured = review; }
     return featured;
-  }, { upvotes: 60, downvotes: 0});
+  }, { upvotes: 60, downvotes: 0 });
 
   if (featuredReview.userId === undefined) { featuredReview = null; }
 
