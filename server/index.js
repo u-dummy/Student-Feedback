@@ -10,12 +10,7 @@ const PORT = 3001;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/courses', express.static(path.join(__dirname, '/../public')));
-
-app.get('/courses/:courseId', (req, res) => {
-  res.sendFile(path.join(__dirname, '/../public/index.html'));
-});
-
+app.use('/courses/:courseId', express.static(path.join(__dirname, '/../public')));
 
 app.get('/:courseId/reviews', (req, res) => {
   const { courseId } = req.params;
