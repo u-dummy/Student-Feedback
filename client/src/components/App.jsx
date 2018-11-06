@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import FeaturedReview from './FeaturedReview.jsx';
 import ReviewList from './ReviewList.jsx';
 import CourseSummary from './StudentFeedback.jsx';
@@ -10,7 +9,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      courseId: props.courseId,
       courseStats: {},
       featuredReview: {},
       reviews: [],
@@ -144,10 +142,5 @@ class App extends React.Component {
     );
   }
 }
-
-App.propTypes = {
-  courseId: PropTypes.number,
-  courseName: PropTypes.string,
-};
 
 export default App;
