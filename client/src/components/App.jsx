@@ -30,7 +30,7 @@ class App extends React.Component {
   }
 
   getReviews(courseId) {
-    fetch(`${courseId}/reviews`)
+    fetch(`/courses/${courseId}/reviews`)
       .then(rawData => (rawData.text()))
       .then((data) => {
         this.setState(JSON.parse(data));
