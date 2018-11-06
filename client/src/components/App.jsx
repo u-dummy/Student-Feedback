@@ -10,6 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      courseId: props.courseId,
       courseStats: {},
       featuredReview: {},
       reviews: [],
@@ -26,11 +27,11 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getReviews(this.props.courseId);
+    this.getReviews();
   }
 
-  getReviews(courseId) {
-    fetch(`/courses/${courseId}/reviews`)
+  getReviews() {
+    fetch(`${window.location.pathname.slice('/courses'.length)}/reviews`)
       .then(rawData => (rawData.text()))
       .then((data) => {
         this.setState(JSON.parse(data));
