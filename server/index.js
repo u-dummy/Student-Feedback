@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '/../public')));
 
 
-app.get('/:courseId/reviews', (req, res) => {
+app.get('/courses/:courseId/reviews', (req, res) => {
   const { courseId } = req.params;
   getReviewData(courseId, res);
 });
