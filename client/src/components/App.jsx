@@ -29,7 +29,7 @@ class App extends React.Component {
   }
 
   getReviews() {
-    fetch(`${window.location.pathname.slice('/courses'.length)}/reviews`)
+    fetch(`${window.location.pathname.slice('/courses'.length)}reviews`)
       .then(rawData => (rawData.text()))
       .then((data) => {
         this.setState(JSON.parse(data));
