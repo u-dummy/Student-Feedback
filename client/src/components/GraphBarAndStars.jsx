@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import GraphBar from './GraphBar.jsx';
+import FullStars from './FullStars.jsx';
 import styles from '../styles/GraphBarAndStars.css';
 
 class GraphBarAndStars extends React.Component {
@@ -16,7 +17,9 @@ class GraphBarAndStars extends React.Component {
       <div className={styles.studentFeedbackGraphRow} style={{ opacity: this.setOpacity() }}
         onClick={this.props.ratingFilter}>
         <GraphBar percent={ this.props.percent * 100 }/>
-        <img className={styles.rowStars} src={`https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/${this.props.currentStar}+stars+white.png`}></img>
+        <div className={styles.rowStars}>
+          <FullStars starStyle={{ fontSize: '15px', margin: '3px' }} rating={this.props.currentStar} />
+        </div>
         <div className={styles.starButtonHolder}>
           <button className={styles.starButton}>{Math.round(this.props.percent * 100)}%</button>
         </div>

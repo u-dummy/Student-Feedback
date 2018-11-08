@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
+import FullStars from './FullStars.jsx';
 import styles from '../styles/Review.css';
 
 class Review extends React.Component {
@@ -41,7 +42,9 @@ class Review extends React.Component {
           </span>
         </div>
         <div className={styles.reviewRatingAndText}>
-          <div><img className={styles.reviewStars} src={`https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/${this.props.reviewData.rating}+stars+white.png`}></img></div>
+          <div className={styles.reviewStars}>
+            <FullStars starStyle={{ fontSize: '15px', margin: '0 2px 0 0' }} rating={this.props.reviewData.rating} />
+          </div>
           {this.setReviewText()}
         </div>
       </div>
