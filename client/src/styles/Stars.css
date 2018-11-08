@@ -1,43 +1,12 @@
-/* .starsContainer {
-  width: 79%;
-  display: inline-block;
-  height: 70%;
-  text-align: center;
-  position: relative;
+
+.fullStar svg * {
+fill: url(#starFilled);
 }
 
-.emptyStarsWrapper {
-  position: absolute;
-  width: 100%;
+.emptyStar svg * {
+fill: url(#starEmpty);
 }
 
-.filledStarsWrapper {
-  position: absolute;
-  overflow: hidden;
+.partialStar svg * {
+fill: url(#starPartialFill);
 }
-
-.filledStars {
-  width: 128px;
-  height: 20px;
-}
-
-.emptyStars {
-  width: 128px;
-  height: 20px;
-} */
-
-.stars {
-  padding-right: 10px;
- }
- 
- .fullStar svg * {
-  fill: url(#starFilled);
- }
- 
- .emptyStar svg * {
-  fill: url(#starEmpty);
- }
- 
- .partialStar svg * {
-  fill: url(#starPartialFill);
- }
