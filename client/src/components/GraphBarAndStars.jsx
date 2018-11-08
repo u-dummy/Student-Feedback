@@ -18,7 +18,7 @@ class GraphBarAndStars extends React.Component {
         onClick={this.props.ratingFilter}>
         <GraphBar percent={ this.props.percent * 100 }/>
         <div className={styles.rowStars}>
-          <FullStars starStyle={{ fontSize: '15px', margin: '3px' }} rating={this.props.currentStar} />
+          <FullStars starStyle={{ fontSize: '15px', margin: '2px' }} rating={this.props.currentStar} />
         </div>
         <div className={styles.starButtonHolder}>
           <button className={styles.starButton}>{Math.round(this.props.percent * 100)}%</button>
