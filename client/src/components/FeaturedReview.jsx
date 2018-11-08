@@ -28,7 +28,7 @@ class FeaturedReview extends React.Component {
                 <span>( {this.props.featuredReview.user.courseCount} courses,</span>
                 <span> {this.props.featuredReview.user.reviewCount} reviews )</span>
                 <div>
-                <Stars starStyle={{ 'font-size': '13px', margin: '2px' }} rating={this.props.featuredReview.rating} />
+                <Stars starStyle={{ fontSize: '13px', margin: '2px' }} rating={this.props.featuredReview.rating} />
                 </div>
                 <div>{moment(this.props.featuredReview.date).fromNow()}</div>
               </div>
