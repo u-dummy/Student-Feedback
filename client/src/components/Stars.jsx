@@ -4,53 +4,75 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import styles from '../styles/Stars.css';
-import symbols from '../symbols.jsx';
 
-// const Stars = props => (
-//   <div className={styles.starsContainer}>
-//     <div className={styles.emptyStarsWrapper}>
-//       <img className={styles.emptyStars} src={'https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/emptyStars.png'}></img>
-//     </div>
-//     <div className={styles.filledStarsWrapper} style={{ width: `${Math.ceil((props.average / 5) * 10) * 10}%` }}>
-//       <img className={styles.filledStars} src={'https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/filledStars.png'}></img>
-//       </div>
-//   </div>
-// );
 class Stars extends React.Component {
+  createFiveStars() {
+    const stars = [];
+    let totalFill = Math.ceil(this.props.rating * 100);
+    let partialFill = 0;
+
+    for (let i = 0; i < 5; i += 1) {
+      let fill = 0;
+      let star = <div></div>;
+      totalFill >= 100 ? fill = 100 : fill = totalFill;
+      if (fill === 100) {
+        star = (
+          <span className={ styles.fullStar } style={this.props.starStyle}>
+            <FontAwesomeIcon icon={ faStar } />
+          </span>
+        );
+      } else if (fill > 0) {
+        partialFill = fill;
+        star = (
+          <span className={ styles.partialStar } style={this.props.starStyle} >
+            <FontAwesomeIcon icon={ faStar } />
+          </span>
+        );
+      } else {
+        star = (
+          <span className={ styles.emptyStar } style={this.props.starStyle} >
+            <FontAwesomeIcon icon={ faStar } />
+          </span>
+        );
+      }
+      stars.push(star);
+      totalFill -= 100;
+    }
+
+    stars.push(
+      <svg width='0' height='0'>
+        <linearGradient id='starEmpty'>
+          <stop stopColor='#dedfe0' offset='100%' />
+        </linearGradient>
+        <linearGradient id='starFilled'>
+          <stop stopColor='#f4c150' offset='100%' />
+        </linearGradient>
+        <linearGradient id='starPartialFill'>
+            <stop stopColor='#f4c150' offset='0%' />
+            <stop stopColor='#f4c150' offset={`${partialFill}`} />
+            <stop stopColor='#dedfe0' offset={`${partialFill}`} />
+            <stop stopColor='#dedfe0' offset='100%' />
+          </linearGradient>
+      </svg>,
+    );
+    return stars;
+  }
+
   render() {
     return (
       <div>
-        <FontAwesomeIcon className={ styles.partialStar } icon={ faStar } />
-        <span className={ styles.partialStar } >
-            <FontAwesomeIcon icon={ faStar } />
-        </span>
-        <span className={ styles.fullStar } >
-            <FontAwesomeIcon icon={ faStar } />
-        </span>
-        <span className={ styles.emptyStar } >
-            <FontAwesomeIcon className={ styles.emptyStar } icon={ faStar } />
-        </span>
-        <svg width='0' height='0'>
-          <linearGradient id='starPartialFill'>
-            <stop stopColor='#f4c150' offset='0%' />
-            <stop stopColor='#f4c150' offset='50%' />
-            <stop stopColor='#dedfe0' offset='50%' />
-            <stop stopColor='#dedfe0' offset='100%' />
-          </linearGradient>
-          <linearGradient id='starEmpty'>
-            <stop stopColor='#dedfe0' offset='100%' />
-          </linearGradient>
-          <linearGradient id='starFilled'>
-            <stop stopColor='#f4c150' offset='100%' />
-          </linearGradient>
-        </svg>
+        {this.createFiveStars()}
       </div>
     );
   }
 }
 
 Stars.propTypes = {
-  average: PropTypes.number.isRequired,
+  rating: PropTypes.number.isRequired,
+  starStyle: PropTypes.shape({
+    'font-size': PropTypes.string.isRequired,
+    margin: PropTypes.string.isRequired,
+  }),
 };
 
 export default Stars;

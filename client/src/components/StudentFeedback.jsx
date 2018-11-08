@@ -26,7 +26,7 @@ class StudentFeedback extends React.Component {
               {Number(this.props.stats.avg).toFixed(1)}
             </div>
             <div className={styles.studentFeedbackAverageStars}>
-              <Stars average={Number(this.props.stats.avg)}/>
+              <Stars starStyle={{ 'font-size': '19px', margin: '3px' }} rating={Number(this.props.stats.avg)}/>
             </div>
             <div>Course Rating</div>
           </div>
