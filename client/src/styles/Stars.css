@@ -1,4 +1,4 @@
-.starsContainer {
+/* .starsContainer {
   width: 79%;
   display: inline-block;
   height: 70%;
@@ -24,7 +24,7 @@
 .emptyStars {
   width: 128px;
   height: 20px;
-}
+} */
 
 .stars {
   padding-right: 10px;
