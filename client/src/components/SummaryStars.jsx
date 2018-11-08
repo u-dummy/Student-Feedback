@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import styles from '../styles/Stars.css';
 
-class PartialStars extends React.Component {
-  createPartialStars() {
+class SummaryStars extends React.Component {
+  createSummaryStars() {
     const stars = [];
     const starCount = 5;
     let totalFill = Math.ceil(this.props.rating * 100);
@@ -63,13 +63,13 @@ class PartialStars extends React.Component {
   render() {
     return (
       <div>
-        {this.createPartialStars()}
+        {this.createSummaryStars()}
     </div>
     );
   }
 }
 
-PartialStars.propTypes = {
+SummaryStars.propTypes = {
   rating: PropTypes.number.isRequired,
   starStyle: PropTypes.shape({
     fontSize: PropTypes.string.isRequired,
@@ -77,4 +77,4 @@ PartialStars.propTypes = {
   }),
 };
 
-export default PartialStars;
+export default SummaryStars;
