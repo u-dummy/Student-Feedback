@@ -1,39 +1,24 @@
 # Project Name
 
-> Project description
+The "reviews" module for the Udemy course page.
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-
-## Table of Contents
-
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
+  - https://github.com/u-demo/header-sidebar-service
+  - https://github.com/u-demo/students-also-bought-service
+  - https://github.com/u-demo/instructors-service
 
 ## Usage
-
-> Some usage instructions
-
-## Requirements
-
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
-- etc
-
-## Development
+To run:
+- run schema.sql to create SQL database (mysql -u [username] -p [password])
+- npm run seed to seed database
+- npm start to start server
+- hosted on localhost:3001
+- run npm run react to compile webapp 
 
 ### Installing Dependencies
 
 From within the root directory:
 
-```sh
-npm install -g webpack
 npm install
-```
 
