@@ -27,7 +27,9 @@ class Stars extends React.Component {
         <span className={ styles.fullStar } >
             <FontAwesomeIcon icon={ faStar } />
         </span>
+        <span className={ styles.emptyStar } >
             <FontAwesomeIcon className={ styles.emptyStar } icon={ faStar } />
+        </span>
         <svg width='0' height='0'>
           <linearGradient id='starPartialFill'>
             <stop stopColor='#f4c150' offset='0%' />
