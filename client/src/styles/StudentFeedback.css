@@ -24,6 +24,7 @@
   position: relative;
   vertical-align: top;
   padding-bottom: 5px;
+  min-width: 150px;
 }
 
 .studentFeedbackBarGraph {

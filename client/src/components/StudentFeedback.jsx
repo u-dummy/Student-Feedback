@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import GraphBarAndStars from './GraphBarAndStars.jsx';
-import PartialStars from './PartialStars.jsx';
+import SummaryStars from './SummaryStars.jsx';
 import styles from '../styles/StudentFeedback.css';
 
 class StudentFeedback extends React.Component {
@@ -26,7 +26,7 @@ class StudentFeedback extends React.Component {
               {Number(this.props.stats.avg).toFixed(1)}
             </div>
             <div className={styles.studentFeedbackAverageStars}>
-              <PartialStars starStyle={{ fontSize: '19px', margin: '3px' }} rating={Number(this.props.stats.avg)}/>
+              <SummaryStars starStyle={{ fontSize: '19px', margin: '3px' }} rating={Number(this.props.stats.avg)}/>
             </div>
             <div>Course Rating</div>
           </div>
