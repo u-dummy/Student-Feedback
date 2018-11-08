@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import FullStars from './FullStars.jsx';
+import ReviewStars from './ReviewStars.jsx';
 import styles from '../styles/Review.css';
 
 class Review extends React.Component {
@@ -43,7 +43,7 @@ class Review extends React.Component {
         </div>
         <div className={styles.reviewRatingAndText}>
           <div className={styles.reviewStars}>
-            <FullStars starStyle={{ fontSize: '15px', margin: '0 2px 0 0' }} rating={this.props.reviewData.rating} />
+            <ReviewStars starStyle={{ fontSize: '15px', margin: '0 2px 0 0' }} rating={this.props.reviewData.rating} />
           </div>
           {this.setReviewText()}
         </div>

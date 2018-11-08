@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import GraphBar from './GraphBar.jsx';
-import FullStars from './FullStars.jsx';
+import FullStars from './ReviewStars.jsx';
 import styles from '../styles/GraphBarAndStars.css';
 
 class GraphBarAndStars extends React.Component {

@@ -9,3 +9,7 @@ fill: url(#starEmpty);
 .partialStar svg * {
 fill: url(#starPartialFill);
 }
+
+.halfStar svg * {
+  fill: url(#halfFilled);
+  }
