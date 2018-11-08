@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import FullStars from './FullStars.jsx';
+import ReviewStars from './ReviewStars.jsx';
 import styles from '../styles/FeaturedReview.css';
 
 class FeaturedReview extends React.Component {
@@ -27,7 +27,7 @@ class FeaturedReview extends React.Component {
                 </span>
                 <span>( {this.props.featuredReview.user.courseCount} courses,</span>
                 <span> {this.props.featuredReview.user.reviewCount} reviews )</span>
-                <FullStars starStyle={{ fontSize: '13px', margin: '2px' }} rating={this.props.featuredReview.rating} />
+                <ReviewStars starStyle={{ fontSize: '13px', margin: '2px' }} rating={this.props.featuredReview.rating} />
                 <div>{moment(this.props.featuredReview.date).fromNow()}</div>
               </div>
             </div>

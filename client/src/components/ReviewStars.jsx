@@ -1,21 +1,28 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import styles from '../styles/Stars.css';
 
-class FullStars extends React.Component {
-  createFullStars() {
+class ReviewStars extends React.Component {
+  createStars() {
     const stars = [];
     const starCount = 5;
     let totalFill = Math.ceil(this.props.rating * 100);
+    let fill = 0;
     let star = <div></div>;
 
     for (let i = 0; i < starCount; i += 1) {
-      if (totalFill >= 100) {
+      totalFill >= 100 ? fill = 100 : fill = totalFill;
+      if (fill === 100) {
         star = (
           <span key={i} className={ styles.fullStar } style={this.props.starStyle}>
+            <FontAwesomeIcon icon={ faStar } />
+          </span>
+        );
+      } else if (fill === 50) {
+        star = (
+          <span key={i} className={ styles.halfStar } style={this.props.starStyle} >
             <FontAwesomeIcon icon={ faStar } />
           </span>
         );
@@ -27,7 +34,7 @@ class FullStars extends React.Component {
         );
       }
       stars.push(star);
-      totalFill -= 100;
+      totalFill -= fill;
     }
 
     stars.push(
@@ -38,6 +45,12 @@ class FullStars extends React.Component {
         <linearGradient id='starFilled'>
           <stop stopColor='#f4c150' offset='100%' />
         </linearGradient>
+        <linearGradient id='halfFilled'>
+            <stop stopColor='#f4c150' offset='0%' />
+            <stop stopColor='#f4c150' offset='50%' />
+            <stop stopColor='#dedfe0' offset='50%' />
+            <stop stopColor='#dedfe0' offset='100%' />
+        </linearGradient>
       </svg>,
     );
 
@@ -47,13 +60,13 @@ class FullStars extends React.Component {
   render() {
     return (
       <div>
-        {this.createFullStars()}
+        {this.createStars()}
     </div>
     );
   }
 }
 
-FullStars.propTypes = {
+ReviewStars.propTypes = {
   rating: PropTypes.number.isRequired,
   starStyle: PropTypes.shape({
     fontSize: PropTypes.string.isRequired,
@@ -61,4 +74,4 @@ FullStars.propTypes = {
   }),
 };
 
-export default FullStars;
+export default ReviewStars;
