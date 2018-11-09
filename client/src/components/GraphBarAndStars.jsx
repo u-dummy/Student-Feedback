@@ -20,7 +20,7 @@ class GraphBarAndStars extends React.Component {
         <div className={styles.rowStars}>
           <FullStars starStyle={{ fontSize: '15px', margin: '2px' }} rating={this.props.currentStar} />
         </div>
-        <div className={styles.starButtonHolder}>
+        <div>
           <button className={styles.starButton}>{Math.round(this.props.percent * 100)}%</button>
         </div>
       </div>
