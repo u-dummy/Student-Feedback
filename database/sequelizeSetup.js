@@ -2,10 +2,10 @@ const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize('udemy', 'root', null, {
   dialect: 'mysql',
-  host: 'database',
-  port: 3306,
-  logging: true,
-  maxConcurrentQueries: 100,
+  // host: 'database',
+  // port: 3306,
+  // logging: true,
+  // maxConcurrentQueries: 100,
 });
 
 const Users = sequelize.define('users', {
