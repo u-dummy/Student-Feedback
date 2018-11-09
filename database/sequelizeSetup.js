@@ -2,6 +2,10 @@ const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize('udemy', 'root', null, {
   dialect: 'mysql',
+  host: 'host.docker.internal',
+  port: 3306,
+  logging: true,
+  maxConcurrentQueries: 100,
 });
 
 const Users = sequelize.define('users', {
@@ -46,4 +50,9 @@ Reviews.belongsTo(Users, { foreignKey: 'userId' });
 Courses.hasMany(Reviews, { foreignKey: 'courseId' });
 Reviews.belongsTo(Courses, { foreignKey: 'courseId' });
 
-module.exports = { Users, Courses, Reviews, sequelize };
+module.exports = {
+  Users,
+  Courses,
+  Reviews,
+  sequelize,
+};
