@@ -5,7 +5,7 @@ const path = require('path');
 const getReviewData = require('./serverModel.js');
 
 const app = express();
-const PORT = 3001;
+const PORT = 3002;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
