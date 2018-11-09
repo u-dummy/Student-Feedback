@@ -18,6 +18,8 @@
 --
 -- Table structure for table `courses`
 --
+CREATE DATABASE IF NOT EXISTS `udemy`;
+USE `udemy`;
 
 DROP TABLE IF EXISTS `courses`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
