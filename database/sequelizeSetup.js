@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize('udemy', 'root', null, {
   dialect: 'mysql',
-  host: 'host.docker.internal',
+  host: 'database',
   port: 3306,
   logging: true,
   maxConcurrentQueries: 100,
