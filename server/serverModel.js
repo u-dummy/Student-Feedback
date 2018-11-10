@@ -4,6 +4,7 @@ const flattenReviewData = (data) => {
   const reviewDataWithNestedUserObj = data.map(row => (row.dataValues));
   const reviewData = reviewDataWithNestedUserObj.map((row) => {
     row.user = row.user.dataValues;
+    row.rating = Number(row.rating);
     return row;
   });
 
@@ -13,7 +14,7 @@ const flattenReviewData = (data) => {
 const calcCourseStats = (reviewData) => {
   const sumRating = reviewData.reduce((sum, review) => (sum + review.rating), 0);
   const totalRatings = reviewData.length;
-  const avgRating = (sumRating / totalRatings).toFixed(2);
+  const avgRating = Number((sumRating / totalRatings).toFixed(2));
   const summaryStats = reviewData.reduce((obj, review) => {
     let { rating } = review;
     rating = Math.floor(rating);

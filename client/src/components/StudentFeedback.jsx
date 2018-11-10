@@ -23,10 +23,10 @@ class StudentFeedback extends React.Component {
         <div className={styles.studentFeedbackContainer}>
           <div className={styles.studentFeedbackAverageContainer}>
             <div className={styles.studentFeedbackAverage}>
-              {Number(this.props.stats.avg).toFixed(1)}
+              {this.props.stats.avg.toFixed(1)}
             </div>
             <div className={styles.studentFeedbackAverageStars}>
-              <SummaryStars starStyle={{ fontSize: '19px', margin: '3px' }} rating={Number(this.props.stats.avg)}/>
+              <SummaryStars starStyle={{ fontSize: '19px', margin: '3px' }} rating={this.props.stats.avg}/>
             </div>
             <div>Course Rating</div>
           </div>

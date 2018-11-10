@@ -66,7 +66,7 @@ class App extends React.Component {
         currentFilterRating: null,
       });
     } else {
-      const filteredReviews = this.state.reviews.filter(review => (review.rating === rating));
+      const filteredReviews = this.state.reviews.filter(review => (review.rating === rating || review.rating - 0.5 === rating));
       this.setState({
         reviewsFilteredByRating: filteredReviews,
         currentFilterRating: rating,
@@ -102,7 +102,6 @@ class App extends React.Component {
 
   render() {
     if (this.state.reviews.length > 0) {
-      console.log(this.state.reviews);
       return (
         <div className={styles.reviewModule}>
           <FeaturedReview featuredReview={ this.state.featuredReview } />
