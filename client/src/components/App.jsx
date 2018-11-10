@@ -4,6 +4,7 @@ import ReviewList from './ReviewList.jsx';
 import CourseSummary from './StudentFeedback.jsx';
 import Search from './Search.jsx';
 import styles from '../styles/App.css';
+import filterAndBold from '../filterAndBold.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -48,31 +49,14 @@ class App extends React.Component {
   }
 
   filterAndBoldOnSearch(query) {
+    let reviewsFilteredBySearch;
     this.setState({ queryTerm: query });
-    const filteredReviews = this.state.reviews.filter(reviewObj => (
-      reviewObj.review.toUpperCase().includes(query.toUpperCase())
-    ));
-
-    const filteredAndBoldedReviews = filteredReviews.map((reviewObj) => {
-      const queryStartingIndex = reviewObj.review.toUpperCase().indexOf(query.toUpperCase());
-      const queryEndingIndex = queryStartingIndex + query.length;
-      const boldedReview = {
-        preQuery: reviewObj.review.slice(0, queryStartingIndex),
-        query: <b>{reviewObj.review.slice(queryStartingIndex, queryEndingIndex)}</b>,
-        postQuery: reviewObj.review.slice(queryEndingIndex),
-      };
-
-      return {
-        user: reviewObj.user,
-        rating: reviewObj.rating,
-        date: reviewObj.date,
-        upvotes: reviewObj.upvotes,
-        downvotes: reviewObj.downvotes,
-        review: boldedReview,
-      };
-    });
-    // put this somewhere else
-    this.setState({ reviewsFilteredBySearch: filteredAndBoldedReviews });
+    if (query !== '') {
+      reviewsFilteredBySearch = filterAndBold(this.state.reviews, query);
+    } else {
+      reviewsFilteredBySearch = this.state.reviews;
+    }
+    this.setState({ reviewsFilteredBySearch });
   }
 
   filterOnRatingClick(rating) {

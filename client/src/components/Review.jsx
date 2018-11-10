@@ -7,12 +7,10 @@ import styles from '../styles/Review.css';
 class Review extends React.Component {
   setReviewText() {
     const { review } = this.props.reviewData;
-    if (typeof review === 'object') {
+    if (review.length) {
       return (
         <div>
-          {review.preQuery}
-          {review.query}
-          {review.postQuery}
+          {review}
         </div>
       );
     }
@@ -52,6 +50,7 @@ class Review extends React.Component {
   }
 }
 
+// need to fix propTypes for review
 Review.propTypes = {
   reviewData: PropTypes.shape({
     user: PropTypes.shape({
@@ -59,7 +58,9 @@ Review.propTypes = {
       username: PropTypes.string.isRequired,
     }),
     date: PropTypes.string.isRequired,
-    review: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
+    review: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.arrayOf(PropTypes.oneOfType(
+      [PropTypes.string.isRequired, PropTypes.object.isRequired],
+    ))]),
     rating: PropTypes.number.isRequired,
   }),
 };
