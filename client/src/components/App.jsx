@@ -102,6 +102,7 @@ class App extends React.Component {
 
   render() {
     if (this.state.reviews.length > 0) {
+      console.log(this.state.reviews);
       return (
         <div className={styles.reviewModule}>
           <FeaturedReview featuredReview={ this.state.featuredReview } />

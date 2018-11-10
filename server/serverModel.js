@@ -15,7 +15,8 @@ const calcCourseStats = (reviewData) => {
   const totalRatings = reviewData.length;
   const avgRating = (sumRating / totalRatings).toFixed(2);
   const summaryStats = reviewData.reduce((obj, review) => {
-    const { rating } = review;
+    let { rating } = review;
+    rating = Math.floor(rating);
     obj[rating] += (1 / totalRatings) * 100;
     return obj;
   }, {
