@@ -125,9 +125,7 @@ class App extends React.Component {
             selectedStar={ this.state.currentFilterRating } />
           <div className={styles.reviewsContainerHeaderAndSearch}>
               {this.setReviewHeader()}
-              <Search searchFilter={this.filterAndBoldOnSearch}
-                currentlyFiltered={this.state.reviewsFilteredBySearch.length !== this.state.reviews.length}
-              />
+              <Search searchFilter={this.filterAndBoldOnSearch} />
           </div>
           <ReviewList filteredReviews={ this.reviewsFilteredBySearchAndRating() }
           numOfReviewsToShow={ this.state.numOfReviewsToShow } addTen={ this.addTenReviews }

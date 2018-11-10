@@ -6,23 +6,31 @@ import symbols from '../symbols.jsx';
 class Search extends React.Component {
   constructor(props) {
     super(props);
-    this.query = React.createRef();
+    this.state = {
+      query: '',
+    };
+    // this.query = React.createRef();
     this.handleInputSubmit = this.handleInputSubmit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.clearSearch = this.clearSearch.bind(this);
   }
 
   handleInputSubmit(event) {
     event.preventDefault();
-    this.props.searchFilter(this.query.current.value);
+    this.props.searchFilter(this.state.query);
+  }
+
+  handleInputChange({ target: { name, value } }) {
+    this.setState({ [name]: value });
   }
 
   clearSearch() {
     this.props.searchFilter('');
-    this.query.current.value = '';
+    this.setState({ query: '' });
   }
 
   showClearSearchButton() {
-    if (this.props.currentlyFiltered) {
+    if (this.state.query !== '') {
       return (
         <button className={styles.clearSearchButton} type='button' onClick={ this.clearSearch }>
           <span className={styles.clearSearchSymbol}>{symbols.clear}</span>
@@ -36,7 +44,7 @@ class Search extends React.Component {
     return (
       <form className={styles.reviewSearchBar} onSubmit={this.handleInputSubmit}>
         <div className={styles.reviewSearchInputWrapper}>
-            <input type='text' className={styles.reviewSearchInput} placeholder='Search reviews' ref={this.query}/>
+            <input type='text' name='query' value={this.state.query} className={styles.reviewSearchInput} placeholder='Search reviews' onChange={this.handleInputChange} />
             {this.showClearSearchButton()}
             <button className={styles.reviewSearchButton} type='submit'>{symbols.magGlass}</button>
         </div>
@@ -46,7 +54,6 @@ class Search extends React.Component {
 }
 
 Search.propTypes = {
-  currentlyFiltered: PropTypes.bool,
   searchFilter: PropTypes.func.isRequired,
 };
 
