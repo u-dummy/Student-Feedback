@@ -4,15 +4,17 @@ const findMatchesAndBold = (query, review) => {
   let reviewStr = review;
   let queryStartingIndex = reviewStr.toUpperCase().indexOf(query.toUpperCase());
   const boldedReview = [];
+  let counter = 1;
 
   while (queryStartingIndex !== -1) {
     const queryEndingIndex = queryStartingIndex + query.length;
     boldedReview.push(
       reviewStr.slice(0, queryStartingIndex),
-      <b>{reviewStr.slice(queryStartingIndex, queryEndingIndex)}</b>,
+      <b key={counter} >{reviewStr.slice(queryStartingIndex, queryEndingIndex)}</b>,
     );
     reviewStr = reviewStr.slice(queryEndingIndex);
     queryStartingIndex = reviewStr.toUpperCase().indexOf(query.toUpperCase());
+    counter += 1;
   }
 
   if (reviewStr.length > 0) {
