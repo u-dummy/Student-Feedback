@@ -16,12 +16,12 @@ class GraphBarAndStars extends React.Component {
     return (
       <div className={styles.studentFeedbackGraphRow} style={{ opacity: this.setOpacity() }}
         onClick={this.props.ratingFilter}>
-        <GraphBar percent={ this.props.percent * 100 }/>
+        <GraphBar percent={ this.props.percent }/>
         <div className={styles.rowStars}>
           <FullStars starStyle={{ fontSize: '15px', margin: '2px' }} rating={this.props.currentStar} />
         </div>
         <div>
-          <button className={styles.starButton}>{Math.round(this.props.percent * 100)}%</button>
+          <button className={styles.starButton}>{Math.round(this.props.percent)}%</button>
         </div>
       </div>
     );
