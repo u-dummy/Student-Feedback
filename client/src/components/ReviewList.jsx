@@ -42,6 +42,7 @@ class ReviewList extends React.Component {
   }
 }
 
+// need to fix propTypes for review
 ReviewList.propTypes = {
   filteredReviews: PropTypes.arrayOf(PropTypes.shape({
     user: PropTypes.shape({
@@ -51,7 +52,9 @@ ReviewList.propTypes = {
       reviewCount: PropTypes.number.isRequired,
     }),
     date: PropTypes.string.isRequired,
-    review: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
+    review: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.arrayOf(PropTypes.oneOfType(
+      [PropTypes.string.isRequired, PropTypes.object.isRequired],
+    ))]),
     rating: PropTypes.number.isRequired,
   })),
   numOfReviewsToShow: PropTypes.number.isRequired,
