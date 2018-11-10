@@ -21,14 +21,22 @@ const reviewDataGenerator = (userId, reviewCount) => {
     const reported = Math.floor(Math.random() * 1.1);
     const fakeDistribution = Math.random() * 100;
     let rating;
-    if (fakeDistribution >= 50) {
+    if (fakeDistribution >= 60) {
       rating = 5;
-    } else if (fakeDistribution >= 30) {
+    } else if (fakeDistribution >= 50) {
+      rating = 4.5;
+    } else if (fakeDistribution >= 40) {
       rating = 4;
-    } else if (fakeDistribution >= 10) {
+    } else if (fakeDistribution >= 25) {
+      rating = 3.5;
+    } else if (fakeDistribution >= 20) {
       rating = 3;
-    } else if (fakeDistribution >= 5) {
+    } else if (fakeDistribution >= 15) {
+      rating = 2.5;
+    } else if (fakeDistribution >= 10) {
       rating = 2;
+    } else if (fakeDistribution >= 5) {
+      rating = 1.5;
     } else {
       rating = 1;
     }

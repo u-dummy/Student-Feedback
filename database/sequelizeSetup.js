@@ -37,7 +37,7 @@ const Reviews = sequelize.define('reviews', {
   },
   userId: Sequelize.INTEGER,
   courseId: Sequelize.INTEGER,
-  rating: Sequelize.INTEGER,
+  rating: Sequelize.DECIMAL(10, 1),
   review: Sequelize.STRING(600),
   date: Sequelize.DATE,
   upvotes: Sequelize.INTEGER,
