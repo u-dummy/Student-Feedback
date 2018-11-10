@@ -9,7 +9,6 @@ class Search extends React.Component {
     this.state = {
       query: '',
     };
-    // this.query = React.createRef();
     this.handleInputSubmit = this.handleInputSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.clearSearch = this.clearSearch.bind(this);
