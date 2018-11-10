@@ -41,7 +41,7 @@ class StudentFeedback extends React.Component {
 
 StudentFeedback.propTypes = {
   stats: PropTypes.shape({
-    avg: PropTypes.string.isRequired,
+    avg: PropTypes.number.isRequired,
     1: PropTypes.number.isRequired,
     2: PropTypes.number.isRequired,
     3: PropTypes.number.isRequired,
