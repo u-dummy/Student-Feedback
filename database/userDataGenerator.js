@@ -11,7 +11,7 @@ const userDataGenerator = (userCount) => {
     const picNum = Math.ceil(Math.random() * 99);
     const picGender = (gender === 0) ? 'men' : 'women';
     let userPic;
-    Math.random() > 0.8 ? userPic = `https://randomuser.me/api/portraits/${picGender}/${picNum}.jpg` : userPic = firstName[0]+lastName[0];
+    Math.random() > 0.2 ? userPic = `https://randomuser.me/api/portraits/${picGender}/${picNum}.jpg` : userPic = firstName[0]+lastName[0];
     userData.push({
       username: `${firstName} ${lastName}`,
       userPic,
