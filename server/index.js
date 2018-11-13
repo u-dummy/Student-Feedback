@@ -12,7 +12,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // app.use('/courses/:courseId', express.static(path.join(__dirname, '/../public/')));
-app.use('/courses/:courseId', expressStaticGzip(path.join(__dirname, '/../public/'), { enableBrotli: true }));
+app.use('/courses/:courseId', expressStaticGzip(path.join(__dirname, '/../public/'), {
+  enableBrotli: true,
+  customCompressions: [{
+    encodingName: 'deflate',
+    fileExtension: 'zz',
+  }],
+  orderPreference: ['br'],
+}));
 
 app.get('/:courseId/reviews', (req, res) => {
   const { courseId } = req.params;
