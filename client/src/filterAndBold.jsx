@@ -10,7 +10,7 @@ const findMatchesAndBold = (query, review) => {
     const queryEndingIndex = queryStartingIndex + query.length;
     boldedReview.push(
       reviewStr.slice(0, queryStartingIndex),
-      <b key={counter} >{reviewStr.slice(queryStartingIndex, queryEndingIndex)}</b>,
+      <b key={counter}>{reviewStr.slice(queryStartingIndex, queryEndingIndex)}</b>,
     );
     reviewStr = reviewStr.slice(queryEndingIndex);
     queryStartingIndex = reviewStr.toUpperCase().indexOf(query.toUpperCase());
@@ -31,7 +31,7 @@ const filterAndBold = (reviews, query) => {
 
   const filteredAndBoldedReviews = filteredReviews.map((reviewObj) => {
     const review = findMatchesAndBold(query, reviewObj.review);
-    
+
     return {
       user: reviewObj.user,
       rating: reviewObj.rating,
