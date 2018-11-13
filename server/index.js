@@ -1,5 +1,4 @@
 const express = require('express');
-const expressStaticGzip = require('express-static-gzip');
 const bodyParser = require('body-parser');
 const path = require('path');
 
@@ -11,15 +10,7 @@ const PORT = 3002;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use('/courses/:courseId', express.static(path.join(__dirname, '/../public/')));
-app.use('/courses/:courseId', expressStaticGzip(path.join(__dirname, '/../public/'), {
-  enableBrotli: true,
-  customCompressions: [{
-    encodingName: 'deflate',
-    fileExtension: 'zz',
-  }],
-  orderPreference: ['br'],
-}));
+app.use('/courses/:courseId', express.static(path.join(__dirname, '/../public/')));
 
 app.get('/:courseId/reviews', (req, res) => {
   const { courseId } = req.params;
