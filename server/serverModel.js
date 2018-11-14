@@ -63,4 +63,39 @@ const getReviewData = (courseId, res) => {
     });
 };
 
-module.exports = getReviewData;
+const addReview = (courseId, reviewInfo, res) => {
+  const { userId, rating, review } = reviewInfo;
+  if (!userId || !review || !courseId) {
+    res.status(400).end();
+  }
+  db.Reviews.create({
+    userId,
+    review,
+    rating,
+    courseId,
+  });
+};
+
+const removeReview = (reviewId, res) => {
+  if (reviewId === undefined) {
+    res.status(400).end();
+  }
+  db.Reviews.destroy({
+    where: { reviewId },
+  }).then(affectedReview => res.status(200).json(affectedReview));
+};
+
+const updateReview = (reviewId, review, res) => {
+  if (reviewId === undefined) {
+    res.status(400).end();
+  }
+  db.Reviews.update({ review }, { where: { reviewId } })
+    .then(() => res.status(200).end());
+};
+
+module.exports = {
+  getReviewData,
+  addReview,
+  removeReview,
+  updateReview,
+};
