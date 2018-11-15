@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import FeaturedReview from './FeaturedReview.jsx';
 import ReviewList from './ReviewList.jsx';
 import CourseSummary from './StudentFeedback.jsx';
@@ -30,7 +31,7 @@ class App extends React.Component {
   }
 
   getReviews() {
-    fetch(`${window.location.pathname.slice('/courses'.length)}reviews`)
+    axios.get(`${window.location.pathname.slice('/courses'.length)}reviews`)
       .then(rawData => (rawData.text()))
       .then((data) => {
         this.setState(JSON.parse(data));
@@ -43,6 +44,12 @@ class App extends React.Component {
         throw Error(err);
       });
   }
+
+  addReviews(review) {
+    axios.post('/courses', review)
+      .then(this.getReviews);
+  }
+
 
   addTenReviews() {
     this.setState({ numOfReviewsToShow: this.state.numOfReviewsToShow + 10 });
@@ -81,7 +88,6 @@ class App extends React.Component {
       this.state.reviewsFilteredByRating.forEach((ratingReview) => {
         if (searchReview.user.userId === ratingReview.user.userId) {
           reviewsFilteredBySearchAndRating.push(searchReview);
-          return;
         }
       });
     });
