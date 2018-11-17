@@ -1,13 +1,12 @@
 const rp = require('request-promise');
 const faker = require('faker');
 const fs = require('fs');
-// const { Readable, WriteAble } = require('stream');
 const path = require('path');
 const moment = require('moment');
 
 const userDataGen = () => {
   const userArr = [];
-  for (let i = 0; i < 100; i += 1) {
+  for (let i = 0; i < 1000; i += 1) {
     const userName = `${faker.name.firstName()}_${faker.name.lastName()}`;
     userArr.push(userName);
   }
@@ -21,10 +20,9 @@ const reviewGen = (randomWordArray) => {
   return review;
 };
 
-const courseReviewDataGen = (randomWordArray, userArr, loopIndex) => {
-  let reviewTxt = 'id,course,user,review,dateCreated';
-  const cycle = 100000;
-  let reviewCount = loopIndex * cycle;
+const courseReviewDataGen = (randomWordArray, userArr) => {
+  const cycle = 1000;
+  let txt = '';
   for (let i = 0; i < cycle; i += 1) {
     const word1 = randomWordArray[Math.floor(Math.random() * 140)];
     const word2 = randomWordArray[Math.floor(Math.random() * 140)];
@@ -32,18 +30,19 @@ const courseReviewDataGen = (randomWordArray, userArr, loopIndex) => {
     const courseName = `${word1} ${word2} ${word3}`;
     const avgReviewCount = Math.floor(Math.random() * 21);
     for (let j = 0; j < avgReviewCount; j += 1) {
-      reviewCount += 1;
       const review = reviewGen(randomWordArray);
-      const user = userArr[Math.floor(Math.random() * 100)];
+      const username = userArr[Math.floor(Math.random() * 1000)];
+      const upvotes = Math.floor(Math.random() * 100);
+      const downvotes = 100 - upvotes;
+      const reported = (downvotes > 85);
       const dayOffset = Math.floor(Math.random() * 2 * j);
-      const dateCreated = moment().subtract(dayOffset, 'days').format('M.D.YYYY');
-      reviewTxt += `${reviewCount},${courseName},${user},${review},${dateCreated}`;
-      reviewTxt += '\r\n';
+      const dateCreated = moment().subtract(dayOffset, 'days').format('YYYY-MM-DD');
+      txt += `${username},${courseName},${review},${upvotes},${downvotes},${reported},${dateCreated}`;
+      txt += '\r\n';
     }
   }
-  return reviewTxt;
+  return txt;
 };
-
 
 const seed = () => {
   let randomWordArray = [];
@@ -53,11 +52,12 @@ const seed = () => {
       randomWordArray = text.split(' ');
     }).then(() => {
       fs.writeFileSync((path.join(__dirname, 'reviews.csv')), '');
-      for (let i = 0; i < 10; i += 1) {
-        const userArr = userDataGen();
-        const reviewTxt = courseReviewDataGen(randomWordArray, userArr, i);
+      fs.appendFileSync((path.join(__dirname, 'reviews.csv')), 'course,user,review,upvotes,downvotes,reported,dateCreated\r\n');
+      const userArr = userDataGen();
+      for (let i = 0; i < 1000; i += 1) {
+        const reviewTxt = courseReviewDataGen(randomWordArray, userArr);
         fs.appendFileSync(path.join(__dirname, 'reviews.csv'), reviewTxt);
-        console.log('append');
+        console.log(i);
       }
     });
 };
