@@ -1,20 +1,17 @@
 const faker = require('faker');
+const csvWriter = require('csv-write-stream');
+const fs = require('fs');
 
-const chooseRandomCourse = (previousCourses) => {
-  const course = Math.ceil(Math.random() * 100);
-  if (previousCourses.indexOf(course) === -1) {
-    return course;
-  }
-  chooseRandomCourse(previousCourses);
-};
 
-const reviewDataGenerator = (userId, reviewCount) => {
-  const reviewData = [];
+const chooseRandomCourse = () => Math.ceil(Math.random() * 10000000);
+
+const reviewDataGenerator = (reviewCount, id) => {
   const previousCourses = [];
+  let data = '';
   for (let i = 0; i < reviewCount; i += 1) {
-    const courseId = chooseRandomCourse(previousCourses);
-    previousCourses.push(courseId);
-    const review = faker.lorem.paragraph();
+    const courseId = id;
+    previousCourses.push(chooseRandomCourse());
+    const review = faker.lorem.sentences(2);
     const date = faker.date.past();
     const upvotes = Math.ceil(Math.random() * 100);
     const downvotes = Math.ceil(Math.random() * 20);
@@ -40,18 +37,37 @@ const reviewDataGenerator = (userId, reviewCount) => {
     } else {
       rating = 1;
     }
-    reviewData.push({
-      userId,
-      courseId,
-      rating,
-      review,
-      date,
-      upvotes,
-      downvotes,
-      reported,
-    });
+    const reviewData = `${Math.ceil(Math.random() * 1000)},${courseId},${rating},${review},${date},${upvotes},${downvotes},${reported}\n`;
+    data += reviewData;
   }
-  return reviewData;
+  return data;
 };
 
-module.exports = reviewDataGenerator;
+
+const stream = fs.createWriteStream('reviews.csv');
+function writeTenMillionTimes(writer) {
+  let j = 10000000;
+  function write() {
+    let ok = true;
+    do {
+      j--;
+      if (j === 0) {
+        // last time!
+        writer.write(reviewDataGenerator(5, j));
+      } else {
+        // see if we should continue, or wait
+        // don't pass the callback, because we're not done yet.
+        ok = writer.write(reviewDataGenerator(5, j));
+        console.log(j);
+      }
+    } while (j > 0 && ok);
+    if (j > 0) {
+      // had to stop early!
+      // write some more once it drains
+      console.log('needs to be drained');
+      writer.once('drain', write);
+    }
+  }
+  write();
+}
+writeTenMillionTimes(stream);

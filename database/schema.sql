@@ -1,41 +1,37 @@
+DROP DATABASE IF NOT EXISTS udemy;
 CREATE DATABASE udemy;
 
-USE udemy;
+ \c udemy;
 
-CREATE TABLE users (
-userId INTEGER (9) NOT NULL AUTO_INCREMENT, 
+CREATE TABLE IF NOT EXISTS users (
+user_id SERIAL PRIMARY KEY, 
 username CHAR(50),
-userPic VARCHAR (50),
-courseCount INTEGER (5),
-reviewCount INTEGER (5),
-createdAt DATE,
-updatedAt DATE,
-PRIMARY KEY (userId)
+user_pic VARCHAR (50),
+course_count INTEGER,
+review_count INTEGER,
+created_at DATE,
+updated_at DATE
 );
 
-CREATE TABLE courses (
-  courseId INTEGER (8) NOT NULL AUTO_INCREMENT,
-  name VARCHAR (100),
-  createdAt DATE,
-  updatedAt DATE,
-  PRIMARY KEY (courseId)
-);
+-- CREATE TABLE IF NOT EXISTS courses (
+--   course_id SERIAL PRIMARY KEY,
+--   name VARCHAR (200),
+--   createdAt DATE,
+--   updatedAt DATE
+-- );
 
-CREATE TABLE reviews (
-  reviewId INTEGER (10) NOT NULL AUTO_INCREMENT,
-  userId INTEGER (9),
-  courseId INTEGER (8),
-  rating INTEGER (2),
-  review VARCHAR (600),
-  date TIMESTAMP,
-  upvotes INTEGER (5),
-  downvotes INTEGER (5),
-  reported INTEGER (1),
-  createdAt DATE,
-  updatedAt DATE,
-  PRIMARY KEY (reviewId),
-  FOREIGN KEY (userId)
-    REFERENCES users (userId),
-  FOREIGN KEY (courseId)
-    REFERENCES courses (courseId)
-);
+-- CREATE TABLE IF NOT EXISTS reviews (
+--   review_id SERIAL PRIMARY KEY,
+--   user_id INTEGER REFERENCES users(user_id),
+--   course_id INTEGER REFERENCES courses(course_id),
+--   rating INTEGER,
+--   review VARCHAR (300),
+--   date TIMESTAMP,
+--   upvotes INTEGER,
+--   downvotes INTEGER,
+--   reported INTEGER,
+--   createdAt DATE,
+--   updatedAt DATE
+-- );
+
+\COPY users (username, user_pic, course_count, review_count) FROM '/Users/simonliu/Desktop/student-feedback/database/users.csv' WITH (FORMAT CSV)
