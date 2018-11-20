@@ -12,7 +12,7 @@ const reviewDataGenerator = (reviewCount, id) => {
     const courseId = id;
     previousCourses.push(chooseRandomCourse());
     const review = faker.lorem.sentences(2);
-    const date = faker.date.past();
+    const date = faker.date.past().toTimeString();
     const upvotes = Math.ceil(Math.random() * 100);
     const downvotes = Math.ceil(Math.random() * 20);
     const reported = Math.floor(Math.random() * 1.1);
