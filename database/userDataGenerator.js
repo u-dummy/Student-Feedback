@@ -14,6 +14,8 @@ const userDataGenerator = (userCount) => {
     const reviewCount = Math.ceil(Math.random() * courseCount);
     const picNum = Math.ceil(Math.random() * 99);
     const picGender = (gender === 0) ? 'men' : 'women';
+    const time = new Date().getDate();
+    const updated_at = new Date().getDate();
     let userPic;
     // eslint-disable-next-line no-unused-expressions
     Math.random() > 0.2 ? userPic = `https://randomuser.me/api/portraits/${picGender}/${picNum}.jpg` : userPic = firstName[0] + lastName[0];
