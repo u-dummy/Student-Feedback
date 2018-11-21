@@ -3,7 +3,7 @@ const csvWriter = require('csv-write-stream');
 const fs = require('fs');
 
 
-const chooseRandomCourse = () => Math.ceil(Math.random() * 10000000);
+const chooseRandomCourse = () => Math.ceil(Math.random() * 2500000);
 
 const reviewDataGenerator = (reviewCount, id) => {
   const previousCourses = [];
@@ -46,12 +46,12 @@ const reviewDataGenerator = (reviewCount, id) => {
 
 const stream = fs.createWriteStream('reviews.csv');
 function writeTenMillionTimes(writer) {
-  let j = 10000000;
+  let j = 0;
   function write() {
     let ok = true;
     do {
-      j--;
-      if (j === 0) {
+      j++;
+      if (j === 2500000) {
         // last time!
         writer.write(reviewDataGenerator(5, j));
       } else {
@@ -60,8 +60,8 @@ function writeTenMillionTimes(writer) {
         ok = writer.write(reviewDataGenerator(5, j));
         console.log(j);
       }
-    } while (j > 0 && ok);
-    if (j > 0) {
+    } while (j < 2500000 && ok);
+    if (j < 2500000) {
       // had to stop early!
       // write some more once it drains
       console.log('needs to be drained');

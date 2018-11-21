@@ -39,3 +39,4 @@ CREATE TABLE IF NOT EXISTS reviews (
 \COPY courses (course_id, name) FROM '/Users/simonliu/Desktop/student-feedback/database/courseData.csv' WITH (FORMAT CSV)
 \COPY users (username, user_pic, course_count, review_count) FROM '/Users/simonliu/Desktop/student-feedback/database/users.csv' WITH (FORMAT CSV)
 \COPY reviews (user_id, course_id, rating, review, date, upvotes, downvotes, reported) FROM '/Users/simonliu/Desktop/student-feedback/database/reviews.csv' WITH (FORMAT CSV)
+CREATE INDEX id ON users USING HASH (user_id);
