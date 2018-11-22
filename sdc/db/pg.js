@@ -7,18 +7,28 @@ const pool = new pg.Pool({
   password: 'QETUO1177adgjl',
 });
 
-pool.query('DROP TABLE IF EXISTS reviews')
+pool.query('DROP TABLE IF EXISTS reviews, users, courses')
   .then(() => {
-    console.log('reviews dropped');
-    pool.query(`CREATE TABLE reviews(
-      id SERIAL PRIMARY KEY,
-      username varchar(40) NOT NULL,
-      course varchar (80) NOT NULL,
-      review varchar DEFAULT 'great class!',
-      upvotes integer DEFAULT 0,
-      downvotes integer DEFAULT 0,
-      reported boolean DEFAULT false,
-      date date)`)
-      .then(() => console.log('built reviews'))
+    console.log('tables dropped');
+    pool.query(`CREATE TABLE users(
+        id SERIAL PRIMARY KEY,
+        name varchar(80) NOT NULL,
+        photo varchar
+    )`).then(() => {
+      pool.query(`CREATE TABLE courses(
+        id SERIAL PRIMARY KEY,
+        name varchar NOT NULL
+      )`).then(() => {
+        pool.query(`CREATE TABLE reviews(
+          id SERIAL PRIMARY KEY,
+          userid integer references users(id),
+          courseid integer references courses(id),
+          review varchar DEFAULT 'great class!',
+          upvotes integer DEFAULT 0,
+          downvotes integer DEFAULT 0,
+          reported boolean DEFAULT false,
+          date date)`);
+      }).then(() => console.log('built tables'));
+    })
       .catch(e => console.log(e));
   });

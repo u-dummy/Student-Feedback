@@ -6,42 +6,62 @@ const moment = require('moment');
 
 const userDataGen = () => {
   const userArr = [];
+  let users = '';
   for (let i = 0; i < 1000; i += 1) {
     const userName = `${faker.name.firstName()}_${faker.name.lastName()}`;
     userArr.push(userName);
+    users += `${userName},https://picsum.photos/200/?random`;
+    users += '\r\n';
   }
-  return userArr;
+  return { users, userArr };
 };
 
-const reviewGen = (randomWordArray) => {
-  const index1 = Math.floor(Math.random() * (randomWordArray.length - 15));
-  const index2 = index1 + Math.floor(Math.random() * 14);
-  const review = randomWordArray.slice(index1, index2).join(' ');
-  return review;
-};
-
-const courseReviewDataGen = (randomWordArray, userArr) => {
-  const cycle = 1000;
-  let txt = '';
-  for (let i = 0; i < cycle; i += 1) {
+const courseGen = (randomWordArray) => {
+  let courses = '';
+  const courseArr = [];
+  for (let i = 0; i < 1000; i += 1) {
     const word1 = randomWordArray[Math.floor(Math.random() * 140)];
     const word2 = randomWordArray[Math.floor(Math.random() * 140)];
     const word3 = randomWordArray[Math.floor(Math.random() * 140)];
-    const courseName = `${word1} ${word2} ${word3}`;
+    const coursename = `${word1} ${word2} ${word3}`;
+    courses += `${coursename}`;
+    courses += '\r\n';
+  }
+  return { courses, courseArr };
+};
+
+const reviewGen = (randomWordArray, index) => {
+  const index1 = Math.floor(Math.random() * (randomWordArray.length - 15));
+  const index2 = index1 + Math.floor(Math.random() * 14);
+  const review = randomWordArray.slice(index1, index2).join(' ');
+  const upvotes = Math.floor(Math.random() * 100);
+  const downvotes = 100 - upvotes;
+  const reported = (downvotes > 85);
+  const dayOffset = Math.ceil(Math.random() * 2 * index);
+  const dateCreated = moment().subtract(dayOffset, 'days').format('YYYY-MM-DD');
+  return {
+    review,
+    upvotes,
+    downvotes,
+    reported,
+    dateCreated,
+  };
+};
+
+const dataGen = (randomWordArray, userArr, courseArr, streamIndex) => {
+  const cycle = 1000;
+  let reviews = '';
+  for (let i = 0; i < cycle; i += 1) {
     const avgReviewCount = Math.floor(Math.random() * 21);
     for (let j = 0; j < avgReviewCount; j += 1) {
-      const review = reviewGen(randomWordArray);
-      const username = userArr[Math.floor(Math.random() * 1000)];
-      const upvotes = Math.floor(Math.random() * 100);
-      const downvotes = 100 - upvotes;
-      const reported = (downvotes > 85);
-      const dayOffset = Math.floor(Math.random() * 2 * j);
-      const dateCreated = moment().subtract(dayOffset, 'days').format('YYYY-MM-DD');
-      txt += `${username},${courseName},${review},${upvotes},${downvotes},${reported},${dateCreated}`;
-      txt += '\r\n';
+      const { review, upvotes, downvotes, reported, dateCreated } = reviewGen(randomWordArray, j);
+      const userid = Math.ceil(Math.random() * 1000);
+      const courseid = Math.ceil(Math.random() * cycle) + (streamIndex * cycle);
+      reviews += `${userid},${courseid},${review},${upvotes},${downvotes},${reported},${dateCreated}`;
+      reviews += '\r\n';
     }
   }
-  return txt;
+  return reviews;
 };
 
 const seed = () => {
@@ -51,12 +71,21 @@ const seed = () => {
       const { text } = JSON.parse(res);
       randomWordArray = text.split(' ');
     }).then(() => {
+      fs.writeFileSync((path.join(__dirname, 'users.csv')), '');
+      fs.appendFileSync((path.join(__dirname, 'users.csv')), 'username,photo\r\n');
+      const { users, userArr } = userDataGen();
+      fs.appendFileSync(path.join(__dirname, 'users.csv'), users);
+      return userArr;
+    }).then((userArr) => {
+      fs.writeFileSync((path.join(__dirname, 'courses.csv')), '');
+      fs.appendFileSync((path.join(__dirname, 'courses.csv')), 'coursename\r\n');
       fs.writeFileSync((path.join(__dirname, 'reviews.csv')), '');
-      fs.appendFileSync((path.join(__dirname, 'reviews.csv')), 'course,user,review,upvotes,downvotes,reported,dateCreated\r\n');
-      const userArr = userDataGen();
+      fs.appendFileSync((path.join(__dirname, 'reviews.csv')), 'userid,courseid,review,upvotes,downvotes,reported,dateCreated\r\n');
       for (let i = 0; i < 1000; i += 1) {
-        const reviewTxt = courseReviewDataGen(randomWordArray, userArr);
-        fs.appendFileSync(path.join(__dirname, 'reviews.csv'), reviewTxt);
+        const { courses, courseArr } = courseGen(randomWordArray);
+        const reviews = dataGen(randomWordArray, userArr, courseArr, i);
+        fs.appendFileSync(path.join(__dirname, 'courses.csv'), courses);
+        fs.appendFileSync(path.join(__dirname, 'reviews.csv'), reviews);
         console.log(i);
       }
     });
