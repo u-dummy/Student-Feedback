@@ -2,13 +2,14 @@ const Sequelize = require('sequelize');
 const DbConfig = require('./db.config.js');
 
 // const sequelize = new Sequelize('udemy', 'root', null, { dialect: 'mysql' });
-
 const sequelize = new Sequelize(DbConfig.databaseName, DbConfig.username, DbConfig.password, {
-  dialect: 'mysql',
+  dialect: DbConfig.dialect,
   host: DbConfig.hostName,
-  port: 3306,
+  port: 5432,
   logging: console.log,
-  maxConcurrentQueries: 100,
+  define: {
+    timestamps: false,
+  },
 });
 
 const Users = sequelize.define('users', {
@@ -48,10 +49,18 @@ const Reviews = sequelize.define('reviews', {
   reported: Sequelize.INTEGER,
 });
 
-Users.hasMany(Reviews, { foreignKey: 'userId' });
-Reviews.belongsTo(Users, { foreignKey: 'userId' });
-Courses.hasMany(Reviews, { foreignKey: 'courseId' });
-Reviews.belongsTo(Courses, { foreignKey: 'courseId' });
+Users.hasMany(Reviews, {
+  foreignKey: 'userId'
+});
+Reviews.belongsTo(Users, {
+  foreignKey: 'userId'
+});
+Courses.hasMany(Reviews, {
+  foreignKey: 'courseId'
+});
+Reviews.belongsTo(Courses, {
+  foreignKey: 'courseId'
+});
 
 module.exports = {
   Users,

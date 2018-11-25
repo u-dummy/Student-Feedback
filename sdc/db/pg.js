@@ -11,23 +11,26 @@ pool.query('DROP TABLE IF EXISTS reviews, users, courses')
   .then(() => {
     console.log('tables dropped');
     pool.query(`CREATE TABLE users(
-        id SERIAL PRIMARY KEY,
-        name varchar(80) NOT NULL,
-        photo varchar
+        "userId" SERIAL PRIMARY KEY,
+        "username" varchar(80) NOT NULL,
+        "userPic" varchar,
+        "courseCount" integer DEFAULT 0,
+        "reviewCount" integer DEFAULT 0
     )`).then(() => {
       pool.query(`CREATE TABLE courses(
-        id SERIAL PRIMARY KEY,
-        name varchar NOT NULL
+        "courseId" SERIAL PRIMARY KEY,
+        "name" varchar NOT NULL
       )`).then(() => {
         pool.query(`CREATE TABLE reviews(
-          id SERIAL PRIMARY KEY,
-          userid integer references users(id),
-          courseid integer references courses(id),
-          review varchar DEFAULT 'great class!',
-          upvotes integer DEFAULT 0,
-          downvotes integer DEFAULT 0,
-          reported boolean DEFAULT false,
-          date date)`);
+          "reviewId" SERIAL PRIMARY KEY,
+          "userId" integer references users("userId"),
+          "courseId" integer references courses("courseId"),
+          "rating" integer,
+          "review" varchar,
+          "upvotes" integer DEFAULT 0,
+          "downvotes" integer DEFAULT 0,
+          "reported" boolean DEFAULT false,
+          "date" date)`);
       }).then(() => console.log('built tables'));
     })
       .catch(e => console.log(e));

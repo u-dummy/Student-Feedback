@@ -7,7 +7,6 @@ const flattenReviewData = (data) => {
     row.rating = Number(row.rating);
     return row;
   });
-
   return reviewData;
 };
 
@@ -65,15 +64,29 @@ const getReviewData = (courseId, res) => {
 
 const addReview = (courseId, reviewInfo, res) => {
   const { userId, rating, review } = reviewInfo;
-  if (!userId || !review || !courseId) {
+  console.log(isNaN(rating));
+  if (isNaN(userId) || !review || !courseId || isNaN(rating)) {
     res.status(400).end();
   }
+  const year = new Date().getFullYear();
+  const month = new Date().getMonth() + 1;
+  const day = new Date().getDate();
+  const date = `${year}-${month}-${day}`;
   db.Reviews.create({
     userId,
     review,
     rating,
     courseId,
-  });
+    date,
+  })
+    .then(() => {
+      console.log('success');
+      res.status(200).end();
+    })
+    .catch((err) => {
+      console.log('err');
+      res.json(err);
+    });
 };
 
 const removeReview = (reviewId, res) => {
