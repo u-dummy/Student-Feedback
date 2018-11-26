@@ -58,7 +58,7 @@ const getReviewData = (courseId, res) => {
       const courseStats = calcCourseStats(reviewData);
       const featuredReview = findFeaturedReview(reviewData);
       const reviews = removeFeaturedReviewFromList(featuredReview, reviewData);
-      res.send({ courseStats, featuredReview, reviews });
+      res.status(200).send({ courseStats, featuredReview, reviews });
     });
 };
 

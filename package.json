@@ -48,6 +48,7 @@
     "mongoose-auto-increment": "^5.0.1",
     "mysql": "^2.14.1",
     "mysql2": "^1.6.1",
+    "newrelic": "^4.11.0",
     "pg": "^7.6.1",
     "prop-types": "^15.6.2",
     "react": "^16.6.0",
