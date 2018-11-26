@@ -46,9 +46,12 @@ const findFeaturedReview = (reviewData) => {
   return featuredReview;
 };
 
-const removeFeaturedReviewFromList = (featuredReview, reviewData) => (
-  reviewData.filter(review => (review.userId !== featuredReview.userId))
-);
+const removeFeaturedReviewFromList = (featuredReview, reviewData) => {
+  if (!featuredReview) {
+    return reviewData;
+  }
+  return reviewData.filter(review => (review.userId !== featuredReview.userId));
+};
 
 
 const getReviewData = (courseId, res) => {
