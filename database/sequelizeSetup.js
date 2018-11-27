@@ -2,14 +2,14 @@ const Sequelize = require('sequelize');
 const DbConfig = require('./.config.js');
 const sequelize = new Sequelize('udemy', 'root', null, { dialect: 'mysql' });
 
-// const sequelize = new Sequelize(DbConfig.databaseName, DbConfig.username, DbConfig.password, {
-//   dialect: 'mysql',
-//   host: DbConfig.host,
-//   port: 3306,
-//   logging: console.log,
-//   maxConcurrentQueries: 100,
+const sequelize = new Sequelize(DbConfig.databaseName, DbConfig.username, DbConfig.password, {
+  dialect: 'mysql',
+  host: DbConfig.host,
+  port: 3306,
+  logging: console.log,
+  maxConcurrentQueries: 100,
   
-// });
+});
 
 const Users = sequelize.define('users', {
   userId: {

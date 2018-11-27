@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Review from './Review.jsx';
 import styles from '../styles/ReviewList.css';
 
@@ -7,7 +7,7 @@ class ReviewList extends React.Component {
   showVisibleReviews() {
     const visibleReviews = this.props.filteredReviews.slice(0, this.props.numOfReviewsToShow);
     const visibleReviewsDivs = visibleReviews.map(review => (
-      <div key={review.user.userId}>
+      <div key={review.user_id}>
         <Review reviewData={ review } />
       </div>
     ));
@@ -43,22 +43,22 @@ class ReviewList extends React.Component {
 }
 
 // need to fix propTypes for review
-ReviewList.propTypes = {
-  filteredReviews: PropTypes.arrayOf(PropTypes.shape({
-    user: PropTypes.shape({
-      userPic: PropTypes.string.isRequired,
-      username: PropTypes.string.isRequired,
-      courseCount: PropTypes.number.isRequired,
-      reviewCount: PropTypes.number.isRequired,
-    }),
-    date: PropTypes.string.isRequired,
-    review: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.arrayOf(PropTypes.oneOfType(
-      [PropTypes.string.isRequired, PropTypes.object.isRequired],
-    ))]),
-    rating: PropTypes.number.isRequired,
-  })),
-  numOfReviewsToShow: PropTypes.number.isRequired,
-  addTen: PropTypes.func.isRequired,
-};
+// ReviewList.propTypes = {
+//   filteredReviews: PropTypes.arrayOf(PropTypes.shape({
+//     user: PropTypes.shape({
+//       user_pic: PropTypes.string.isRequired,
+//       username: PropTypes.string.isRequired,
+//       courseCount: PropTypes.number.isRequired,
+//       reviewCount: PropTypes.number.isRequired,
+//     }),
+//     date: PropTypes.string.isRequired,
+//     review: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.arrayOf(PropTypes.oneOfType(
+//       [PropTypes.string.isRequired, PropTypes.object.isRequired],
+//     ))]),
+//     rating: PropTypes.number.isRequired,
+//   })),
+//   numOfReviewsToShow: PropTypes.number.isRequired,
+//   addTen: PropTypes.func.isRequired,
+// };
 
 export default ReviewList;

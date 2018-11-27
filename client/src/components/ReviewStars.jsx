@@ -8,7 +8,7 @@ class ReviewStars extends React.Component {
   createStars() {
     const stars = [];
     const starCount = 5;
-    let totalFill = Math.ceil(this.props.rating * 100);
+    let totalFill = Math.ceil(Number(this.props.rating) * 100);
     let fill = 0;
     let star = <div></div>;
 
@@ -66,12 +66,12 @@ class ReviewStars extends React.Component {
   }
 }
 
-ReviewStars.propTypes = {
-  rating: PropTypes.number.isRequired,
-  starStyle: PropTypes.shape({
-    fontSize: PropTypes.string.isRequired,
-    margin: PropTypes.string.isRequired,
-  }),
-};
+// ReviewStars.propTypes = {
+//   rating: PropTypes.number.isRequired,
+//   starStyle: PropTypes.shape({
+//     fontSize: PropTypes.string.isRequired,
+//     margin: PropTypes.string.isRequired,
+//   }),
+// };
 
 export default ReviewStars;

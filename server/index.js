@@ -1,8 +1,10 @@
+const nr = require('newrelic');
 const express = require('express');
 const expressStaticGzip = require('express-static-gzip');
 const bodyParser = require('body-parser');
 const path = require('path');
 const getReviewData = require('./serverModel.js');
+
 const app = express();
 const PORT = 3002;
 
@@ -25,17 +27,17 @@ app.get('/:courseId/reviews', (req, res) => {
 });
 
 
-app.post('/:courseId/reviews', (req, res)=> {
+// app.post('/:courseId/reviews', (req, res)=> {
 
-});
+// });
 
-app.patch('/:courseId/reviews', (req, res) => {
+// app.patch('/:courseId/reviews', (req, res) => {
 
-});
+// });
 
-app.delete('/:courseId/reviews', (req, res)=> {
+// app.delete('/:courseId/reviews', (req, res)=> {
 
-});
+// });
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);

@@ -1,18 +1,8 @@
-const db = require('../database/sequelizeSetup.js');
-
-const flattenReviewData = (data) => {
-  const reviewDataWithNestedUserObj = data.map(row => (row.dataValues));
-  const reviewData = reviewDataWithNestedUserObj.map((row) => {
-    row.user = row.user.dataValues;
-    row.rating = Number(row.rating);
-    return row;
-  });
-
-  return reviewData;
-};
+const db = require('../database/index.js').client;
 
 const calcCourseStats = (reviewData) => {
-  const sumRating = reviewData.reduce((sum, review) => (sum + review.rating), 0);
+  console.log(reviewData, 'reviews')
+  const sumRating = reviewData.reduce((sum, review) => (sum + Number(review.rating)), 0);
   const totalRatings = reviewData.length;
   const avgRating = Number((sumRating / totalRatings).toFixed(2));
   const summaryStats = reviewData.reduce((obj, review) => {
@@ -42,23 +32,23 @@ const findFeaturedReview = (reviewData) => {
     return featured;
   }, { upvotes: 60, downvotes: 0 });
 
-  if (featuredReview.userId === undefined) { featuredReview = null; }
-
+  if (featuredReview.user_id === undefined) { featuredReview = null; }
+  featuredReview.rating = Number(featuredReview.rating);
   return featuredReview;
 };
 
 const removeFeaturedReviewFromList = (featuredReview, reviewData) => (
-  reviewData.filter(review => (review.userId !== featuredReview.userId))
+  reviewData.filter(review => (review.user_id !== featuredReview.user_id))
 );
 
 
 const getReviewData = (courseId, res) => {
-  db.Reviews.findAll({ where: { courseId }, include: [db.Users] })
+  db.query(`SELECT * FROM reviews INNER JOIN users ON users.user_id = reviews.user_id WHERE course_id =${courseId};
+  `)
     .then((data) => {
-      const reviewData = flattenReviewData(data);
-      const courseStats = calcCourseStats(reviewData);
-      const featuredReview = findFeaturedReview(reviewData);
-      const reviews = removeFeaturedReviewFromList(featuredReview, reviewData);
+      const courseStats = calcCourseStats(data.rows);
+      const featuredReview = findFeaturedReview(data.rows);
+      const reviews = removeFeaturedReviewFromList(featuredReview, data.rows);
       res.send({ courseStats, featuredReview, reviews });
     });
 };

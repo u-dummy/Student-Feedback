@@ -12,11 +12,13 @@ module.exports = {
     filename: 'bundle.js',
     path: DIST_DIR,
   },
+  devtool: '#eval-source-map',
   module: {
     rules: [
       {
         test: /\.jsx?/,
         include: SRC_DIR,
+        exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
           presets: ['@babel/preset-react', '@babel/preset-env'],

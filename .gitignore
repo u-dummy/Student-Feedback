@@ -4,3 +4,4 @@
 *.pem
 *.config.js
 *.csv
+/newrelic.js/

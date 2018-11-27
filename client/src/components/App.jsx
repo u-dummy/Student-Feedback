@@ -18,7 +18,7 @@ class App extends React.Component {
       reviewsFilteredBySearch: [],
       reviewsFilteredByRating: [],
       currentFilterRating: null,
-      numOfReviewsToShow: 10,
+      numOfReviewsToShow: 5,
     };
 
     this.filterAndBoldOnSearch = this.filterAndBoldOnSearch.bind(this);
@@ -32,9 +32,11 @@ class App extends React.Component {
 
   getReviews() {
     axios.get(`${window.location.pathname.slice('/courses'.length)}reviews`)
-      .then(rawData => (rawData.text()))
-      .then((data) => {
-        this.setState(JSON.parse(data));
+
+      //.then(rawData => (rawData.text()))
+      .then((responseData) => {
+        console.log(responseData.data);
+        this.setState(responseData.data);
         this.setState({
           reviewsFilteredBySearch: this.state.reviews,
           reviewsFilteredByRating: this.state.reviews,
@@ -73,7 +75,8 @@ class App extends React.Component {
         currentFilterRating: null,
       });
     } else {
-      const filteredReviews = this.state.reviews.filter(review => (review.rating === rating || review.rating - 0.5 === rating));
+      const filteredReviews = this.state.reviews
+        .filter(review => (review.rating === rating || review.rating - 0.5 === rating));
       this.setState({
         reviewsFilteredByRating: filteredReviews,
         currentFilterRating: rating,
@@ -86,7 +89,7 @@ class App extends React.Component {
     const reviewsFilteredBySearchAndRating = [];
     this.state.reviewsFilteredBySearch.forEach((searchReview) => {
       this.state.reviewsFilteredByRating.forEach((ratingReview) => {
-        if (searchReview.user.userId === ratingReview.user.userId) {
+        if (searchReview.user_id === ratingReview.user_id) {
           reviewsFilteredBySearchAndRating.push(searchReview);
         }
       });
