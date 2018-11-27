@@ -4,7 +4,6 @@ const expressStaticGzip = require('express-static-gzip');
 const bodyParser = require('body-parser');
 const path = require('path');
 const getReviewData = require('./serverModel.js');
-
 const app = express();
 const PORT = 3002;
 
