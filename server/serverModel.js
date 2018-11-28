@@ -1,7 +1,7 @@
 const db = require('../database/index.js').client;
 
 const calcCourseStats = (reviewData) => {
-  console.log(reviewData, 'reviews')
+  // console.log(reviewData, 'reviews')
   const sumRating = reviewData.reduce((sum, review) => (sum + Number(review.rating)), 0);
   const totalRatings = reviewData.length;
   const avgRating = Number((sumRating / totalRatings).toFixed(2));
@@ -32,8 +32,8 @@ const findFeaturedReview = (reviewData) => {
     return featured;
   }, { upvotes: 60, downvotes: 0 });
 
-  if (featuredReview.user_id === undefined) { featuredReview = null; }
-  featuredReview.rating = Number(featuredReview.rating);
+  //if (featuredReview.user_id === undefined) { featuredReview = null; }
+  featuredReview.rating = Number(featuredReview.rating) || 5;
   return featuredReview;
 };
 

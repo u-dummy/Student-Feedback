@@ -9,4 +9,4 @@
 public/bundle.*
 /database/node_modules
 package-lock.json
-
+newrelic.js

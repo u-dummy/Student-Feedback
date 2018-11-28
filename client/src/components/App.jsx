@@ -32,8 +32,6 @@ class App extends React.Component {
 
   getReviews() {
     axios.get(`${window.location.pathname.slice('/courses'.length)}reviews`)
-
-      //.then(rawData => (rawData.text()))
       .then((responseData) => {
         console.log(responseData.data);
         this.setState(responseData.data);

@@ -44,5 +44,4 @@ CREATE INDEX c_id ON courses USING HASH(course_id);
 CREATE INDEX _id ON reviews USING HASH(course_id);
 CREATE INDEX u_id ON reviews USING HASH(user_id);
 
-
-SELECT * FROM reviews INNER JOIN users ON users.user_id = reviews.user_id WHERE reviews.course_id = 10;
+-- SELECT * FROM reviews INNER JOIN users ON users.user_id = reviews.user_id WHERE reviews.course_id = 10;

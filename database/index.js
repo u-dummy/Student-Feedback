@@ -1,4 +1,4 @@
-const pgp = require('pg-promise');
+// const pgp = require('pg-promise');
 const { Pool, Client } = require('pg');
 const pool = new Pool();
 const client = new Client({

@@ -2,15 +2,15 @@ config:
   target: 'http://localhost:3002'
   processor: "./stressTest.js"
   phases:
-    - duration: 10
-      arrivalRate: 1000
+    - duration: 30
+      arrivalRate: 500
 scenarios:
   - name: "Request a course reviews"
     flow:
       - function: "generateRandomId"
       - get:
-          url: "/courses/{{ courseId }}/reviews"
+          url: "/courses/{{ courseId }}/"
           json: 
             courseId: "{{ courseId }}"
-      - log: "Sent a request"
+
       
