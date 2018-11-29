@@ -2,10 +2,10 @@
 const { Pool, Client } = require('pg');
 const pool = new Pool();
 const client = new Client({
-  user: 'postgres',
-  host: 'localhost',
+  user: 'power_user',
+  host: 'ec2-54-167-111-182.compute-1.amazonaws.com',
   database: 'udemy',
-  password: 'simon',
+  password: '$poweruserpassword',
   port: 5432,
 });
 
