@@ -8,7 +8,8 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "react": "webpack -d --watch",
-    "seed": "node database/seed.js",
+    "oldSeed": "node database/seed.js",
+    "newSeed": "node sdc/db/seed.js",
     "test": "jest --coverage"
   },
   "babel": {
@@ -35,15 +36,24 @@
     "body-parser": "^1.17.2",
     "brotli-webpack-plugin": "^1.0.0",
     "compression-webpack-plugin": "^2.0.0",
+    "cors": "^2.8.5",
     "express": "^4.15.4",
     "faker": "^4.1.0",
+    "fast-csv": "^2.4.1",
+    "iconv-lite": "^0.4.24",
     "jest": "^23.6.0",
     "moment": "^2.22.2",
+    "mongoose": "^5.3.12",
+    "mongoose-auto-increment": "^5.0.1",
     "mysql": "^2.14.1",
     "mysql2": "^1.6.1",
+    "newrelic": "^4.11.0",
+    "pg": "^7.6.1",
     "prop-types": "^15.6.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
     "sequelize": "^4.41.0"
   },
   "devDependencies": {

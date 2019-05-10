@@ -2,6 +2,15 @@
 
 The "reviews" module for the Udemy course page.
 
+# Api
+
+| endpoint | method | description |
+| --- | --- | --- |
+| /:courseId/reviews | GET | Get all reviews for a given course
+| /:courseId/reviews | POST | Create a new review for a given course
+| /:courseId/reviews | PUT | Update a review for a given course
+| /:courseId/reviews | DELETE | Delete a review from a given course
+
 ## Related Projects
 
   - https://github.com/u-demo/header-sidebar-service

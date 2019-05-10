@@ -7,7 +7,6 @@ const flattenReviewData = (data) => {
     row.rating = Number(row.rating);
     return row;
   });
-
   return reviewData;
 };
 
@@ -47,9 +46,12 @@ const findFeaturedReview = (reviewData) => {
   return featuredReview;
 };
 
-const removeFeaturedReviewFromList = (featuredReview, reviewData) => (
-  reviewData.filter(review => (review.userId !== featuredReview.userId))
-);
+const removeFeaturedReviewFromList = (featuredReview, reviewData) => {
+  if (!featuredReview) {
+    return reviewData;
+  }
+  return reviewData.filter(review => (review.userId !== featuredReview.userId));
+};
 
 
 const getReviewData = (courseId, res) => {
@@ -59,8 +61,57 @@ const getReviewData = (courseId, res) => {
       const courseStats = calcCourseStats(reviewData);
       const featuredReview = findFeaturedReview(reviewData);
       const reviews = removeFeaturedReviewFromList(featuredReview, reviewData);
-      res.send({ courseStats, featuredReview, reviews });
+      res.status(200).send({ courseStats, featuredReview, reviews });
     });
 };
 
-module.exports = getReviewData;
+const addReview = (courseId, reviewInfo, res) => {
+  const { userId, rating, review } = reviewInfo;
+  console.log(isNaN(rating));
+  if (isNaN(userId) || !review || !courseId || isNaN(rating)) {
+    res.status(400).end();
+  }
+  const year = new Date().getFullYear();
+  const month = new Date().getMonth() + 1;
+  const day = new Date().getDate();
+  const date = `${year}-${month}-${day}`;
+  db.Reviews.create({
+    userId,
+    review,
+    rating,
+    courseId,
+    date,
+  })
+    .then(() => {
+      console.log('success');
+      res.status(200).end();
+    })
+    .catch((err) => {
+      console.log('err');
+      res.json(err);
+    });
+};
+
+const removeReview = (reviewId, res) => {
+  if (reviewId === undefined) {
+    res.status(400).end();
+  }
+  db.Reviews.destroy({
+    where: { reviewId },
+  }).then(affectedReview => res.status(200).json(affectedReview));
+};
+
+const updateReview = (reviewId, review, res) => {
+  if (reviewId === undefined) {
+    res.status(400).end();
+  }
+  db.Reviews.update({ review }, { where: { reviewId } })
+    .then(() => res.status(200).end());
+};
+
+module.exports = {
+  getReviewData,
+  addReview,
+  removeReview,
+  updateReview,
+};

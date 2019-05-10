@@ -3,3 +3,5 @@
 *.DS_Store
 *.pem
 *.config.js
+*.csv
+*/lcov-report/
